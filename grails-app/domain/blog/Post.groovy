@@ -7,8 +7,10 @@ class Post {
     Date dateCreated
     Date dateModified
     Boolean enabled = true
+    Integer views
 
     static hasMany = [tags:Tag]
+    static belongsTo = [Tag, Comment]
 
     static constraints = {
         title()
