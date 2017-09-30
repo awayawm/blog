@@ -1,5 +1,7 @@
 ## atronandbeyond.com
 
-The internet needs more people ranting senselessly!
+The internet needs more people ranting!
 
-This blog is written in Groovy using the Grails framework and uses a H2 database.
+![alt text](https://s3-us-west-2.amazonaws.com/atronandbeyond/im-doing-my-part.png)
+
+This blog uses the Grails web framework and connects to a H2 database.

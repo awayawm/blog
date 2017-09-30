@@ -7,10 +7,10 @@ class Post {
     Date dateCreated
     Date dateModified
     Boolean enabled = true
-    Integer views
+    Integer views = 0
 
     static hasMany = [tags:Tag]
-    static belongsTo = [Tag, Comment]
+    static belongsTo = Comment
 
     static constraints = {
         title()
@@ -18,6 +18,7 @@ class Post {
         content()
         enabled()
         dateModified()
+        views()
     }
 
     @Override

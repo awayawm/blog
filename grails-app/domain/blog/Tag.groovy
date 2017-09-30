@@ -5,6 +5,7 @@ class Tag {
     String description
 
     static hasMany = [posts: Post]
+    static belongsTo = Post
 
     static constraints = {
         name()
