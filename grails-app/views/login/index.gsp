@@ -11,15 +11,22 @@
 
     <div class="form-group">
         <label for="username">Username</label>
-        <input type="text" class="form-control" id="username" placeholder="Enter your username">
+        <input type="text" name="username" class="form-control" id="username" placeholder="Enter your username">
     </div>
 
     <div class="form-group">
         <label for="password">Password</label>
-        <input type="password" class="form-control" id="password" placeholder="Enter your password">
+        <input type="password" name="password" class="form-control" id="password" placeholder="Enter your password">
     </div>
     
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <div class="form-group">
+    <label class="form-check-label">
+        <input class="form-check-input" name="remember_me" type="checkbox">
+        Remember me
+    </label>
+    </div>
+
+    <button type="submit" class="btn btn-lg btn-primary btn-block">Submit</button>
 
     </form>
 
