@@ -10,10 +10,10 @@ class Account {
     Date dateCreated
 
     static constraints = {
-        username()
-        password()
-        fullName()
-        emailAddress()
-        role()
+        username unique:true
+        password blank:false
+        fullName blank:true
+        emailAddress blank:true
+        role blank:true
     }
 }
