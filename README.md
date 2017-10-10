@@ -6,4 +6,6 @@ The internet needs more people ranting!
 
 This blog uses the Grails web framework
 
-After cloning the project, run gradle to bring in dependencies and then gradle bootRun to run the application
+This code uses Apache Derby as a RDBMS so get that set up and spin up the database server with ./startNetworkServer
+
+Clone the project and run gradle to bring in dependencies. Next run grails run-app to launch the blog.

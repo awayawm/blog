@@ -2,7 +2,9 @@ package blog
 
 class AccountController {
 
-    def index() { render Account.getAll() }
+    def index() { 
+        [accounts: Account.getAll()] 
+    }
 
     def create() {
         if (params.username && params.password) {

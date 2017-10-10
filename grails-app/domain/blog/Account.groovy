@@ -10,10 +10,15 @@ class Account {
     Date dateCreated
 
     static constraints = {
-        username unique:true
-        password blank:false
-        fullName blank:true
-        emailAddress blank:true
-        role blank:true
+        username unique: true
+        password blank: false
+        fullName nullable:true, blank:true
+        emailAddress nullable:true, blank:true
+        role nullable:true, blank:true
+    }
+
+    @Override
+    public String toString() {
+        return id + ": " + username;
     }
 }
