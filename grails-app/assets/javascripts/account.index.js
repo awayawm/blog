@@ -36,6 +36,19 @@ $(document).ready(function() {
         })
     })
 
+    $(".deleteAccountIcon").bind("click", function(event) {
+        var accountid = event.target.attributes.accountid.value
+
+        $.ajax({
+            url: "/account/remove",
+			type: "POST",
+            data: { id: accountid },
+            success: function(data) {
+                $(location).prop("href", "/account")
+            }
+        })
+    })
+
 	$("#submit").bind("click", function(event) {
         event.preventDefault()
 

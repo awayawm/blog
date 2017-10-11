@@ -4,6 +4,19 @@ import grails.converters.JSON
 
 class AccountController {
 
+    def remove() {
+        println "params: " + params
+        if (params.id) {
+            def account = Account.get(params.id)
+            try {
+            account.delete(flush: true)
+            } catch (Exception e) {
+                println e.printStackTrace()
+            }
+            render([success: 'true', data: [ status: 'delete function called' ]] as JSON)
+        }
+    }
+
     def index() { 
 		if(request.method == "GET") {
 			def returnValue
@@ -29,7 +42,7 @@ class AccountController {
             }
             else
                 render([success: 'false'] as JSON)
-		}
+		} 
     }
 
     def create() {

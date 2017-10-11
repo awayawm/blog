@@ -14,7 +14,7 @@ class Account {
         password blank: false
         fullName nullable:true, blank:true
         emailAddress nullable:true, blank:true
-        role nullable:true, blank:true
+        role nullable:true, blank:true, inList: ['Admin', 'Member']
     }
 
     @Override
