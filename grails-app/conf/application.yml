@@ -100,7 +100,7 @@ dataSource:
 environments:
     development:
         dataSource:
-            dbCreate: create-drop
+            dbCreate: update
             url: jdbc:derby://localhost:1527/blog-db;create=true
     test:
         dataSource:

@@ -2,6 +2,7 @@
 <html>
 <head>
     <meta name="layout" content="main"/>
+	<asset:javascript src="account.create.js"/>
 </head>
 <body>
 
