@@ -1,7 +1,12 @@
 $(document).ready(function() {
 
+    var changePassword = false
+
 	$(":input").prop("disabled", true)
+    $("#createAccountButton").prop("disabled", false)
     $("#updateAccountForm")[0].reset()
+    $("#resetPasswordFields").hide()
+
 
 	var PasswordsMatchAndAreSufficientLength = function() {
 		var valid = true;
@@ -15,6 +20,7 @@ $(document).ready(function() {
 		}
 		return valid;
 	}
+
 
     $(".editAccountIcon").bind("click", function(event) {
         var accountid = event.target.attributes.accountid.value
@@ -49,16 +55,18 @@ $(document).ready(function() {
         })
     })
 
-	$("#submit").bind("click", function(event) {
+	$("#submitButton").bind("click", function(event) {
         event.preventDefault()
+
+        var data = { fullname: $("#fullname").val(),
+                     emailaddress: $("#emailaddress").val(),
+                     id: $("#id").val()
+        }
 
 		if(PasswordsMatchAndAreSufficientLength()) {
             $.ajax({
                 url: "/account",
-                data: { fullname: $("#fullname").val(),
-                        emailaddress: $("#emailaddress").val(),
-                        id: $("#id").val()
-                },
+                data: data,
                 type: "POST",
             }).done(function(data) {
                 console.log(data)
@@ -68,5 +76,17 @@ $(document).ready(function() {
                 }
             })
         }
+	})
+
+    $("#resetPasswordButton").bind("click", function(event) {
+        changePassword = !changePassword
+        if(changePassword)
+            $("#resetPasswordFields").slideDown(500)
+        else
+            $("#resetPasswordFields").slideUp(500)
+    })
+
+	$("#createAccountButton").bind("click", function(event) {
+		$(location).prop("href", "/account/create")
 	})
 })

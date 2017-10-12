@@ -9,6 +9,7 @@
 //= require_self
 //= require account.create.js
 //= require account.index.js
+//= require account.login.js
 
 
 if (typeof jQuery !== 'undefined') {

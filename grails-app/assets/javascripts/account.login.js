@@ -1,14 +1,21 @@
 $(document).ready(function() {
 
+    $("#loginForm")[0].reset()
+    $("#submitButton").prop("disabled", true)
+    $("#passwordRequired").hide()
+    $("#usernameRequired").hide()
+
     var usernameLength = 0
     var passwordLength = 0
     var usernameTouched = false
     var passwordTouched = false
 
-    $("#createForm")[0].reset()
-    $("#submitButton").prop("disabled", true)
-    $("#passwordRequired").hide()
-    $("#usernameRequired").hide()
+    var validateTouched = function() {
+       if(usernameLength > 0)
+            usernameTouched = true
+       if(passwordLength > 0)
+            passwordTouched = true
+    }
 
     var disableSubmitButtonIfFormsInvalid = function() {
 
@@ -17,13 +24,6 @@ $(document).ready(function() {
         } else {
             $("#submitButton").prop("disabled", true)
         }
-    }
-
-    var validateTouched = function() {
-       if(usernameLength > 0)
-            usernameTouched = true
-       if(passwordLength > 0)
-            passwordTouched = true
     }
 
     var displayMessageWhenInvalidDueToRequired = function() {
@@ -36,21 +36,31 @@ $(document).ready(function() {
             $("#passwordRequired").show()
         else
             $("#passwordRequired").hide()
-
     }
 
     $("#username").bind("keydown", function(event) {
         usernameLength = $.trim($("#username").val()).length
         validateTouched()
-        disableSubmitButtonIfFormsInvalid()
         displayMessageWhenInvalidDueToRequired()
+        disableSubmitButtonIfFormsInvalid()
     })
 
     $("#password").bind("keydown", function(event) {
         passwordLength = $.trim($("#password").val()).length
         validateTouched()
-        disableSubmitButtonIfFormsInvalid()
         displayMessageWhenInvalidDueToRequired()
+        disableSubmitButtonIfFormsInvalid()
     })
 
-});
+    $("#submitButton").bind("click", function(event) {
+        event.preventDefault()
+        $.ajax({url: "/login",
+                type: "POST",
+                data: { username: $("#username").val(),
+                        password: $("#password").val()
+                }
+        }).done(function(result) {
+            console.log(result)
+        })
+    })
+})

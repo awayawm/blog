@@ -8,7 +8,7 @@
 
     <h2>Create user.</h2>
 
-    <form id="form" action="/account/create" method="post">
+    <form id="createForm" action="/account/create" method="post">
 
     <div class="form-group">
         <label for="username">Username</label>
@@ -22,7 +22,7 @@
         <span id="passwordRequired">Password is required</span>
     </div>
 
-    <button type="submit" id="submit" class="btn btn-lg btn-primary btn-block">Submit</button>
+    <input type="submit" id="submitButton" class="btn btn-lg btn-primary btn-block" value="Submit">
 
     </form>
 

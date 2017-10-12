@@ -35,6 +35,10 @@
             </tbody>
         </table>
 
+	<p>
+		<input id="createAccountButton" type="button" class="btn btn-primary" value="Create Account">
+	</p>
+
     <form id="updateAccountForm">
 
     <input type="hidden" id="id">
@@ -54,6 +58,12 @@
     <input type="text" class="form-control" id="emailaddress" required>
     </div>
 
+    <input id="resetPasswordButton" type="button" class="btn btn-primary" value="Reset Password">
+
+    <p>
+    <div id="resetPasswordFields">
+    <p>
+
     <div class="form-group">
     <label for="password">Password</label>
     <input type="password" class="form-control" id="password" required>
@@ -64,7 +74,11 @@
     <input type="password" class="form-control" id="passwordconfirmation" required>
     </div>
 
-    <button id="submit" type="submit" class="btn btn-primary btn-block">Update</button>
+    </p> 
+    </div>
+    </p>
+
+    <input id="submitButton" type="submit" class="btn btn-primary btn-block" value="Update Account">
 
     </form>
 

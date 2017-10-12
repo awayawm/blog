@@ -4,8 +4,27 @@ import grails.converters.JSON
 
 class AccountController {
 
+    def login() {
+        if(request.method == "POST") {
+            if(params.username && params.password) {
+                try {
+                def account = Account.findByUsername(params.username) 
+                } catch (Exception e) {
+                    println e.printStackTrace()
+                    render([success: 'false'] as JSON)
+                }
+
+                if(account.verifyPassword(params.password))
+                    render([success: 'true'] as JSON)
+                else
+                    render([success: 'false'] as JSON)
+            }
+            else
+                render([success: 'false'] as JSON)
+        }
+    }
+
     def remove() {
-        println "params: " + params
         if (params.id) {
             def account = Account.get(params.id)
             try {
