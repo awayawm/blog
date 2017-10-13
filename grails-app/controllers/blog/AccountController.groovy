@@ -8,14 +8,19 @@ class AccountController {
         if(request.method == "POST") {
             if(params.username && params.password) {
                 try {
-                def account = Account.findByUsername(params.username) 
+                    def account = Account.findByUsername(params.username) 
                 } catch (Exception e) {
                     println e.printStackTrace()
                     render([success: 'false'] as JSON)
                 }
 
-                if(account.verifyPassword(params.password))
-                    render([success: 'true'] as JSON)
+                if(account.verifyPassword(params.password)) {
+
+                    session.logged_in = true
+                    session.username = params.username
+
+                    render([success: 'true', data: [account: account]] as JSON)
+                }
                 else
                     render([success: 'false'] as JSON)
             }
@@ -76,5 +81,4 @@ class AccountController {
             redirect action: "index"
         }
     }
-
 }
