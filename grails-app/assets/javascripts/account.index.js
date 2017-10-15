@@ -58,12 +58,17 @@ $(document).ready(function() {
 	$("#submitButton").bind("click", function(event) {
         event.preventDefault()
 
-        var data = { fullname: $("#fullname").val(),
+        data = { fullname: $("#fullname").val(),
                      emailaddress: $("#emailaddress").val(),
-                     id: $("#id").val()
+                     id: $("#id").val() }
+
+        if(changePassword) {
+            if(!PasswordsMatchAndAreSufficientLength())
+                return
+
+            data.password = $("#password").val()
         }
 
-		if(PasswordsMatchAndAreSufficientLength()) {
             $.ajax({
                 url: "/account",
                 data: data,
@@ -73,9 +78,9 @@ $(document).ready(function() {
                 if(data.success == "true") {
                     $(location).attr("href", "/account")
                 } else if(data.success == "false") {
+                    console.log(data)
                 }
             })
-        }
 	})
 
     $("#resetPasswordButton").bind("click", function(event) {

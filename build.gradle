@@ -50,7 +50,6 @@ dependencies {
     compile 'com.auth0:java-jwt:3.2.0'
     profile "org.grails.profiles:web"
     runtime "org.glassfish.web:el-impl:2.1.2-b03"
-//    runtime "com.h2database:h2"
     compile group: 'org.apache.derby', name: 'derbyclient', version: '10.13.1.1'
     runtime "org.apache.tomcat:tomcat-jdbc"
     runtime "com.bertramlabs.plugins:asset-pipeline-grails:2.14.2"

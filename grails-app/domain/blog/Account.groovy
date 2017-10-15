@@ -1,8 +1,8 @@
 package blog
 
-import javax.crypto.Mac;
-import javax.crypto.spec.SecretKeySpec;
-import java.security.InvalidKeyException;
+import javax.crypto.Mac
+import javax.crypto.spec.SecretKeySpec
+import java.security.InvalidKeyException
 
 class Account {
 
@@ -47,7 +47,7 @@ class Account {
 
     @Override
     public String toString() {
-        return id + ": " + username;
+        return "id: " + id + ", username: " + username;
     }
 
 }

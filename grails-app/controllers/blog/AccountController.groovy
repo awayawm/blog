@@ -1,28 +1,53 @@
 package blog
 
+import com.auth0.jwt.algorithms.Algorithm
+import com.auth0.jwt.JWTCreator
 import grails.converters.JSON
+import java.util.Date
 
 class AccountController {
 
+    AccountService accountService
+
+    private def JWT_TOKEN_SHORT_DURATION = 20 * 60 * 1000 
+    private def JWT_TOKEN_LONG_DURATION = 120 * 60 * 1000
+
     def login() {
+        def account = new Account()
+        def token
+
         if(request.method == "POST") {
+
             if(params.username && params.password) {
                 try {
-                    def account = Account.findByUsername(params.username) 
+                    account = Account.findByUsername(params.username) 
+                    if(!account)
+                        return render([success: 'false'] as JSON)
+
+                    session.account = account
+
+                    Date expiresAt = new Date(new Date().getTime() + JWT_TOKEN_SHORT_DURATION)
+                    try {
+                        token  = JWTCreator.init()
+                                .withExpiresAt(expiresAt)
+                                .sign(Algorithm.HMAC256(System.getenv("SECRET_KEY")));
+
+                        if(account.verifyPassword(params.password)) {
+                            session.token = token
+                            render([success: 'true'] as JSON)
+                        }
+                        else
+                            render([success: 'false'] as JSON)
+
+                    } catch (Exception e){
+                        println e.printStackTrace()
+                    }
+
                 } catch (Exception e) {
                     println e.printStackTrace()
                     render([success: 'false'] as JSON)
                 }
 
-                if(account.verifyPassword(params.password)) {
-
-                    session.logged_in = true
-                    session.username = params.username
-
-                    render([success: 'true', data: [account: account]] as JSON)
-                }
-                else
-                    render([success: 'false'] as JSON)
             }
             else
                 render([success: 'false'] as JSON)
@@ -30,8 +55,9 @@ class AccountController {
     }
 
     def remove() {
+        def account
         if (params.id) {
-            def account = Account.get(params.id)
+            account = Account.get(params.id)
             try {
             account.delete(flush: true)
             } catch (Exception e) {
@@ -42,6 +68,10 @@ class AccountController {
     }
 
     def index() { 
+
+        if(!accountService.isTokenValid(session.token))
+            redirect controller: "account", action: "login"
+
 		if(request.method == "GET") {
 			def returnValue
 			if (params.id) {
@@ -61,7 +91,7 @@ class AccountController {
                     render([success: 'true', data: [account: account]] as JSON)
                 }
                 catch(Exception e) {
-                    println "error: " + e.printStackTrace()
+                    println e.printStackTrace()
                 }
             }
             else
@@ -72,11 +102,11 @@ class AccountController {
     def create() {
         if (params.username && params.password) {
 
-            def newAccount = new Account(username: params.username, password: params.password)
+            def account = new Account(username: params.username, password: params.password)
             try {
-                newAccount.save(failOnError: true)
+                account.save(failOnError: true)
             } catch(Exception e) {
-                println e
+                println e.printStackTrace()
             }
             redirect action: "index"
         }
