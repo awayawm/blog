@@ -111,4 +111,9 @@ class AccountController {
             redirect action: "index"
         }
     }
+
+    def logout() {
+        session.account = null
+        session.token = null
+    }
 }

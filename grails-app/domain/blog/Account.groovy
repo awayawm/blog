@@ -11,6 +11,7 @@ class Account {
     String password
     String emailAddress
     String role
+    String resetToken
     Date dateCreated
 
     static constraints = {
@@ -19,6 +20,7 @@ class Account {
         fullName nullable:true, blank:true
         emailAddress nullable:true, blank:true
         role nullable:true, blank:true, inList: ['Admin', 'Member']
+        resetToken nullable: true, blank:true
     }
 
     def create256ShaHash(String password) {

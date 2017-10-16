@@ -5,6 +5,9 @@
     </head>
     <body>
 
+        <g:applyLayout name="navbar">
+        </g:applyLayout>
+
         <h2>Accounts</h2>
 
         <table class="table">
