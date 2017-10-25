@@ -16,6 +16,7 @@
           <a class="dropdown-item" href="#">Posts</a>
             <a class="dropdown-item" href="/tags">Tags</a>
           <a class="dropdown-item" href="/account">Accounts</a>
+          <a class="dropdown-item" href="/settings">Settings</a>
           <a class="dropdown-item" href="/account/logout">Logout</a>
         </div>
       </li>

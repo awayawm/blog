@@ -108,12 +108,13 @@ class AccountController {
             } catch(Exception e) {
                 println e.printStackTrace()
             }
-            redirect action: "index"
+            redirect action: "login"
         }
     }
 
     def logout() {
         session.account = null
         session.token = null
+        redirect action: "login"
     }
 }

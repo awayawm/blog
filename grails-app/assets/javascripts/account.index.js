@@ -1,6 +1,8 @@
 $(document).ready(function() {
 
+
     var changePassword = false
+    var roles = ['Admin', 'Member']
 
 	$(":input").prop("disabled", true)
     $("#createAccountButton").prop("disabled", false)

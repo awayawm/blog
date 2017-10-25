@@ -3,6 +3,7 @@ package blog
 class Post {
     String title
     String content
+    String summary
     String linkName
     Date dateCreated
     Date dateModified
