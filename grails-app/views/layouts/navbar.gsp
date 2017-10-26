@@ -13,11 +13,11 @@
 			Administration
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">Posts</a>
-            <a class="dropdown-item" href="/tags">Tags</a>
-          <a class="dropdown-item" href="/account">Accounts</a>
-          <a class="dropdown-item" href="/settings">Settings</a>
-          <a class="dropdown-item" href="/account/logout">Logout</a>
+          <a class="dropdown-item" href="/admin/posts">Posts</a>
+            <a class="dropdown-item" href="/admin/tags">Tags</a>
+          <a class="dropdown-item" href="/admin/account">Accounts</a>
+          <a class="dropdown-item" href="/admin/settings">Settings</a>
+          <a class="dropdown-item" href="/logout">Logout</a>
         </div>
       </li>
     </ul>

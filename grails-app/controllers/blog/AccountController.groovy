@@ -1,3 +1,5 @@
+// TODO add roles, authenticate on admin role
+
 package blog
 
 import com.auth0.jwt.algorithms.Algorithm
