@@ -6,7 +6,7 @@ The internet needs more ranting people!
 
 This blog uses the Grails framework for web applications.
 
-It's configured for mongodg but you can change this to your favorite dbms.
+It's configured for mongodb but you can change this to your favorite dbms.
 
 Set a SECRET_KEY environmental variable to salt the hashing functions.  In Debian you could run export SECRET_KEY=blogymcblogface in bash or make the change permanent in your .bashrc
 

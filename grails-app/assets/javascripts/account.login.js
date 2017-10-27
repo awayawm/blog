@@ -62,7 +62,7 @@ $(document).ready(function() {
         }).done(function(result) {
             console.log(result)
             if (result.success)
-                $(location).attr("href", "/account/index")
+                $(location).attr("href", "/admin/account")
 
         })
     })

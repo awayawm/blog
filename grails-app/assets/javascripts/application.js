@@ -11,13 +11,3 @@
 //= require account.index.js
 //= require account.login.js
 //= require account.tag.js
-
-if (typeof jQuery !== 'undefined') {
-    (function($) {
-        $(document).ajaxStart(function() {
-            $('#spinner').fadeIn();
-        }).ajaxStop(function() {
-            $('#spinner').fadeOut();
-        });
-    })(jQuery);
-}

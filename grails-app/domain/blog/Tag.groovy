@@ -11,6 +11,10 @@ class Tag {
         description()
     }
 
+    static mapping = {
+        name index: true, indexAttributes: [unique: true, dropDups: true]
+    }
+
     @Override
     public String toString() {
         return name

@@ -1,4 +1,5 @@
 // TODO add roles, authenticate on admin role
+// TODO remember me
 
 package blog
 

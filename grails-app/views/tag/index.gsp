@@ -10,19 +10,19 @@
 
         <h2>Tags</h2>
 
-        <form>
+        <form name="tagForm" id="tagForm">
 
         <div class="form-group">
         <label for="name">Name</label>
-        <input type="text" class="form-control" id="name" placeholder="Tag name">
+        <input type="text" class="form-control" id="name" required placeholder="Tag name">
         </div>
 
         <div class="form-group">
         <label for="name">Description</label>
-        <input type="text" class="form-control" id="description" placeholder="Tag description">
+        <input type="text" class="form-control" id="description" required placeholder="Tag description">
         </div>
 
-        <input type="submit" class="btn btn-primary btn-block" value="Submit">
+        <input id="submit" type="button" class="btn btn-primary btn-block" value="Submit">
 
         </form>
 
