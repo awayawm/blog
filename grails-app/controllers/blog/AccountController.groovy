@@ -1,5 +1,6 @@
 // TODO add roles, authenticate on admin role
 // TODO remember me
+// TODO password reset
 
 package blog
 

@@ -17,7 +17,7 @@ class UrlMappings {
 
         "/admin/tags"(controller:'tag', action: 'index')
         "/admin/tags/create"(controller:'tag', action: 'create')
-        "/admin/tags/getAll"(controller:'tag', action: 'getAll')
+        "/admin/tags/getall"(controller:'tag', action: 'getall')
 
         "500"(view:'/error')
         "404"(view:'/notFound')

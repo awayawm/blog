@@ -13,7 +13,7 @@ class TagController {
 
     }
 
-    def getAll() {
+    def getall() {
         return render([data: Tag.getAll()] as JSON)
     }
 

@@ -10,6 +10,19 @@
 
         <h2>Tags</h2>
 
+        <table class="table table-dark">
+            <thead>
+            <tr>
+            <th>id</th>
+            <th>name</th>
+            <th>description</th>
+            <th>actions</th>
+            </tr>
+            </thead>
+            <tbody id="tagTable">
+            </tbody>
+        </table>
+
         <form name="tagForm" id="tagForm">
 
         <div class="form-group">
