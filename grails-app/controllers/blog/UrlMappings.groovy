@@ -15,9 +15,10 @@ class UrlMappings {
 
         "/admin/account"(controller: 'account', action: 'index' )
 
-        "/admin/tags"(controller:'tag', action: 'index')
-        "/admin/tags/create"(controller:'tag', action: 'create')
-        "/admin/tags/getall"(controller:'tag', action: 'getall')
+        "/admin/tags"(controller: 'tag', action: 'index')
+        "/admin/tags/create"(controller: 'tag', action: 'create')
+        "/admin/tags/getall"(controller: 'tag', action: 'getall')
+        "/admin/tags/remove"(controller: 'tag', action: 'remove')
 
         "500"(view:'/error')
         "404"(view:'/notFound')

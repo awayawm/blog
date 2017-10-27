@@ -1,6 +1,7 @@
 // TODO add roles, authenticate on admin role
 // TODO remember me
 // TODO password reset
+// TODO only allow admin create when first account
 
 package blog
 

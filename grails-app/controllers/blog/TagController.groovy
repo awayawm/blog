@@ -37,4 +37,22 @@ class TagController {
 
     }
 
+    def remove() {
+
+        if(!accountService.isTokenValid(session.token))
+            redirect controller: "account", action: "login"
+
+        if(params.id) {
+            def tag = Tag.findById(params.id)
+            if(tag) {
+                tag.delete()
+                return render([success: true] as JSON)
+            } else {
+                return render([success: false] as JSON)
+            }
+        }
+
+
+    }
+
 }
