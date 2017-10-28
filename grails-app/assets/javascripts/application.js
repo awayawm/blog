@@ -11,3 +11,4 @@
 //= require account.index.js
 //= require account.login.js
 //= require account.tag.js
+//= require post.index.js
