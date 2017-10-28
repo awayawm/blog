@@ -2,6 +2,7 @@
 // TODO remember me
 // TODO password reset
 // TODO only allow admin create when first account
+// TODO progress on login
 
 package blog
 

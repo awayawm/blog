@@ -25,6 +25,8 @@
 
         <form name="tagForm" id="tagForm">
 
+        <input type="hidden" id="id">
+
         <div class="form-group">
         <label for="name">Name</label>
         <input type="text" class="form-control" id="name" required placeholder="Tag name">

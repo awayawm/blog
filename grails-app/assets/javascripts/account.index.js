@@ -28,7 +28,7 @@ $(document).ready(function() {
         var accountid = event.target.attributes.accountid.value
 
         $.ajax({
-            url: "/account",
+            url: "/admin/account",
 			data: { id: accountid },
 			type: "GET",
         }).done(function(data) {
@@ -48,7 +48,7 @@ $(document).ready(function() {
         var accountid = event.target.attributes.accountid.value
 
         $.ajax({
-            url: "/account/remove",
+            url: "/admin/account/remove",
 			type: "POST",
             data: { id: accountid },
             success: function(data) {
@@ -72,13 +72,13 @@ $(document).ready(function() {
         }
 
             $.ajax({
-                url: "/account",
+                url: "/admin/account",
                 data: data,
                 type: "POST",
             }).done(function(data) {
                 console.log(data)
                 if(data.success == "true") {
-                    $(location).attr("href", "/account")
+                    $(location).attr("href", "/admin/account")
                 } else if(data.success == "false") {
                     console.log(data)
                 }
@@ -94,6 +94,6 @@ $(document).ready(function() {
     })
 
 	$("#createAccountButton").bind("click", function(event) {
-		$(location).prop("href", "/account/create")
+		$(location).prop("href", "/admin/account/create")
 	})
 })
