@@ -10,7 +10,7 @@ class Account {
     String username
     String password
     String emailAddress
-    String role = 'User '
+    String role = 'User'
     String resetToken
     Date dateCreated
 
