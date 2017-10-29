@@ -8,7 +8,10 @@ class UrlMappings {
         "/login"(controller: 'account', action: 'login')
         "/logout"(controller: 'account', action: 'logout')
 
-        "/admin/account"(controller: 'account', action: 'index' )
+        group "/admin/account", {
+            "/"(controller: 'account', action: 'index')
+            "/create"(controller: 'account', action: 'create')
+        }
 
         "/admin/tags"(controller: 'tag', action: 'index')
         "/admin/tags/create"(controller: 'tag', action: 'create')

@@ -3,6 +3,7 @@
 // TODO password reset
 // TODO only allow admin create when first account
 // TODO progress on login
+// TODO recaptcha on login
 
 package blog
 
@@ -73,7 +74,11 @@ class AccountController {
         }
     }
 
-    def index() { 
+    def index() {
+
+        def roles = ['Admin', 'User']
+
+        println session.account
 
         if(!accountService.isTokenValid(session.token))
             redirect controller: "account", action: "login"
@@ -84,7 +89,7 @@ class AccountController {
 				render Account.get(params.id) as JSON
 			}
 			else {
-				render view: "index", model: [accounts : Account.getAll()]
+				render view: "index", model: [roles: roles, accounts : Account.getAll()]
 			}
 		} else if(request.method == "POST") {
 
@@ -102,7 +107,7 @@ class AccountController {
             }
             else
                 render([success: 'false'] as JSON)
-		} 
+		}
     }
 
     def create() {

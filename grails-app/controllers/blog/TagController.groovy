@@ -1,3 +1,6 @@
+// TODO validation
+// TODO view foreign keys
+
 package blog
 
 import grails.converters.JSON
@@ -79,8 +82,6 @@ class TagController {
                 return render([success: false] as JSON)
             }
         }
-
-
     }
 
 }

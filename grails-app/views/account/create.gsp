@@ -8,7 +8,7 @@
 
     <h2>Create user.</h2>
 
-    <form id="createForm" action="/account/create" method="post">
+    <form id="createForm" action="/admin/account/create" method="post">
 
     <div class="form-group">
         <label for="username">Username</label>

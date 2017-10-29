@@ -24,11 +24,18 @@
             <tbody>
                 <g:each in="${accounts}" var="account">
                     <tr>
-                        <th>${account.id}</th>
+                        <th>${account.sid}</th>
                         <td>${account.username}</td>
                         <td>${account.fullName}</td>
                         <td>${account.emailAddress}</td>
-                        <td></td>
+                        <td>
+                          <select class="form-control">
+                          <g:each in="${roles}">
+                            <option>${it}</option>
+                          </g:each>
+                        </select>
+
+                        </td>
                         <td>
                             <span accountId="${account.id}" class="editAccountIcon octicon octicon-pencil"></span> 
 							<span accountId="${account.id}" class="deleteAccountIcon octicon octicon-x"></span> 

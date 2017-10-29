@@ -10,7 +10,7 @@ class Account {
     String username
     String password
     String emailAddress
-    String role
+    String role = 'User '
     String resetToken
     Date dateCreated
 
@@ -19,7 +19,7 @@ class Account {
         password blank: false
         fullName nullable:true, blank:true
         emailAddress nullable:true, blank:true
-        role nullable:true, blank:true, inList: ['Admin', 'Member']
+        role nullable:true, blank:true, inList: ['Admin', 'User']
         resetToken nullable: true, blank:true
     }
 
