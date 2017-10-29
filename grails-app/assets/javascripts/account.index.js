@@ -38,6 +38,7 @@ $(document).ready(function() {
 			$("#fullname").prop("value", data.fullName)
 			$("#emailaddress").prop("value", data.emailAddress)
             $("#id").prop("value", data.id)
+            $("#role").prop("value", data.role)
 
 			$(":input").prop("disabled", false)
 			$("#username").prop("disabled", true)
@@ -52,7 +53,7 @@ $(document).ready(function() {
 			type: "POST",
             data: { id: accountid },
             success: function(data) {
-                $(location).prop("href", "/account")
+                $(location).prop("href", "/admin/account")
             }
         })
     })
@@ -61,8 +62,10 @@ $(document).ready(function() {
         event.preventDefault()
 
         data = { fullname: $("#fullname").val(),
-                     emailaddress: $("#emailaddress").val(),
-                     id: $("#id").val() }
+                 emailaddress: $("#emailaddress").val(),
+                 id: $("#id").val(),
+                 role: $("#role").val()
+           }
 
         if(changePassword) {
             if(!PasswordsMatchAndAreSufficientLength())

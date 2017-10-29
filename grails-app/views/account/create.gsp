@@ -10,6 +10,10 @@
 
     <form id="createForm" action="/admin/account/create" method="post">
 
+    <g:if test="${flash.success == 'false'}">
+    fail lol
+    </g:if>
+
     <div class="form-group">
         <label for="username">Username</label>
         <input required type="text" name="username" class="form-control" id="username" placeholder="Enter your username">

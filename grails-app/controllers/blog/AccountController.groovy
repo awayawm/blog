@@ -1,9 +1,7 @@
-// TODO add roles, authenticate on admin role
 // TODO remember me
 // TODO password reset
-// TODO only allow admin create when first account
 // TODO progress on login
-// TODO recaptcha on login
+// TODO recaptcha on account creation
 
 package blog
 
@@ -78,8 +76,6 @@ class AccountController {
 
         def roles = ['Admin', 'User']
 
-        println session.account
-
         if(!accountService.isTokenValid(session.token))
             redirect controller: "account", action: "login"
 
@@ -93,10 +89,11 @@ class AccountController {
 			}
 		} else if(request.method == "POST") {
 
-            if(params.fullname && params.emailaddress) {
+            if(params.fullname && params.emailaddress && params.role) {
                 def account = Account.get(params.id) 
                 account.fullName = params.fullname
                 account.emailAddress = params.emailaddress
+                account.role = params.role
                 try {
                     account.save(flush:true, failOnError:true)
                     render([success: 'true', data: [account: account]] as JSON)
@@ -111,21 +108,39 @@ class AccountController {
     }
 
     def create() {
-        if (params.username && params.password) {
 
-            def account = new Account(username: params.username, password: params.password)
+        def admin = Account.findByRole("Admin")
+
+        if (!session.account || (!admin && params.username && params.password) ||
+                (params.username && params.password && session.account.role == "Admin")) {
+
+            def account = new Account(username: params.username, password: params.password, role: 'User')
             try {
                 account.save(failOnError: true)
-            } catch(Exception e) {
+                flash.success = true
+                flash.class = "alert-success"
+                flash.message = "Account successfully created!"
+            } catch (Exception e) {
+                flash.alert = false
+                flash.class = "alert-danger"
+                flash.message = "Account creation not successful ..."
                 println e.printStackTrace()
             }
             redirect action: "login"
         }
+
+        flash.alert = true
+        flash.class = "alert-danger"
+        flash.message= "Account creation failed!"
+        redirect controller: "account", action: "index"
+
     }
 
     def logout() {
         session.account = null
         session.token = null
+        flash.success = true
+        flash.message = "You have been successfully logged out."
         redirect action: "login"
     }
 }

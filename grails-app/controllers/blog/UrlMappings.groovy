@@ -11,6 +11,7 @@ class UrlMappings {
         group "/admin/account", {
             "/"(controller: 'account', action: 'index')
             "/create"(controller: 'account', action: 'create')
+            "/remove"(controller: 'account', action: 'remove')
         }
 
         "/admin/tags"(controller: 'tag', action: 'index')

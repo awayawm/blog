@@ -24,17 +24,11 @@
             <tbody>
                 <g:each in="${accounts}" var="account">
                     <tr>
-                        <th>${account.sid}</th>
+                        <th>${account.id}</th>
                         <td>${account.username}</td>
                         <td>${account.fullName}</td>
                         <td>${account.emailAddress}</td>
-                        <td>
-                          <select class="form-control">
-                          <g:each in="${roles}">
-                            <option>${it}</option>
-                          </g:each>
-                        </select>
-
+                        <td>${account.role}</td>
                         </td>
                         <td>
                             <span accountId="${account.id}" class="editAccountIcon octicon octicon-pencil"></span> 
@@ -66,6 +60,15 @@
     <div class="form-group">
     <label for="emailaddress">Email Address</label>
     <input type="text" class="form-control" id="emailaddress" required>
+    </div>
+
+    <div class="form-group">
+      <label for="role">Role</label>
+      <select id="role" class="form-control">
+        <g:each in="${roles}" var="role">
+          <option>${role}</option>
+        </g:each>
+      </select>
     </div>
 
     <input id="resetPasswordButton" type="button" class="btn btn-primary" value="Reset Password">
