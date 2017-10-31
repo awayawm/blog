@@ -4,6 +4,7 @@ $(document).ready(function() {
     $("#submitButton").prop("disabled", true)
     $("#passwordRequired").hide()
     $("#usernameRequired").hide()
+    $("#unsuccesfulLogin").hide()
 
     var usernameLength = 0
     var passwordLength = 0
@@ -57,13 +58,14 @@ $(document).ready(function() {
         $.ajax({url: "/login",
                 type: "POST",
                 data: { username: $("#username").val(),
-                        password: $("#password").val()
+                        password: $("#password").val(),
+                        remember_me: $("#remember_me").prop("checked")
                 }
         }).done(function(result) {
-            console.log(result)
-            if (result.success)
+            if (result.success == 'true')
                 $(location).attr("href", "/admin/account")
-
+            else
+                $("#unsuccesfulLogin").show()
         })
     })
 })

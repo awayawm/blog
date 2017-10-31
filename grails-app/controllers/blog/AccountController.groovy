@@ -20,18 +20,24 @@ class AccountController {
     def login() {
         def account = new Account()
         def token
+        Date expiresAt = null
 
         if(request.method == "POST") {
 
             if(params.username && params.password) {
                 try {
-                    account = Account.findByUsername(params.username) 
-                    if(!account)
+                    account = Account.findByUsername(params.username)
+                    if(!account) {
                         return render([success: 'false'] as JSON)
+                    }
 
                     session.account = account
 
-                    Date expiresAt = new Date(new Date().getTime() + JWT_TOKEN_SHORT_DURATION)
+                    if(params.remember_me)
+                        expiresAt = new Date(new Date().getTime() + JWT_TOKEN_LONG_DURATION)
+                    else
+                        expiresAt = new Date(new Date().getTime() + JWT_TOKEN_SHORT_DURATION)
+
                     try {
                         token  = JWTCreator.init()
                                 .withExpiresAt(expiresAt)
@@ -41,8 +47,9 @@ class AccountController {
                             session.token = token
                             render([success: 'true'] as JSON)
                         }
-                        else
+                        else {
                             render([success: 'false'] as JSON)
+                        }
 
                     } catch (Exception e){
                         println e.printStackTrace()
@@ -76,8 +83,11 @@ class AccountController {
 
         def roles = ['Admin', 'User']
 
-        if(!accountService.isTokenValid(session.token))
-            redirect controller: "account", action: "login"
+        if(!accountService.isTokenValid(session?.token))
+            return redirect(controller: "account", action: "login")
+
+        if(session?.account?.role == 'User')
+            return render(controller: "account", view: "indexForUser")
 
 		if(request.method == "GET") {
 			def returnValue
@@ -89,8 +99,14 @@ class AccountController {
 			}
 		} else if(request.method == "POST") {
 
+            def account = Account.get(params.id)
+
+            if(params.password) {
+                account.password = params.password
+            }
+
             if(params.fullname && params.emailaddress && params.role) {
-                def account = Account.get(params.id) 
+
                 account.fullName = params.fullname
                 account.emailAddress = params.emailaddress
                 account.role = params.role

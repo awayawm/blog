@@ -10,7 +10,7 @@
 
     <form id="createForm" action="/admin/account/create" method="post">
 
-    <g:if test="${flash.success == 'false'}">
+    <g:if test="${flash.alert == 'false'}">
     fail lol
     </g:if>
 

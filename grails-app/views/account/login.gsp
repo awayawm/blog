@@ -8,6 +8,14 @@
 
     <h2>Welcome back.</h2>
 
+    <div id="unsuccesfulLogin" class="alert alert-danger alert-dismissible">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+          <h4 class='alert-heading'>Opps!</h4>
+          <p class="mb-0">Please verify your username and password and try again.</p>
+    </div>
+
     <form id="loginForm" method="post">
 
     <div class="form-group">

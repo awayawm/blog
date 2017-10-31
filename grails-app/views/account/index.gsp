@@ -5,7 +5,7 @@
     </head>
     <body>
 
-        <g:applyLayout name="navbar">
+        <g:applyLayout name="navbar-admin">
         </g:applyLayout>
 
         <h2>Accounts</h2>
@@ -31,8 +31,8 @@
                         <td>${account.role}</td>
                         </td>
                         <td>
-                            <span accountId="${account.id}" class="editAccountIcon octicon octicon-pencil"></span> 
-							<span accountId="${account.id}" class="deleteAccountIcon octicon octicon-x"></span> 
+                            <span accountId="${account.id}" class="editAccountIcon octicon octicon-pencil"></span>
+							<span accountId="${account.id}" class="deleteAccountIcon octicon octicon-x"></span>
                         </td>
                     </tr>
                 </g:each>
@@ -66,7 +66,12 @@
       <label for="role">Role</label>
       <select id="role" class="form-control">
         <g:each in="${roles}" var="role">
+          <g:if test="${role == session.account.role}">
+          <option selected>${role}</option>
+          </g:if>
+          <g:else>
           <option>${role}</option>
+          </g:else>
         </g:each>
       </select>
     </div>
