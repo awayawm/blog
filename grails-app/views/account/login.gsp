@@ -1,14 +1,14 @@
 <!doctype html>
 <html>
 <head>
-    <meta name="layout" content="main"/>
+    <meta name="layout" content="layout"/>
 	<asset:javascript src="account.login.js"/>
 </head>
 <body>
 
     <h2>Welcome back.</h2>
 
-    <div id="unsuccesfulLogin" class="alert alert-danger alert-dismissible">
+    <div id="unsuccesfulLogin" class="collapse alert alert-danger alert-dismissible">
       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>

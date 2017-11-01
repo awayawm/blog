@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-    <meta name="layout" content="main"/>
+    <meta name="layout" content="layout"/>
 	<asset:javascript src="account.create.js"/>
 </head>
 <body>

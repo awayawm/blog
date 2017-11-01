@@ -1,7 +1,7 @@
 <html>
     <head>
-        <meta name="layout" content="main"/>
-		<asset:javascript src="account.index.js"/>
+        <meta name="layout" content="layout"/>
+		<asset:javascript src="account.indexForAdmin.js"/>
     </head>
     <body>
 
@@ -9,6 +9,15 @@
         </g:applyLayout>
 
         <h2>Accounts</h2>
+
+      <g:if test="${flash.alert}">
+        <div class="alert alert-danger alert-dismissible evaluate(flash.class)" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        ${flash.message}
+        </div>
+      </g:if>
 
         <table class="table">
             <thead class="thead-inverse">
@@ -38,6 +47,13 @@
                 </g:each>
             </tbody>
         </table>
+
+    <div class="alert alert-success alert-dismissable fade">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    Account succesfully edited!
+    </div>
 
 	<p>
 		<input id="createAccountButton" type="button" class="btn btn-primary" value="Create Account">
@@ -95,6 +111,13 @@
     </p> 
     </div>
     </p>
+
+        <div id="successfulEdit" class="alert alert-success alert-dismissible collapse" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        Account successfully edited!
+        </div>
 
     <input id="submitButton" type="submit" class="btn btn-primary btn-block" value="Update Account">
 

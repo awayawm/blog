@@ -70,7 +70,6 @@ $(document).ready(function() {
         if(changePassword) {
             if(!PasswordsMatchAndAreSufficientLength())
                 return
-
             data.password = $("#password").val()
         }
 
@@ -81,7 +80,10 @@ $(document).ready(function() {
             }).done(function(data) {
                 console.log(data)
                 if(data.success == "true") {
-                    $(location).attr("href", "/admin/account")
+                    $("#successfulEdit").show()
+                    setTimeout(function() {
+                        $(location).attr("href", "/admin/account")
+                    }, 3000)
                 } else if(data.success == "false") {
                     console.log(data)
                 }

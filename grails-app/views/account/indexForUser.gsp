@@ -1,6 +1,6 @@
 <html>
     <head>
-        <meta name="layout" content="main"/>
+        <meta name="layout" content="layout"/>
 		<asset:javascript src="account.indexForUser.js"/>
     </head>
     <body>

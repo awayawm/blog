@@ -4,7 +4,6 @@ $(document).ready(function() {
     $("#submitButton").prop("disabled", true)
     $("#passwordRequired").hide()
     $("#usernameRequired").hide()
-    $("#unsuccesfulLogin").hide()
 
     var usernameLength = 0
     var passwordLength = 0
@@ -64,8 +63,10 @@ $(document).ready(function() {
         }).done(function(result) {
             if (result.success == 'true')
                 $(location).attr("href", "/admin/account")
-            else
+            else {
+                $("#loginForm")[0].reset()
                 $("#unsuccesfulLogin").show()
+            }
         })
     })
 })

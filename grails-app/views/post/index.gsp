@@ -1,11 +1,11 @@
 <html>
     <head>
-        <meta name="layout" content="main"/>
+        <meta name="layout" content="layout"/>
 		<asset:javascript src="post.index.js"/>
     </head>
     <body>
 
-        <g:applyLayout name="navbar">
+        <g:applyLayout name="navbar-admin">
         </g:applyLayout>
 
         <h2>Posts</h2>
@@ -31,7 +31,7 @@
 
         <div class="form-group">
         <label for="name">Title</label>
-        <input type="text" class="form-control" id="name" required placeholder="Post Title">
+        <input type="text" class="form-control" id="title" required placeholder="Post Title">
         </div>
 
         <div class="form-group">

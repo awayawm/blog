@@ -1,11 +1,11 @@
 <html>
     <head>
-        <meta name="layout" content="main"/>
+        <meta name="layout" content="layout"/>
 		<asset:javascript src="account.tag.js"/>
     </head>
     <body>
 
-        <g:applyLayout name="navbar">
+        <g:applyLayout name="navbar-admin">
         </g:applyLayout>
 
         <h2>Tags</h2>
