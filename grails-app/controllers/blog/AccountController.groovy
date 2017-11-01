@@ -92,10 +92,16 @@ class AccountController {
 		if(request.method == "GET") {
 			def returnValue
 			if (params.id) {
-				render Account.get(params.id) as JSON
+                def account = Account.get(params.id)
+                println account
+                    if(account != null)
+                        return render(Account.get(params.id) as JSON)
+                    else
+                        return render([success: 'false'] as JSON)
+
 			}
 			else {
-				render view: "index", model: [roles: roles, accounts : Account.getAll()]
+				return render(view: "indexForAdmin", model: [roles: roles, accounts : Account.getAll()])
 			}
 		} else if(request.method == "POST") {
 
@@ -112,14 +118,14 @@ class AccountController {
                 account.role = params.role
                 try {
                     account.save(flush:true, failOnError:true)
-                    render([success: 'true', data: [account: account]] as JSON)
+                    return render([success: 'true', data: [account: account]] as JSON)
                 }
                 catch(Exception e) {
                     println e.printStackTrace()
                 }
             }
             else
-                render([success: 'false'] as JSON)
+                return render([success: 'false'] as JSON)
 		}
     }
 
@@ -127,13 +133,14 @@ class AccountController {
 
         def admin = Account.findByRole("Admin")
 
-        if (!session.account || (!admin && params.username && params.password) ||
-                (params.username && params.password && session.account.role == "Admin")) {
+        if(request.method == "GET" && admin != null && session?.account?.role == "Admin") {
+            return render(view: "create")
+        } else if(request.method == "POST" && params.username && params.password && session.account.role == "Admin") {
 
             def account = new Account(username: params.username, password: params.password, role: 'User')
             try {
                 account.save(failOnError: true)
-                flash.success = true
+                flash.alert = true
                 flash.class = "alert-success"
                 flash.message = "Account successfully created!"
             } catch (Exception e) {
@@ -142,21 +149,19 @@ class AccountController {
                 flash.message = "Account creation not successful ..."
                 println e.printStackTrace()
             }
-            redirect action: "login"
+            return redirect(action: "index")
         }
 
-        flash.alert = true
-        flash.class = "alert-danger"
-        flash.message= "Account creation failed!"
-        redirect controller: "account", action: "index"
+        return redirect(controller: "account", action: "login")
 
     }
 
     def logout() {
         session.account = null
         session.token = null
-        flash.success = true
+        flash.alert = true
+        flash.class = "alert-success"
         flash.message = "You have been successfully logged out."
-        redirect action: "login"
+        redirect action: "index"
     }
 }
