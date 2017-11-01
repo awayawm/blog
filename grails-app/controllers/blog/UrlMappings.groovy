@@ -14,14 +14,17 @@ class UrlMappings {
             "/remove"(controller: 'account', action: 'remove')
         }
 
-        "/admin/tags"(controller: 'tag', action: 'index')
-        "/admin/tags/create"(controller: 'tag', action: 'create')
-        "/admin/tags/getall"(controller: 'tag', action: 'getall')
-        "/admin/tags/getone/$id"(controller: 'tag', action: 'getone')
-        "/admin/tags/remove"(controller: 'tag', action: 'remove')
+        group "/admin/tags", {
+            "/"(controller: 'tag', action: 'index')
+            "/create"(controller: 'tag', action: 'create')
+            "/getall"(controller: 'tag', action: 'getall')
+            "/getone/$id"(controller: 'tag', action: 'getone')
+            "/remove"(controller: 'tag', action: 'remove')
+        }
 
         group "/admin/posts", {
             "/"(controller: "post", action: "index")
+            "/edit"(controller: "post", action: "edit")
         }
 
         "500"(view:'/error')
