@@ -30,23 +30,23 @@
         <input type="hidden" id="id">
 
         <div class="form-group">
-        <label for="name">Title</label>
-        <input type="text" class="form-control" id="title" required placeholder="Post Title">
+        <label for="title">Title</label>
+        <input type="text" class="form-control" id="title" required placeholder="Post Title" required>
         </div>
 
         <div class="form-group">
-        <label for="name">Link</label>
-        <input type="text" class="form-control" id="link" required placeholder="shortcut-to-the-webpage">
+        <label for="link">Link</label>
+        <input type="text" class="form-control" id="link" required placeholder="shortcut-to-the-webpage" required>
         </div>
 
         <div class="form-group">
-        <label for="content">Summary</label>
-        <textarea class="form-control" id="summary" rows="3" placeholder="Post summary"></textarea>
+        <label for="summary">Summary</label>
+        <textarea class="form-control" id="summary" rows="3" placeholder="Post summary" required></textarea>
         </div>
 
         <div class="form-group">
         <label for="content">Content</label>
-        <textarea class="form-control" id="content" rows="12" placeholder="Never be game over!"></textarea>
+        <textarea class="form-control" id="content" rows="12" placeholder="Never be game over!" required></textarea>
         </div>
 
         <div class="form-group">
