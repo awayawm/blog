@@ -25,6 +25,7 @@ class UrlMappings {
         group "/admin/posts", {
             "/"(controller: "post", action: "index")
             "/edit"(controller: "post", action: "edit")
+            "/getposts"(controller: "post", action: "getposts")
         }
 
         "500"(view:'/error')

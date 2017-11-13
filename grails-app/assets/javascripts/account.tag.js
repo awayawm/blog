@@ -21,7 +21,7 @@ $(document).ready(function() {
 
     function updateTagTableModelandTable() {
         $.ajax({
-            method: 'get',
+            method: 'GET',
             url: 'tags/getall'
             }).done(function(response) {
                 tagTable = response.data
@@ -33,7 +33,7 @@ $(document).ready(function() {
 
     function createTag() {
         $.ajax({
-            method: 'post',
+            method: 'POST',
             data: {
                 name: $("#name").val(),
                 description: $("#description").val(),

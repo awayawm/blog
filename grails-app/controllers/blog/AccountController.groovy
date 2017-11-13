@@ -93,7 +93,6 @@ class AccountController {
 			def returnValue
 			if (params.id) {
                 def account = Account.get(params.id)
-                println account
                     if(account != null)
                         return render(Account.get(params.id) as JSON)
                     else
@@ -135,7 +134,9 @@ class AccountController {
 
         if(request.method == "GET" && admin != null && session?.account?.role == "Admin") {
             return render(view: "create")
-        } else if(request.method == "POST" && params.username && params.password && session.account.role == "Admin") {
+        } else if (request.method == "GET" && !Account.find({})) {
+            return render(view: "create")
+        } else if((request.method == "POST" && params.username && params.password && session?.account?.role == "Admin") || !Account.find({}   )) {
 
             def account = new Account(username: params.username, password: params.password, role: 'User')
             try {

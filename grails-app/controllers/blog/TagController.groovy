@@ -17,7 +17,7 @@ class TagController {
     }
 
     def getall() {
-        return render([data: Tag.getAll()] as JSON)
+        return render([data: Tag?.getAll()] as JSON)
     }
 
     def getone() {
@@ -40,7 +40,6 @@ class TagController {
         if(params.name && params.description) {
 
             if(params.id) {
-                println Tag.findById(params.id)
                 try {
                     def tag = Tag.findById(params.id)
                     tag.name = params.name
@@ -54,12 +53,11 @@ class TagController {
 
             }
 
-            def newTag = new Tag(name: params.name, description: params.description)
-            try {
-                newTag.save(flush: true)
-            } catch (Exception e) {
-                System.out e.printStackTrace()
-            }
+            def newTag = new Tag(name: params.name,
+                                description: params.description
+                                )
+            newTag.insert()
+
             if(newTag != null)
                 success = true
 

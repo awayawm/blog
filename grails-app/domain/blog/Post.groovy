@@ -4,26 +4,17 @@ class Post {
     String title
     String content
     String summary
-    String linkName
-    Date dateCreated
-    Date dateModified
-    Boolean enabled = true
-    Integer views = 0
+    String link
+    Boolean enabled
+//    Integer views
 
-    static hasMany = [tags:Tag]
-    static belongsTo = Comment
+//    static hasMany = [tags:Tag]
+//    static belongsTo = Comment
 
-    static constraints = {
-        title()
-        linkName(unique:true)
-        content()
-        enabled()
-        dateModified()
-        views()
-    }
+    static constraints = { }
 
     @Override
     String toString() {
-        return title
+        "id ${id}\ntitle ${title}\nsummary ${summary}"
     }
 }

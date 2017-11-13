@@ -10,22 +10,10 @@
 
         <h2>Posts</h2>
 
-        <table class="table table-dark">
-            <thead>
-            <tr>
-              <th>Title</th>
-              <th>Summary</th>
-              <th>Link</th>
-              <th>Enabled</th>
-              <th>Content</th>
-              <th>Actions</th>
-            </tr>
-            </thead>
-            <tbody id="tagTable">
-            </tbody>
-        </table>
+        <div id="postTable">
+        </div>
 
-        <form name="postForm" id="postForm">
+        <form id="postForm">
 
         <input type="hidden" id="id">
 
