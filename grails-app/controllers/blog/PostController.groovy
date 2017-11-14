@@ -11,6 +11,11 @@ class PostController {
         if(!accountService.isTokenValid(session?.token))
             return redirect(controller: "account", action: "login")
 
+        def tags = Tag.findAll()
+        if(tags) {
+            return [tags: tags]
+        }
+
     }
 
     def getpost() {
@@ -66,11 +71,10 @@ class PostController {
     }
 
     def submit() {
-
         if(!accountService.isTokenValid(session?.token))
             return redirect(controller: "account", action: "login")
 
-        def requiredParams = ["title", "link", "summary", "content", "enabled"] as ArrayList
+        def requiredParams = ["title", "link", "summary", "content", "enabled", "tags"] as ArrayList
         ParamsChecker paramsChecker = new ParamsChecker(requiredParams)
 
         if(session?.account?.role != 'Admin')
@@ -79,7 +83,7 @@ class PostController {
         if(paramsChecker.areRequirementsPresent()) {
 
             if(params?.id) {
-                println "it's an edit"
+                println "params: ${params.list('tags[]')}"
 
                 def post = Post.findById(params?.id)
                 if(!post) {
@@ -90,6 +94,12 @@ class PostController {
                 post.link = params?.link
                 post.content = params?.content
                 post.enabled = params?.enabled
+
+//                params?.tags.each {
+//                    println ${it}
+//                }
+//                post.addToTags(params?.tags)
+
                 post.save(flush:true)
                 return render([success:true, data:[post:post]] as JSON)
 

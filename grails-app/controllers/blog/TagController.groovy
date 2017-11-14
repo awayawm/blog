@@ -16,6 +16,7 @@ class TagController {
 
         if(session?.account?.role != 'Admin')
             return redirect(controller: "post", view: "index")
+
     }
 
     def getall() {

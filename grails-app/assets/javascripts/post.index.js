@@ -63,13 +63,19 @@ $(document).ready(function() {
             link: $("#link").val(),
             summary: $("#summary").val(),
             content: $("#content").val(),
-            enabled: $("#enabled").prop("checked")
+            enabled: $("#enabled").prop("checked"),
+            tags: $("#tags").val()
         }
+
+        var id = $("#id").val()
+        if(id)
+            data['id'] = id
 
         $.ajax({
             url: '/admin/posts/submit',
             data: data,
-            method: 'post'
+            method: 'post',
+            dataType: 'json',
         }).done(function(res) {
             $("#postForm")[0].reset()
             getPosts()

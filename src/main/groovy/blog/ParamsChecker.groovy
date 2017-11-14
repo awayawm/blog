@@ -7,7 +7,7 @@ class ParamsChecker implements WebAttributes {
     List<String> paramsPresent = []
 
     ParamsChecker(List<String> requiredParams) {
-        //requiredParams.each{ k -> println "${k}" }
+//        requiredParams.each{ k -> println "${k}" }
         this.requiredParams = requiredParams
     }
 
