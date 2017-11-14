@@ -6,12 +6,11 @@ The internet needs more ranting people!
 
 This blog uses the Grails framework for web applications.
 
-It's configured for mongodb but you can change this to your favorite dbms.
+It's configured for mongodb but you can change this to your favorite dbms with some tweaking.
 
 Set a SECRET_KEY environmental variable to salt the hashing functions.  In Debian you could run export SECRET_KEY=blogymcblogface in bash or make the change permanent in your .bashrc
 
-Once you've sorted out your DB, clone the project and run gradle to bring in the dependencies. Now you're ready to run grails run-app to launch the blog.  Go to /account/create to create an admin account.  Once the first admin account is created, /account/create will only be accessable by users with the Admin role
+Once you've sorted out your DB, clone the project and run gradle to bring in the dependencies. Now you're ready to run grails run-app to launch the blog.  Go to /account/create to create an admin account.  Once the first admin account is created, /account/create will only be accessible by users with the Admin role
 
-https://grails.org/
 http://34.208.159.120:8080
 

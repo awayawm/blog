@@ -13,6 +13,27 @@ class PostController {
 
     }
 
+    def getpost() {
+
+        if(!accountService.isTokenValid(session?.token))
+            return redirect(controller: "account", action: "login")
+
+        def requiredParams = ["id"] as ArrayList
+        ParamsChecker paramsChecker = new ParamsChecker(requiredParams)
+
+        if(session?.account?.role != 'Admin')
+            return redirect(controller: "post", view: "index") as JSON
+
+        if(paramsChecker.areRequirementsPresent()) {
+
+            def post = Post.findById(params?.id)
+            if (post) {
+                return render([success: true, data: [post: post]] as JSON)
+            }
+        }
+        render([success:false] as JSON)
+    }
+
     def getposts() {
         def posts = Post.findAll()
         if(posts) {
@@ -21,7 +42,30 @@ class PostController {
         render([success:false] as JSON)
     }
 
-    def edit() {
+    def deletepost() {
+        if(!accountService.isTokenValid(session?.token))
+            return redirect(controller: "account", action: "login")
+
+        def requiredParams = ["id"] as ArrayList
+        ParamsChecker paramsChecker = new ParamsChecker(requiredParams)
+
+        if(session?.account?.role != 'Admin')
+            return redirect(controller: "post", view: "index") as JSON
+
+        if(paramsChecker.areRequirementsPresent()) {
+            def post = Post.findById(params.id)
+            if(post) {
+                post.delete()
+//                println "\n${post}"
+                if(post) {
+                    return render([success: 'true', data: [post: post]] as JSON)
+                }
+            }
+        }
+        render([success: 'false'] as JSON)
+    }
+
+    def submit() {
 
         if(!accountService.isTokenValid(session?.token))
             return redirect(controller: "account", action: "login")
@@ -33,6 +77,24 @@ class PostController {
             return redirect(controller: "post", view: "index") as JSON
 
         if(paramsChecker.areRequirementsPresent()) {
+
+            if(params?.id) {
+                println "it's an edit"
+
+                def post = Post.findById(params?.id)
+                if(!post) {
+                    return render([success:false] as JSON)
+                }
+                post.title = params?.title
+                post.summary = params?.summary
+                post.link = params?.link
+                post.content = params?.content
+                post.enabled = params?.enabled
+                post.save(flush:true)
+                return render([success:true, data:[post:post]] as JSON)
+
+            }
+
             def post = new Post(
                     title: params.title,
                     summary: params.summary,
