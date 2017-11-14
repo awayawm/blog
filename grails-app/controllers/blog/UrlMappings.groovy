@@ -16,9 +16,9 @@ class UrlMappings {
 
         group "/admin/tags", {
             "/"(controller: 'tag', action: 'index')
-            "/create"(controller: 'tag', action: 'create')
+            "/submit"(controller: 'tag', action: 'submit')
             "/getall"(controller: 'tag', action: 'getall')
-            "/getone/$id"(controller: 'tag', action: 'getone')
+            "/gettag/$id"(controller: 'tag', action: 'gettag')
             "/remove"(controller: 'tag', action: 'remove')
         }
 

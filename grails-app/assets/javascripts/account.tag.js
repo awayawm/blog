@@ -24,7 +24,7 @@ $(document).ready(function() {
             method: 'GET',
             url: 'tags/getall'
             }).done(function(response) {
-                tagTable = response.data
+                tagTable = response.data.tags
                 updateTagTable()
             }).fail(function(response) {
                 console.log(response)
@@ -39,15 +39,11 @@ $(document).ready(function() {
                 description: $("#description").val(),
                 id: $("#id").val()
             },
-            url: 'tags/create'
+            url: 'tags/submit'
             }).done(function(response) {
-                console.log(response)
                 $("#tagForm")[0].reset()
                 updateTagTableModelandTable()
-                return true
-            }).fail(function(response) {
-                console.log(response)
-        })
+            })
     }
 
     $("#submit").bind("click", function(event) {
@@ -77,10 +73,9 @@ $(document).on('click', '.deleteButton', function(event) {
 $(document).on('click', '.editButton', function(event) {
     var id = $(this).attr("id")
     $.ajax({
-        url: '/admin/tags/getone/' + id,
+        url: '/admin/tags/gettag/' + id,
         method: 'get',
     }).done(function(response) {
-        console.log(response)
         $("#name").val(response.data.tag.name)
         $("#description").val(response.data.tag.description)
         $("#id").val(response.data.tag.id)

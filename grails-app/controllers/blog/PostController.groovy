@@ -22,7 +22,7 @@ class PostController {
         ParamsChecker paramsChecker = new ParamsChecker(requiredParams)
 
         if(session?.account?.role != 'Admin')
-            return redirect(controller: "post", view: "index") as JSON
+            return redirect(controller: "post", view: "index")
 
         if(paramsChecker.areRequirementsPresent()) {
 
@@ -50,7 +50,7 @@ class PostController {
         ParamsChecker paramsChecker = new ParamsChecker(requiredParams)
 
         if(session?.account?.role != 'Admin')
-            return redirect(controller: "post", view: "index") as JSON
+            return redirect(controller: "post", view: "index")
 
         if(paramsChecker.areRequirementsPresent()) {
             def post = Post.findById(params.id)
@@ -74,7 +74,7 @@ class PostController {
         ParamsChecker paramsChecker = new ParamsChecker(requiredParams)
 
         if(session?.account?.role != 'Admin')
-            return redirect(controller: "post", view: "index") as JSON
+            return redirect(controller: "post", view: "index")
 
         if(paramsChecker.areRequirementsPresent()) {
 

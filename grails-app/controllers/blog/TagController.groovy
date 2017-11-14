@@ -12,57 +12,67 @@ class TagController {
     def index() {
 
         if(!accountService.isTokenValid(session.token))
-            redirect controller: "account", action: "login"
+            return redirect(controller: "account", action: "login")
 
+        if(session?.account?.role != 'Admin')
+            return redirect(controller: "post", view: "index")
     }
 
     def getall() {
-        return render([data: Tag?.getAll()] as JSON)
+        def tags = Tag.findAll()
+        if(tags) {
+            return render([success:true, data:[tags:tags]] as JSON)
+        }
+        render([success:false] as JSON)
     }
 
-    def getone() {
-        if (params.id) {
+    def gettag() {
+        def requiredParams = ["id"] as ArrayList
+        ParamsChecker paramsChecker = new ParamsChecker(requiredParams)
+
+        if(paramsChecker.areRequirementsPresent()) {
+
             def tag = Tag.findById(params.id)
-            if (tag)
+            if (tag) {
                 return render([success: true, data: [tag: tag]] as JSON)
-            return render([success: false] as JSON)
+            }
+
         }
         return render([success: false] as JSON)
     }
 
-    def create() {
+    def submit() {
 
         if(!accountService.isTokenValid(session.token))
-            redirect controller: "account", action: "login"
+            return redirect(controller: "account", action: "login")
 
-        def success = false
+        if(session?.account?.role != 'Admin')
+            return redirect(controller: "post", view: "index")
 
-        if(params.name && params.description) {
+        def requiredParams = ["name", "description"] as ArrayList
+        ParamsChecker paramsChecker = new ParamsChecker(requiredParams)
 
-            if(params.id) {
-                try {
+        if(paramsChecker.areRequirementsPresent()) {
+
+            if (params.name && params.description) {
+                if (params?.id) {
+                    println params
                     def tag = Tag.findById(params.id)
                     tag.name = params.name
-                    tag.dsecription = params.description
+                    tag.description = params.description
                     tag.save(flush: true)
-                    return render([success: true] as JSON)
-                } catch (Exception e) {
-                    println e.printStackTrace()
-                    return render([success: false] as JSON)
+                    return render([success: true, data: [tag:tag]] as JSON)
                 }
 
+                def tag = new Tag(name: params.name,
+                        description: params.description
+                )
+                tag.insert()
+                return render([success: true, data: [tag:tag]] as JSON)
+
             }
-
-            def newTag = new Tag(name: params.name,
-                                description: params.description
-                                )
-            newTag.insert()
-
-            if(newTag != null)
-                success = true
-
-            return render([success: success] as JSON)
         }
+        return render([success: false] as JSON)
 
     }
 
@@ -71,15 +81,20 @@ class TagController {
         if(!accountService.isTokenValid(session.token))
             redirect controller: "account", action: "login"
 
-        if(params.id) {
+        if(session?.account?.role != 'Admin')
+            return redirect(controller: "post", view: "index")
+
+        def requiredParams = ["id"] as ArrayList
+        ParamsChecker paramsChecker = new ParamsChecker(requiredParams)
+
+        if(paramsChecker.areRequirementsPresent()) {
             def tag = Tag.findById(params.id)
-            if(tag) {
+            if (tag) {
                 tag.delete()
                 return render([success: true] as JSON)
-            } else {
-                return render([success: false] as JSON)
             }
         }
+        return render([success: false] as JSON)
     }
 
 }

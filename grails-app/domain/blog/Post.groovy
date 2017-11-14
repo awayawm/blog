@@ -6,6 +6,9 @@ class Post {
     String summary
     String link
     Boolean enabled
+    static hasMany = [tags:Tag]
+    static belongsTo = Tag
+
 //    Integer views
 
 //    static hasMany = [tags:Tag]

@@ -76,19 +76,28 @@ $(document).ready(function() {
         })
     })
 
+    $("#confirmDeleteButton").bind("click", function(event) {
+        var id = $("#postName").text()
+        $.ajax({
+            url: '/admin/posts/deletepost',
+            method: 'post',
+            data: {id: id}
+        }).done(function(res) {
+            getPosts()
+        })
+    })
+
     getPosts()
 
 })
 
 $(document).on('click', '.deleteButton', function(event) {
-//        console.log(event.target)
-        $.ajax({
-            url: '/admin/posts/deletepost',
-            method: 'post',
-            data: {id: event.target.id}
-        }).done(function(res) {
-            getPosts()
-        })
+
+    $("#postName").text(event.target.id)
+    $("#confirmDeleteModal").modal({
+        show: true
+    })
+
 })
 
 $(document).on('click', '.editButton', function(event) {

@@ -4,7 +4,7 @@ class Tag {
     String name
     String description
 
-//    static hasMany = [posts:Post]
+    static hasMany = [posts:Post]
 
     static constraints = {}
 
