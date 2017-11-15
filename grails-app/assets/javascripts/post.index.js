@@ -15,6 +15,7 @@ var renderTable = function(posts) {
                      "<tr>" +
                      "<th>Id</th>" +
                      "<th>Title</th>" +
+                     "<th>Tags</th>" +
                      "<th>Summary</th>" +
                      "<th>Link</th>" +
                      "<th>Enabled</th>" +
@@ -27,9 +28,23 @@ var renderTable = function(posts) {
                      "</table>")
 
     posts.forEach(function(post) {
+        var tagNames = ""
+        if(post.tags != null) {
+            post.tags.forEach(function(value, index, array) {
+                tagNames += value['id']
+                if(index != array.length-1) {
+                    tagNames += ", "
+                }
+            })
+        }
+        if(tagNames == "") {
+            tagNames = "No tags"
+        }
+
         $("#tagTable").append("<tr>" +
                               "<th>" + post.id + "</th>" +
                               "<td>" + post.title + "</td>" +
+                              "<td>" + tagNames + "</td>" +
                               "<td>" + post.summary + "</td>" +
                               "<td>" + post.link + "</td>" +
                               "<td>" + post.enabled + "</td>" +
@@ -108,6 +123,7 @@ $(document).on('click', '.deleteButton', function(event) {
 
 $(document).on('click', '.editButton', function(event) {
 //        console.log(event.target)
+    $("#postForm")[0].reset()
     if(event.target.id) {
 
         $.ajax({

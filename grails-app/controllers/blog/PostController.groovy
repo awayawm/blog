@@ -61,10 +61,7 @@ class PostController {
             def post = Post.findById(params.id)
             if(post) {
                 post.delete()
-//                println "\n${post}"
-                if(post) {
-                    return render([success: 'true', data: [post: post]] as JSON)
-                }
+                return render([success: 'true', data: [post: post]] as JSON)
             }
         }
         render([success: 'false'] as JSON)
@@ -83,7 +80,8 @@ class PostController {
         if(paramsChecker.areRequirementsPresent()) {
 
             if(params?.id) {
-                println "params: ${params.list('tags[]')}"
+
+//                println new ParamList("tags").ReturnParamList() as List
 
                 def post = Post.findById(params?.id)
                 if(!post) {
@@ -95,10 +93,9 @@ class PostController {
                 post.content = params?.content
                 post.enabled = params?.enabled
 
-//                params?.tags.each {
-//                    println ${it}
-//                }
-//                post.addToTags(params?.tags)
+                new ParamList("tags").ReturnParamList().each { tag ->
+                    post.addToTags(Tag.findByName(tag))
+                }
 
                 post.save(flush:true)
                 return render([success:true, data:[post:post]] as JSON)
