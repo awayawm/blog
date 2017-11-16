@@ -55,6 +55,8 @@ var getPosts = function() {
     }).done(function(res) {
         if(res.success) {
             renderTable(res.data.posts)
+        } else {
+            $("#postTable").empty()
         }
     })
 }

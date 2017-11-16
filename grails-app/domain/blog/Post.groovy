@@ -7,6 +7,8 @@ class Post {
     String summary
     String link
     Boolean enabled
+    Date datecreated
+    Date datemodified
     static hasMany = [tags:Tag]
 
     static mapping = {

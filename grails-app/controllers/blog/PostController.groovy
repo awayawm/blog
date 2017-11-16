@@ -41,7 +41,6 @@ class PostController {
 
     def getposts() {
         def posts = Post.findAll()
-//        println posts
         if(posts) {
             return render([success:true, data: [posts: posts]] as JSON)
         }
@@ -93,8 +92,12 @@ class PostController {
                 post.link = params?.link
                 post.content = params?.content
                 post.enabled = params?.enabled
+                post.datemodified = new Date()
 
-                post.tags.clear()
+                if(post.tags != null) {
+                    post.tags.clear()
+                }
+
                 new ParamList("tags").ReturnParamList().each { tag ->
                     post.addToTags(Tag.findById(tag))
                 }
@@ -109,14 +112,14 @@ class PostController {
                     summary: params.summary,
                     link: params.link,
                     content: params.content,
-                    enabled: params.enabled
+                    enabled: params.enabled,
+                    datemodified: new Date(),
+                    datecreated: new Date()
             )
 
             new ParamList("tags").ReturnParamList().each { tag ->
                 post.addToTags(Tag.findById(tag))
             }
-
-//            println post
 
             post.insert()
             if(post) {

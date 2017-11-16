@@ -21,7 +21,8 @@ class TagController {
 
     def getall() {
         def tags = Tag.findAll()
-        if(tags) {
+//        println tags
+        if(tags != null) {
             return render([success:true, data:[tags:tags]] as JSON)
         }
         render([success:false] as JSON)
