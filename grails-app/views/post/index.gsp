@@ -47,9 +47,9 @@
         <div class="form-group">
         <label for="tags">Tags</label>
         <select multiple class="form-control" id="tags">
-        <g:each in="${tags}">
-        <option>${it.name}</option>
-        </g:each>
+        <!-- <g:each in="${tags}"> -->
+        <!-- <option>${it.name}</option> -->
+        <!-- </g:each> -->
         </select>
         </div>
 

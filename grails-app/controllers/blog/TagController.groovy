@@ -28,7 +28,7 @@ class TagController {
     }
 
     def gettag() {
-        def requiredParams = ["id"] as ArrayList
+        def requiredParams = ["id"]
         ParamsChecker paramsChecker = new ParamsChecker(requiredParams)
 
         if(paramsChecker.areRequirementsPresent()) {

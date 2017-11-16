@@ -1,21 +1,12 @@
-var getPosts = function() {
-    $.ajax({
-        url: '/admin/posts/getposts',
-        method: 'get'
-    }).done(function(res) {
-        console.log(res.data.posts)
-        renderTable(res.data.posts)
-    })
-}
-
 var renderTable = function(posts) {
+
     $("#postTable").empty()
     $("#postTable").append("<table class='table table-dark'>" +
                      "<thead>" +
                      "<tr>" +
                      "<th>Id</th>" +
                      "<th>Title</th>" +
-                     "<th>Tags</th>" +
+//                     "<th>Tags</th>" +
                      "<th>Summary</th>" +
                      "<th>Link</th>" +
                      "<th>Enabled</th>" +
@@ -44,7 +35,7 @@ var renderTable = function(posts) {
         $("#tagTable").append("<tr>" +
                               "<th>" + post.id + "</th>" +
                               "<td>" + post.title + "</td>" +
-                              "<td>" + tagNames + "</td>" +
+//                              "<td>" + tagNames + "</td>" +
                               "<td>" + post.summary + "</td>" +
                               "<td>" + post.link + "</td>" +
                               "<td>" + post.enabled + "</td>" +
@@ -62,7 +53,6 @@ var getPosts = function() {
         url: '/admin/posts/getposts',
         method: 'get'
     }).done(function(res) {
-//        console.log(res)
         if(res.success) {
             renderTable(res.data.posts)
         }
@@ -94,6 +84,7 @@ $(document).ready(function() {
         }).done(function(res) {
             $("#postForm")[0].reset()
             getPosts()
+            renderTags()
         })
     })
 
@@ -109,7 +100,7 @@ $(document).ready(function() {
     })
 
     getPosts()
-
+    renderTags()
 })
 
 $(document).on('click', '.deleteButton', function(event) {
@@ -121,8 +112,38 @@ $(document).on('click', '.deleteButton', function(event) {
 
 })
 
+var renderTags = function(selected) {
+    $("#tags").empty()
+
+    if(selected) {
+        var selectedArray = []
+        selected.forEach(function(value) {
+            selectedArray.push(value.id)
+        })
+    }
+
+
+        var matched = false
+        $.ajax({
+            url: "/admin/tags/getall",
+            method: "get"
+        }).done(function(res) {
+            res.data.tags.forEach(function(value) {
+                if (selected) {
+                    if (selectedArray.includes(value.id)) {
+                        $("#tags").append("<option selected value=" + value.id + ">" + value.name + "</option>")
+                        matched = true
+                    }
+                }
+                if(!matched) {
+                    $("#tags").append("<option value=" + value.id + ">" + value.name + "</option>")
+                }
+                matched = false
+            })
+        })
+}
+
 $(document).on('click', '.editButton', function(event) {
-//        console.log(event.target)
     $("#postForm")[0].reset()
     if(event.target.id) {
 
@@ -131,13 +152,13 @@ $(document).on('click', '.editButton', function(event) {
             method: 'get'
         }).done(function(res) {
             if(res.success) {
-                console.log(res.data.post)
                 $("#id").val(res.data.post.id)
                 $("#title").val(res.data.post.title)
                 $("#link").val(res.data.post.link)
                 $("#content").val(res.data.post.content)
                 $("#summary").val(res.data.post.summary)
-                $("#enabled").val(res.data.post.enabled)
+                $("#enabled").prop('checked', res.data.post.enabled)
+                renderTags(res.data.post.tags)
             }
         })
      }

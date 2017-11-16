@@ -1,15 +1,12 @@
 package blog
 
 class Tag {
+    String id
     String name
     String description
 
-    static hasMany = [posts:Post]
-
-    static constraints = {}
-
     @Override
     String toString() {
-        "name: ${name}\ndescription: ${description}"
+        "id ${id}\nname ${name}\ndescription ${description}"
     }
 }

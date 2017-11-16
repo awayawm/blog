@@ -41,6 +41,7 @@ class PostController {
 
     def getposts() {
         def posts = Post.findAll()
+//        println posts
         if(posts) {
             return render([success:true, data: [posts: posts]] as JSON)
         }
@@ -51,7 +52,7 @@ class PostController {
         if(!accountService.isTokenValid(session?.token))
             return redirect(controller: "account", action: "login")
 
-        def requiredParams = ["id"] as ArrayList
+        def requiredParams = ["id"]
         ParamsChecker paramsChecker = new ParamsChecker(requiredParams)
 
         if(session?.account?.role != 'Admin')
@@ -93,8 +94,9 @@ class PostController {
                 post.content = params?.content
                 post.enabled = params?.enabled
 
+                post.tags.clear()
                 new ParamList("tags").ReturnParamList().each { tag ->
-                    post.addToTags(Tag.findByName(tag))
+                    post.addToTags(Tag.findById(tag))
                 }
 
                 post.save(flush:true)
@@ -109,9 +111,17 @@ class PostController {
                     content: params.content,
                     enabled: params.enabled
             )
+
+            new ParamList("tags").ReturnParamList().each { tag ->
+                post.addToTags(Tag.findById(tag))
+            }
+
+//            println post
+
             post.insert()
-            if(post)
+            if(post) {
                 return render([success: 'true', data: [post: post]] as JSON)
+            }
         }
 
         return render([success: 'false'] as JSON)
