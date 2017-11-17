@@ -17,6 +17,6 @@ class Post {
 
     @Override
     String toString() {
-        "id ${id}\ntitle ${title}\nsummary ${summary}\ntags ${tags}\n"
+        "id ${id}\nenabled ${enabled}\ntitle ${title}\ndatemodified ${datemodified}\ntags ${tags}\n"
     }
 }

@@ -24,6 +24,7 @@ class UrlMappings {
 
         group "/admin/posts", {
             "/"(controller: "post", action: "index")
+            "/copypost/$id"(controller: "post", action: "copypost")
             "/submit"(controller: "post", action: "submit")
             "/getposts"(controller: "post", action: "getposts")
             "/deletepost"(controller: "post", action: "deletepost")

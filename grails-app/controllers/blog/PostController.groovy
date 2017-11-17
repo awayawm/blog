@@ -67,6 +67,30 @@ class PostController {
         render([success: 'false'] as JSON)
     }
 
+    def copypost() {
+        if(!accountService.isTokenValid(session?.token))
+            return redirect(controller: "account", action: "login")
+
+        def requiredParams = ["id"]
+        ParamsChecker paramsChecker = new ParamsChecker(requiredParams)
+
+        if(session?.account?.role != 'Admin')
+            return redirect(controller: "post", view: "index")
+
+        if(paramsChecker.areRequirementsPresent()) {
+
+            if (params?.id) {
+                def post = Post.findById(params?.id)
+                post.id = null
+                post.datemodified = new Date()
+                post.discard()
+                post.save(flush:true)
+                return render([success:true, data:[post:post]] as JSON)
+            }
+        }
+        return render([success:false] as JSON)
+    }
+
     def submit() {
         if(!accountService.isTokenValid(session?.token))
             return redirect(controller: "account", action: "login")
@@ -87,11 +111,13 @@ class PostController {
                 if(!post) {
                     return render([success:false] as JSON)
                 }
+
+                println params
                 post.title = params?.title
                 post.summary = params?.summary
                 post.link = params?.link
                 post.content = params?.content
-                post.enabled = params?.enabled
+                post.enabled = params?.enabled == "true" ? true : false
                 post.datemodified = new Date()
 
                 if(post.tags != null) {
@@ -101,8 +127,9 @@ class PostController {
                 new ParamList("tags").ReturnParamList().each { tag ->
                     post.addToTags(Tag.findById(tag))
                 }
-
+                println post
                 post.save(flush:true)
+                println post
                 return render([success:true, data:[post:post]] as JSON)
 
             }

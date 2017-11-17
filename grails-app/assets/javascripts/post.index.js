@@ -43,6 +43,7 @@ var renderTable = function(posts) {
                               "<td>" +
                               "<svg height='32' class='octicon octicon-x' viewBox='0 0 12 16' version='1.1' width='24' aria-hidden='true'><path id='" + post.id + "' class='deleteButton' fill-rule='evenodd' d='M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48z'></path></svg>" +
                               "<svg height='32' class='octicon octicon-pencil' viewBox='0 0 14 16' version='1.1' width='28' aria-hidden='true'><path id='" + post.id + "' class='editButton' fill-rule='evenodd' d='M0 12v3h3l8-8-3-3-8 8zm3 2H1v-2h1v1h1v1zm10.3-9.3L12 6 9 3l1.3-1.3a.996.996 0 0 1 1.41 0l1.59 1.59c.39.39.39 1.02 0 1.41z'></path></svg>" +
+                              "<svg height='32' class='octicon octicon-diff-added' viewBox='0 0 14 16' version='1.1' width='28' aria-hidden='true'><path id='" + post.id + "' class='copyButton' fill-rule='evenodd' d='M13 1H1c-.55 0-1 .45-1 1v12c0 .55.45 1 1 1h12c.55 0 1-.45 1-1V2c0-.55-.45-1-1-1zm0 13H1V2h12v12zM6 9H3V7h3V4h2v3h3v2H8v3H6V9z'></path></svg>" +
                               "</td>" +
                               "</tr>")
     })
@@ -161,6 +162,20 @@ $(document).on('click', '.editButton', function(event) {
                 $("#summary").val(res.data.post.summary)
                 $("#enabled").prop('checked', res.data.post.enabled)
                 renderTags(res.data.post.tags)
+            }
+        })
+     }
+})
+
+$(document).on('click', '.copyButton', function(event) {
+    if(event.target.id) {
+
+        $.ajax({
+            url: '/admin/posts/copypost/' + event.target.id,
+            method: 'get'
+        }).done(function(res) {
+            if(res.success) {
+                getPosts()
             }
         })
      }
