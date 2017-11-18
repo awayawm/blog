@@ -7,6 +7,8 @@ import com.auth0.jwt.algorithms.Algorithm
 import com.auth0.jwt.JWTCreator
 import grails.converters.JSON
 import java.util.Date
+import groovyx.net.http.HTTPBuilder
+import static groovyx.net.http.ContentType.URLENC
 
 class AccountController {
 
@@ -22,50 +24,49 @@ class AccountController {
 
         if(request.method == "POST") {
 
-            if(params.username && params.password) {
-                try {
-                    account = Account.findByUsername(params.username)
-                    if(!account) {
-                        return render([success: 'false'] as JSON)
-                    }
+            def requiredParams = ["username", "password"] as ArrayList
+            ParamsChecker paramsChecker = new ParamsChecker(requiredParams)
 
-                    session.account = account
+            if(paramsChecker.areRequirementsPresent()) {
 
-                    if(params.remember_me)
-                        expiresAt = new Date(new Date().getTime() + JWT_TOKEN_LONG_DURATION)
-                    else
-                        expiresAt = new Date(new Date().getTime() + JWT_TOKEN_SHORT_DURATION)
+                account = Account.findByUsername(params.username)
 
-                    try {
-                        token  = JWTCreator.init()
-                                .withExpiresAt(expiresAt)
-                                .sign(Algorithm.HMAC256(System.getenv("SECRET_KEY")));
-
-                        if(account.verifyPassword(params.password)) {
-                            session.token = token
-                            return render([success: 'true'] as JSON)
-                        }
-                        else {
-                            return render([success: 'false'] as JSON)
-                        }
-
-                    } catch (Exception e){
-                        println e.printStackTrace()
-                    }
-
-                } catch (Exception e) {
-                    println e.printStackTrace()
-                    return render([success: 'false'] as JSON)
+                if (account == null || !account.verifyPassword(params.password)) {
+                    return render([success: false] as JSON)
                 }
 
+                def http = new HTTPBuilder( 'https://www.google.com' )
+                def postBody = [secret: System.getenv("ANALYTICS_SECRET_KEY"), response: params.token]
+                http.post( path: '/recaptcha/api/siteverify', body: postBody, requestContentType: URLENC ) { resp, json ->
+                    if (json.success || !Config.findById(1).enableCaptcha) {
+                        account.lastLoginTime = new Date()
+                        session.account = account
+
+                        if (params.remember_me)
+                            expiresAt = new Date(new Date().getTime() + JWT_TOKEN_LONG_DURATION)
+                        else
+                            expiresAt = new Date(new Date().getTime() + JWT_TOKEN_SHORT_DURATION)
+
+                        try {
+                            token = JWTCreator.init()
+                                    .withExpiresAt(expiresAt)
+                                    .sign(Algorithm.HMAC256(System.getenv("SECRET_KEY")))
+
+                            session.token = token
+                            return render([success: true] as JSON)
+
+                        } catch (Exception e) {
+                            println e.printStackTrace()
+                            return render([success: false] as JSON)
+                        }
+                    }
+                }
+                return render([success: false] as JSON)
             }
-            else
-                return render([success: 'false'] as JSON)
+        } else if (request.method == "GET") {
+            if(accountService.isTokenValid(session?.token))
+                return redirect(controller: "account", action: "index")
         }
-
-        if(accountService.isTokenValid(session?.token))
-            return redirect(controller: "account", action: "index")
-
     }
 
     def remove() {
@@ -136,11 +137,14 @@ class AccountController {
 
         if(request.method == "GET" && admin != null && session?.account?.role == "Admin") {
             return render(view: "create")
-        } else if (request.method == "GET" && !Account.find({})) {
+        } else if (request.method == "GET" && !Account.find()) {
             return render(view: "create")
-        } else if((request.method == "POST" && params.username && params.password && session?.account?.role == "Admin") || !Account.find({}   )) {
+        } else if((request.method == "POST" && params.username && params.password && session?.account?.role == "Admin") || !Account.find()) {
 
-            def account = new Account(username: params.username, password: params.password, role: 'User')
+            def account = new Account(  username: params.username,
+                                        password: params.password,
+                                        role: 'User',
+                                        lastLoginTime: new Date())
             try {
                 account.save(failOnError: true)
                 flash.alert = true

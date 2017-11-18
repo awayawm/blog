@@ -35,6 +35,7 @@ class UrlMappings {
             "/"(controller: "config", action: "index")
             "/submit"(controller: "config", action: "submit")
             "/get"(controller: "config", action: "get")
+            "/getenablecaptcha"(controller: "config", action: "getEnableCaptcha")
         }
 
         "500"(view:'/error')

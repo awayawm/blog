@@ -1,4 +1,37 @@
+function submit(token) {
+    $.ajax({url: "/login",
+        type: "POST",
+        data: { username: $("#username").val(),
+                password: $("#password").val(),
+                remember_me: $("#remember_me").prop("checked"),
+                token: token
+        }
+    }).done(function(result) {
+        console.log(result)
+        if (result.success) {
+            $(location).attr("href", "/admin/account")
+        } else {
+            $("#loginForm")[0].reset()
+            $("#unsuccesfulLogin").show()
+
+            $.ajax({
+                url:'/admin/config/getenablecaptcha',
+                method:'GET'
+            }).done(function(e) {
+                if(e.enableCaptcha) {
+                    grecaptcha.reset()
+                }
+            })
+        }
+    })
+}
+
 $(document).ready(function() {
+
+    $("#submit").bind("click", function(e) {
+        e.preventDefault()
+        submit()
+    })
 
     $("#loginForm")[0].reset()
     $("#submitButton").prop("disabled", true)
@@ -52,21 +85,4 @@ $(document).ready(function() {
         disableSubmitButtonIfFormsInvalid()
     })
 
-    $("#submitButton").bind("click", function(event) {
-        event.preventDefault()
-        $.ajax({url: "/login",
-                type: "POST",
-                data: { username: $("#username").val(),
-                        password: $("#password").val(),
-                        remember_me: $("#remember_me").prop("checked")
-                }
-        }).done(function(result) {
-            if (result.success == 'true')
-                $(location).attr("href", "/admin/account")
-            else {
-                $("#loginForm")[0].reset()
-                $("#unsuccesfulLogin").show()
-            }
-        })
-    })
 })

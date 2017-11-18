@@ -13,15 +13,7 @@ class Account {
     String role
     String resetToken
     Date dateCreated
-
-    static constraints = {
-        username unique: true
-        password blank: false
-        fullName nullable:true, blank:true
-        emailAddress nullable:true, blank:true
-        role nullable:true, blank:true
-        resetToken nullable: true, blank:true
-    }
+    Date lastLoginTime
 
     def create256ShaHash(String password) {
 		try {
@@ -48,8 +40,8 @@ class Account {
     }
 
     @Override
-    public String toString() {
-        return "id: " + id + ", username: " + username + ", role: " + role
+    String toString() {
+        return "id ${id}\nusername ${username}\nrole ${role}\nlastLoginTime: ${lastLoginTime}"
     }
 
 }

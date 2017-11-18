@@ -5,6 +5,10 @@ import grails.converters.JSON
 class ConfigController {
     AccountService accountService
 
+    def getEnableCaptcha() {
+        render([enableCaptcha:Config.findById(1).enableCaptcha] as JSON)
+    }
+
     def index() {
         if(!accountService.isTokenValid(session?.token))
             return redirect(controller: "account", action: "login")

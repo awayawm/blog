@@ -5,6 +5,7 @@
 <head>
 <meta name="layout" content="layout"/>
 <g:getConfigFavicon></g:getConfigFavicon>
+<g:insertGoogleAnalytics></g:insertGoogleAnalytics>
 </head>
 <body>
 

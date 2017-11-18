@@ -13,7 +13,7 @@ class BootStrap {
                     title: "Welcome to My blog",
                     tagline: "Life's a journey!",
                     favicon: "none.ico",
-                    enableCaptcha: true,
+                    enableCaptcha: false,
                     recaptchaKey: 'none',
                     analyticsKey: 'none'
             )

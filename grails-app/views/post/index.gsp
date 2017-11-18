@@ -46,9 +46,6 @@
         <div class="form-group">
         <label for="tags">Tags</label>
         <select multiple required class="form-control" id="tags">
-        <!-- <g:each in="${tags}"> -->
-        <!-- <option>${it.name}</option> -->
-        <!-- </g:each> -->
         </select>
         </div>
 

@@ -3,6 +3,7 @@
 <head>
     <meta name="layout" content="layout"/>
 	<asset:javascript src="account.login.js"/>
+	<script async defer src='https://www.google.com/recaptcha/api.js'></script>
 </head>
 <body>
 
@@ -37,7 +38,7 @@
     </label>
     </div>
 
-    <input id="submitButton" type="submit" class="btn btn-lg btn-primary btn-block" value="Login">
+    <g:insertGoogleCaptcha/>
 
     </form>
 
