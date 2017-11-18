@@ -5,11 +5,10 @@
     </head>
     <body>
 
-        <g:applyLayout name="navbar-admin">
-        </g:applyLayout>
-
+        <g:applyLayout name="navbar-admin"></g:applyLayout>
+        <p>
         <h2>Posts</h2>
-
+        </p>
         <div id="postTable">
         </div>
 
@@ -46,7 +45,7 @@
 
         <div class="form-group">
         <label for="tags">Tags</label>
-        <select multiple class="form-control" id="tags">
+        <select multiple required class="form-control" id="tags">
         <!-- <g:each in="${tags}"> -->
         <!-- <option>${it.name}</option> -->
         <!-- </g:each> -->

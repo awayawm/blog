@@ -12,8 +12,8 @@ class AccountController {
 
     AccountService accountService
 
-    private def JWT_TOKEN_SHORT_DURATION = 20 * 60 * 1000 
-    private def JWT_TOKEN_LONG_DURATION = 120 * 60 * 1000
+    private def JWT_TOKEN_SHORT_DURATION = Config.findById(1).shortTokenTimer
+    private def JWT_TOKEN_LONG_DURATION = Config.findById(1).longTokenTimer
 
     def login() {
         def account = new Account()
@@ -43,10 +43,10 @@ class AccountController {
 
                         if(account.verifyPassword(params.password)) {
                             session.token = token
-                            render([success: 'true'] as JSON)
+                            return render([success: 'true'] as JSON)
                         }
                         else {
-                            render([success: 'false'] as JSON)
+                            return render([success: 'false'] as JSON)
                         }
 
                     } catch (Exception e){
@@ -55,13 +55,17 @@ class AccountController {
 
                 } catch (Exception e) {
                     println e.printStackTrace()
-                    render([success: 'false'] as JSON)
+                    return render([success: 'false'] as JSON)
                 }
 
             }
             else
-                render([success: 'false'] as JSON)
+                return render([success: 'false'] as JSON)
         }
+
+        if(accountService.isTokenValid(session?.token))
+            return redirect(controller: "account", action: "index")
+
     }
 
     def remove() {

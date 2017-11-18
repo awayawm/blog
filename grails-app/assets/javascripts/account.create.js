@@ -53,4 +53,8 @@ $(document).ready(function() {
         displayMessageWhenInvalidDueToRequired()
     })
 
+    $("#backtoaccount").bind("click", function(e) {
+        window.location.href = "/admin/account"
+    })
+
 });

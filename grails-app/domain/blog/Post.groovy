@@ -10,6 +10,8 @@ class Post {
     Date datecreated
     Date datemodified
     Account author
+    Account lastmodifiedby
+
     static hasMany = [tags:Tag]
 
     static mapping = {
@@ -18,6 +20,7 @@ class Post {
 
     @Override
     String toString() {
-        "id ${id}\nenabled ${enabled}\ntitle ${title}\ndatemodified ${datemodified}\ntags ${tags}\n"
+        "id ${id}\nenabled ${enabled}\ntitle ${title}\ndatemodified ${datemodified}\ntags ${tags}\n" +
+        "lastmodifiedby ${lastmodifiedby}\ndatemodified ${datemodified} datecreated ${datecreated}\nauthor ${author}"
     }
 }

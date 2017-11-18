@@ -3,9 +3,13 @@ var getConfig = function() {
         url: 'config/get',
         method: 'get'
     }).done(function(res) {
+        console.log(res)
         $("#title").val(res.title),
+        $("#sitetitle").val(res.siteTitle),
         $("#tagline").val(res.tagline),
         $("#favicon").val(res.favicon),
+        $("#recaptchakey").val(res.recaptchaKey),
+        $("#analyticskey").val(res.analyticsKey),
         $("#enablecaptcha").attr("checked", res.enableCaptcha)
 
         $("option").each(function(i) {
@@ -25,10 +29,13 @@ $(document).ready(function() {
 $("#submit").bind("click", function(e) {
     var data = {
         title: $("#title").val(),
+        sitetitle: $("#sitetitle").val(),
         tagline: $("#tagline").val(),
         favicon: $("#favicon").val(),
         shorttokentimer: $("#shorttokentimer").val(),
         longtokentimer: $("#longtokentimer").val(),
+        analyticskey: $("#analyticskey").val(),
+        recaptchakey: $("#recaptchakey").val(),
         enablecaptcha: $("#enablecaptcha").prop("checked")
     }
 

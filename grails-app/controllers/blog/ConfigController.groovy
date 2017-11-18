@@ -18,7 +18,7 @@ class ConfigController {
         if(!accountService.isTokenValid(session?.token))
             return redirect(controller: "account", action: "login")
 
-        def requiredParams = ["title", "tagline", "favicon", "shorttokentimer", "longtokentimer", "enablecaptcha"] as ArrayList
+        def requiredParams = ["sitetitle", "title", "tagline", "favicon", "shorttokentimer", "longtokentimer", "enablecaptcha", "recaptchakey", "analyticskey"] as ArrayList
         ParamsChecker paramsChecker = new ParamsChecker(requiredParams)
 
         if(session?.account?.role != 'Admin')
@@ -31,11 +31,14 @@ class ConfigController {
                 return render(false) as JSON
             } else {
                 config.title = params.title
+                config.siteTitle = params.sitetitle
                 config.tagline = params.tagline
                 config.favicon = params.favicon
                 config.enableCaptcha = params.enablecaptcha == 'true' ? true : false
                 config.shortTokenTimer = Integer.parseInt(params.shorttokentimer)
                 config.longTokenTimer = Integer.parseInt(params.longtokentimer)
+                config.analyticsKey = params.analyticskey
+                config.recaptchaKey = params.recaptchakey
                 config.save(flush:true)
                 return render(true) as JSON
             }

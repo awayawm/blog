@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <title>
-        <g:layoutTitle default="atronandbeyond.com"/>
+      <g:getConfigSitetitle></g:getConfigSitetitle>
     </title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1"/>

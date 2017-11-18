@@ -16,6 +16,9 @@ class ParamsChecker implements WebAttributes {
             if(getParams()[requirement] != "" && getParams()[requirement] != null)
                 paramsPresent.add(requirement)
         }
+//        println "getParams(): ${getParams()}"
+//        println "paramsPresent: ${paramsPresent}"
+//        println "requiredParams: ${requiredParams}"
 
         if(paramsPresent != requiredParams)
             println 'required paramenters are not present.'

@@ -21,7 +21,6 @@ class TagController {
 
     def getall() {
         def tags = Tag.findAll()
-//        println tags
         if(tags != null) {
             return render([success:true, data:[tags:tags]] as JSON)
         }
@@ -58,7 +57,6 @@ class TagController {
 
             if (params.name && params.description) {
                 if (params?.id) {
-                    println params
                     def tag = Tag.findById(params.id)
                     tag.name = params.name
                     tag.description = params.description

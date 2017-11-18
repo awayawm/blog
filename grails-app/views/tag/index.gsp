@@ -7,9 +7,9 @@
 
         <g:applyLayout name="navbar-admin">
         </g:applyLayout>
-
+        <p>
         <h2>Tags</h2>
-
+        </p>
         <table class="table table-dark">
             <thead>
             <tr>

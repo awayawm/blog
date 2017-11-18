@@ -53,6 +53,14 @@
         </tr>
         <tr>
           <td>
+          <label for="sitetitle">Site Title</label>
+          </td>
+          <td>
+            <input type="text" id="sitetitle" class="form-control"/>
+          </td>
+        </tr>
+        <tr>
+          <td>
           <label for="title">Title</label>
           </td>
           <td>
@@ -73,6 +81,22 @@
           </td>
           <td>
             <input type="text" id="favicon" class="form-control"/>
+          </td>
+        </tr>
+        <tr>
+          <td>
+          <label for="recaptchakey">Recaptcha Key</label>
+          </td>
+          <td>
+            <input type="text" id="recaptchakey" class="form-control"/>
+          </td>
+        </tr>
+        <tr>
+          <td>
+          <label for="analyticskey">Analytics Key</label>
+          </td>
+          <td>
+            <input type="text" id="analyticskey" class="form-control"/>
           </td>
         </tr>
         </tbody>

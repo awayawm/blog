@@ -6,10 +6,11 @@
     <body>
 
         <g:applyLayout name="navbar-admin">
+        
         </g:applyLayout>
-
+        <p>
         <h2>Accounts</h2>
-
+        </p>
       <g:if test="${flash.alert}">
         <div class="alert alert-danger alert-dismissible evaluate(flash.class)" role="alert">
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">

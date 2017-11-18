@@ -95,7 +95,7 @@ class PostController {
         if(!accountService.isTokenValid(session?.token))
             return redirect(controller: "account", action: "login")
 
-        def requiredParams = ["title", "link", "summary", "content", "enabled", "tags"] as ArrayList
+        def requiredParams = ["title", "link", "summary", "content", "enabled", "tags[]"] as ArrayList
         ParamsChecker paramsChecker = new ParamsChecker(requiredParams)
 
         if(session?.account?.role != 'Admin')
@@ -112,14 +112,13 @@ class PostController {
                     return render([success:false] as JSON)
                 }
 
-                println params
                 post.title = params?.title
                 post.summary = params?.summary
                 post.link = params?.link
                 post.content = params?.content
                 post.enabled = params?.enabled == "true" ? true : false
                 post.datemodified = new Date()
-                post.author = session.account
+                post.lastmodifiedby = session.account
 
                 if(post.tags != null) {
                     post.tags.clear()
@@ -128,21 +127,21 @@ class PostController {
                 new ParamList("tags").ReturnParamList().each { tag ->
                     post.addToTags(Tag.findById(tag))
                 }
-                println post
                 post.save(flush:true)
-                println post
                 return render([success:true, data:[post:post]] as JSON)
 
             }
 
             def post = new Post(
                     title: params.title,
+                    content: params.content,
                     summary: params.summary,
                     link: params.link,
-                    content: params.content,
                     enabled: params.enabled,
+                    datecreated: new Date(),
                     datemodified: new Date(),
-                    datecreated: new Date()
+                    author: session.account,
+                    lastmodifiedby: session.account
             )
 
             new ParamList("tags").ReturnParamList().each { tag ->
