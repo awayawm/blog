@@ -12,10 +12,11 @@ class ParamsChecker implements WebAttributes {
     }
 
     def areRequirementsPresent() {
-        requiredParams.each { it ->
-            if(getParams()[it] != "")
-                paramsPresent.add(it)
+        requiredParams.each { requirement ->
+            if(getParams()[requirement] != "" && getParams()[requirement] != null)
+                paramsPresent.add(requirement)
         }
+
         if(paramsPresent != requiredParams)
             println 'required paramenters are not present.'
 

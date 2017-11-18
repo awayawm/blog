@@ -1,6 +1,4 @@
-// TODO remember me
 // TODO password reset
-// TODO progress on login
 // TODO recaptcha on account creation
 
 package blog

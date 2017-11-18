@@ -9,6 +9,7 @@ class Post {
     Boolean enabled
     Date datecreated
     Date datemodified
+    Account author
     static hasMany = [tags:Tag]
 
     static mapping = {

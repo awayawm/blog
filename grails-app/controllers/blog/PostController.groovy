@@ -119,6 +119,7 @@ class PostController {
                 post.content = params?.content
                 post.enabled = params?.enabled == "true" ? true : false
                 post.datemodified = new Date()
+                post.author = session.account
 
                 if(post.tags != null) {
                     post.tags.clear()

@@ -31,6 +31,12 @@ class UrlMappings {
             "/getpost/$id"(controller: "post", action: "getpost")
         }
 
+        group "/admin/config", {
+            "/"(controller: "config", action: "index")
+            "/submit"(controller: "config", action: "submit")
+            "/get"(controller: "config", action: "get")
+        }
+
         "500"(view:'/error')
         "404"(view:'/notFound')
     }
