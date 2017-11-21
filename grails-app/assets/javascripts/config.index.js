@@ -3,7 +3,6 @@ var getConfig = function() {
         url: 'config/get',
         method: 'get'
     }).done(function(res) {
-        console.log(res)
         $("#title").val(res.title),
         $("#sitetitle").val(res.siteTitle),
         $("#tagline").val(res.tagline),

@@ -149,6 +149,8 @@ class PostController {
             }
 
             post.insert()
+//            println post
+
             if(post) {
                 return render([success: 'true', data: [post: post]] as JSON)
             }

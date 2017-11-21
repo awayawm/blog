@@ -137,14 +137,14 @@ class AccountController {
 
         if(request.method == "GET" && admin != null && session?.account?.role == "Admin") {
             return render(view: "create")
-        } else if (request.method == "GET" && !Account.find()) {
+        } else if (request.method == "GET" && !Account.find({})) {
             return render(view: "create")
-        } else if((request.method == "POST" && params.username && params.password && session?.account?.role == "Admin") || !Account.find()) {
+        } else if((request.method == "POST" && params.username && params.password && session?.account?.role == "Admin") || !Account.find({})) {
 
             def account = new Account(  username: params.username,
                                         password: params.password,
                                         role: 'User',
-                                        lastLoginTime: new Date())
+                                        dateCreated: new Date())
             try {
                 account.save(failOnError: true)
                 flash.alert = true

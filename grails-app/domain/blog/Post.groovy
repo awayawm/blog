@@ -14,14 +14,9 @@ class Post {
 
     static hasMany = [tags:Tag]
 
-    static mapping = {
-        id index:true
-    }
-
     @Override
     String toString() {
         "id ${id}\nenabled ${enabled}\ntitle ${title}\ndatemodified ${datemodified}\ntags ${tags}\n" +
-        "lastmodifiedby ${lastmodifiedby}\ndatemodified ${datemodified} datecreated ${datecreated}\n" +
-                "author ${author}"
+        "lastmodifiedby ${lastmodifiedby}\ndatemodified ${datemodified} datecreated ${datecreated}\nauthor ${author}"
     }
 }

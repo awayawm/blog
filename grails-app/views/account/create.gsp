@@ -6,7 +6,7 @@
 </head>
 <body>
 
-<g:if test="${session.account.role == 'Admin'}">
+<g:if test="${session?.account?.role == 'Admin'}">
 <g:applyLayout name="navbar-admin"></g:applyLayout>
 </g:if>
 

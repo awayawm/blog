@@ -9,8 +9,15 @@
 </head>
 <body>
 
-<h1><g:getConfigTitle></g:getConfigTitle></h1>
-<h2><g:getConfigTagline></g:getConfigTagline></h2>
+<h1>${post.title}</h2>
+
+<p>
+${post.content}
+</p>
+
+<p>
+Last modified on ${post.datemodified} by ${post.lastmodifiedby.username}
+</p>
 
 </body>
 </html>

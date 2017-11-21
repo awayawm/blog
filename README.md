@@ -14,7 +14,7 @@ Now you're ready to run grails run-app to launch the blog.  Go to /account/creat
 
 You'll also need to set some environmental variables
 
-ANALYTICS_SECRET_KEY: Google analytics server key
+ANALYTICS_SECRET_KEY: Google analytics server key\s\s
 SECRET_KEY: Used by password hashing function
 
 http://34.208.159.120:8080

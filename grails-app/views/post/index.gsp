@@ -17,6 +17,10 @@
         <input type="hidden" id="id">
 
         <div class="form-group">
+        <input type="button" value="Reset form" id="resetForm" class="btn btn-lg btn-primary"/>
+        </div>
+
+        <div class="form-group">
         <label for="title">Title</label>
         <input type="text" class="form-control" id="title" required placeholder="Post Title" required>
         </div>

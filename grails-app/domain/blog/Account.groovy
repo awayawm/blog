@@ -15,6 +15,13 @@ class Account {
     Date dateCreated
     Date lastLoginTime
 
+    static constraints = {
+        fullName nullable: true
+        emailAddress nullable: true
+        resetToken nullable: true
+        lastLoginTime nullable: true
+    }
+
     def create256ShaHash(String password) {
 		try {
 			Mac mac = Mac.getInstance("HmacSHA256")

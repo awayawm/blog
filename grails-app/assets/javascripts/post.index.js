@@ -64,6 +64,10 @@ var getPosts = function() {
 
 $(document).ready(function() {
 
+    $("#resetForm").on("click", function(e) {
+        $("#postForm")[0].reset()
+    })
+
     $("#submit").bind("click", function(e) {
 
         var data = {

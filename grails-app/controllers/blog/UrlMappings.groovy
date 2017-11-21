@@ -4,7 +4,8 @@ class UrlMappings {
 
     static mappings = {
 
-        "/"(view:"/index")
+        "/"(controller: 'index')
+        "/$link"(controller: 'index', action: 'getPostByLink')
         "/login"(controller: 'account', action: 'login')
         "/logout"(controller: 'account', action: 'logout')
 
