@@ -9,7 +9,7 @@
 </head>
 <body>
 
-<h1><g:getConfigTitle></g:getConfigTitle></h2>
+<h1><g:getConfigTitle></g:getConfigTitle></h1>
 <p class="lead"><g:getConfigTagline></g:getConfigTagline></p>
 
 <g:each in="${posts}" var="post">

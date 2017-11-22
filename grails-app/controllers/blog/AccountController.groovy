@@ -140,10 +140,10 @@ class AccountController {
         } else if (request.method == "GET" && !Account.find({})) {
             return render(view: "create")
         } else if((request.method == "POST" && params.username && params.password && session?.account?.role == "Admin") || !Account.find({})) {
-
+            println "admin ${admin}"
             def account = new Account(  username: params.username,
                                         password: params.password,
-                                        role: 'User',
+                                        role: admin == null ? 'Admin' : 'User',
                                         dateCreated: new Date())
             try {
                 account.save(failOnError: true)
