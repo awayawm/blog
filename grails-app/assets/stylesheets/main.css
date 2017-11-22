@@ -1,4 +1,48 @@
+@import url('https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed');
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+
 h1 {
-    font-family: 'Merriweather', serif;
-    color: red;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 3rem;
+    margin-top: 10px;
+}
+
+h2 {
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    font-size: 2.3rem;
+    margin-top: 10px;
+}
+
+h3 {
+    font-family: 'Raleway', sans-serif;
+    font-size: 2rem;
+}
+
+p {
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.6rem;
+}
+
+.read-post {
+    font-size: 1rem;
+}
+
+.star {
+    margin-top: 20px;
+    color: blue;
+}
+
+.single-post {
+    font-size: 2rem;
+}
+
+.date {
+    color: #999;
+    font-size: .9rem;
+}
+
+.big-date {
+    color: #999;
+    font-size: 1.1rem;
 }
