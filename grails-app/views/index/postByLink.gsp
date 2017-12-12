@@ -9,6 +9,9 @@
 </head>
 <body>
 
+<div class="row">
+<div class="col-sm-8 mx-auto text-center">
+
 <h1>${post.title}</h2>
 
 <hr>
@@ -24,6 +27,9 @@ by ${post.lastmodifiedby.username}
 </p>
 
 <input type="button" value="Back" onClick="window.location.href='/'" class="btn btn-default"/>
+
+</div>
+</div>
 
 </body>
 </html>

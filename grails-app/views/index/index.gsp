@@ -10,15 +10,22 @@
 <body>
 
 <div class="row">
-<div class="col-sm-8">
+<div class="col-sm-8 mx-auto text-center">
 
 <h1><g:getConfigTitle></g:getConfigTitle></h1>
 <h2><g:getConfigTagline></g:getConfigTagline></h2>
 
+</div>
+</div>
+
+
 <g:each in="${posts}" var="post">
+<div class="row">
+<div class="col-sm-8 mx-auto text-center mt-3">
 <g:if test="${post.enabled == true}">
 <p>
 <h3><a href="/${post.link}">${post.title}</a></h3>
+<hr/>
 <p>
 ${post.summary}
 </p>
@@ -31,10 +38,9 @@ ${post.summary}
 </p>
 </p>
 </g:if>
+</div>
+</div>
 </g:each>
-
-</div>
-</div>
 
 </body>
 </html>
