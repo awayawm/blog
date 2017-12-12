@@ -23,6 +23,11 @@ class Account {
     }
 
     def create256ShaHash(String password) {
+
+        if(!System.getenv("SECRET_KEY")) {
+            LogUtil.printLogMessage("Environmental variable SECRET_KEY is not set.")
+        }
+
 		try {
 			Mac mac = Mac.getInstance("HmacSHA256")
 			SecretKeySpec secretKeySpec = new SecretKeySpec(System.getenv("SECRET_KEY").getBytes(), "HmacSHA256")

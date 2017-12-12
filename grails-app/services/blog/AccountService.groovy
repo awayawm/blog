@@ -13,7 +13,6 @@ class AccountService {
             DecodedJWT decoded;
             try {
                 decoded = JWTVerifier.init(Algorithm.HMAC256(System.getenv("SECRET_KEY"))).build().verify(token)
-//                println decoded.getToken()
             }
             catch(Exception e)
             {

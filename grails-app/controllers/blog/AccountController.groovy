@@ -1,13 +1,10 @@
-// TODO password reset
-// TODO recaptcha on account creation
-
 package blog
 
 import com.auth0.jwt.algorithms.Algorithm
 import com.auth0.jwt.JWTCreator
 import grails.converters.JSON
-import java.util.Date
 import groovyx.net.http.HTTPBuilder
+
 import static groovyx.net.http.ContentType.URLENC
 
 class AccountController {

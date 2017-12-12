@@ -1,9 +1,10 @@
 package blog
 
+import grails.testing.services.ServiceUnitTest
 import grails.testing.web.controllers.ControllerUnitTest
 import spock.lang.Specification
 
-class UserControllerSpec extends Specification implements ControllerUnitTest<UserController> {
+class AccountControllerSpec extends Specification implements ControllerUnitTest<AccountController> {
 
     def setup() {
     }
@@ -13,6 +14,6 @@ class UserControllerSpec extends Specification implements ControllerUnitTest<Use
 
     void "test something"() {
         expect:"fix me"
-            true == false
+        true == false
     }
 }

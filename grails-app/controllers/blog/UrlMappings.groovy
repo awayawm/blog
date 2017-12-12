@@ -37,9 +37,11 @@ class UrlMappings {
         "500"(view:'/error')
         "404"(view:'/notFound')
 
+
+
         "/"(controller: 'index')
-        "/$link"(controller: 'index', action: 'getPostByLink')
         "/login"(controller: 'account', action: 'login')
         "/logout"(controller: 'account', action: 'logout')
+        "/$link"(controller: 'index', action: 'getPostByLink')
     }
 }
