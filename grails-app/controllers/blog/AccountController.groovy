@@ -3,10 +3,12 @@ package blog
 import com.auth0.jwt.algorithms.Algorithm
 import com.auth0.jwt.JWTCreator
 import grails.converters.JSON
+import grails.gorm.transactions.Transactional
 import groovyx.net.http.HTTPBuilder
 
 import static groovyx.net.http.ContentType.URLENC
 
+@Transactional
 class AccountController {
 
     AccountService accountService
@@ -33,7 +35,7 @@ class AccountController {
                 }
 
                 def http = new HTTPBuilder( 'https://www.google.com' )
-                def postBody = [secret: System.getenv("ANALYTICS_SECRET_KEY"), response: params.token]
+                def postBody = [secret: Config.findById(1).recaptchaKey, response: params.token]
                 http.post( path: '/recaptcha/api/siteverify', body: postBody, requestContentType: URLENC ) { resp, json ->
                     if (json.success || !Config.findById(1).enableCaptcha) {
                         account.lastLoginTime = new Date()

@@ -37,8 +37,6 @@ class UrlMappings {
         "500"(view:'/error')
         "404"(view:'/notFound')
 
-
-
         "/"(controller: 'index')
         "/login"(controller: 'account', action: 'login')
         "/logout"(controller: 'account', action: 'logout')
