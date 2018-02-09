@@ -8,7 +8,6 @@ import groovyx.net.http.HTTPBuilder
 
 import static groovyx.net.http.ContentType.URLENC
 
-@Transactional
 class AccountController {
 
     AccountService accountService

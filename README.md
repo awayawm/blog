@@ -4,7 +4,7 @@ The internet needs more ranting people!
 
 ![alt text](https://s3-us-west-2.amazonaws.com/atronandbeyond/im-doing-my-part.png)
 
-It's configured for mongodb but you can change this to your favorite dbms with some tweaking.
+It's configured for h2 but you can change this to your favorite dbms with some tweaking.
 
 Once you've sorted out your DB, clone the project and run gradle to bring in the dependencies. 
 

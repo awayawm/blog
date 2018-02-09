@@ -17,7 +17,7 @@ class BootStrap {
                     recaptchaKey: 'none',
                     analyticsKey: 'none'
             )
-            config.insert()
+            config.save()
         }
     }
     def destroy = {
