@@ -26,7 +26,7 @@ class AccountControllerSpec extends Specification implements ControllerUnitTest<
             mockDomain Config
         }
 
-    void "does login with valid credentials return success true"() {
+    void "does calling login() with valid credentials return success true?"() {
         when:
         createConfig()
         controller.configService = new ConfigService()
@@ -34,7 +34,7 @@ class AccountControllerSpec extends Specification implements ControllerUnitTest<
         new Account(username: "jack",
                 password: "black",
                 role: 'User',
-                dateCreated: new Date()).save()
+                emailAddress: 'jack@black.edu').save()
 
         params.username = "jack"
         params.password = "black"
@@ -45,7 +45,7 @@ class AccountControllerSpec extends Specification implements ControllerUnitTest<
         response.json.success == true
     }
 
-    void "does login with invalid login credentials return success false"() {
+    void "does calling login() with invalid login credentials return false?"() {
         when:
         createConfig()
         controller.configService = new ConfigService()

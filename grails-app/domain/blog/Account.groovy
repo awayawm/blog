@@ -1,7 +1,6 @@
 package blog
 
 import org.apache.log4j.Logger
-
 import javax.crypto.Mac
 import javax.crypto.spec.SecretKeySpec
 import java.security.InvalidKeyException
@@ -19,9 +18,9 @@ class Account {
 
     static constraints = {
         fullName nullable: true
-        emailAddress nullable: true
         resetToken nullable: true
         lastLoginTime nullable: true
+        dateCreated defaultValue: (new Date())
     }
 
     def create256ShaHash(String password) {
@@ -37,7 +36,7 @@ class Account {
 			byte[] digest = mac.doFinal(password.getBytes())
 			return digest.encodeBase64().toString()
 		} catch (InvalidKeyException e) {
-			throw new RuntimeException("Invalid key exception while converting to HMac SHA256")
+            Logger.getLogger(this.getClass().name).info("Invalid key exception while converting to HMac SHA256")
 		}
     }
 

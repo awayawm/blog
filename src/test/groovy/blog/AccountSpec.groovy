@@ -11,4 +11,11 @@ class AccountSpec extends Specification implements DomainUnitTest<Account>{
         then:
         "CMh/k3rgwPNq+uw9kIKGN/77B1YVm4ETIYtzYnyesXE=" == new Account().create256ShaHash("blog")
     }
+
+    def "Is plaintext password in new account hashed after calling save()"(){
+        when:
+        new Account(username: "blog", password: "blog", role: 'User', emailAddress: "blog").save()
+        then:
+        Account.findByUsername("blog").username == "blog"
+    }
 }

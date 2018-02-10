@@ -19,6 +19,7 @@ class AccountController {
         Date expiresAt = null
 
         if(request.method == "POST") {
+
             ParamsChecker paramsChecker = new ParamsChecker(["username", "password"])
 
             if(paramsChecker.areRequirementsPresent()) {
@@ -134,7 +135,6 @@ class AccountController {
         } else if (request.method == "GET" && !Account.find({})) {
             return render(view: "create")
         } else if((request.method == "POST" && params.username && params.password && session?.account?.role == "Admin") || !Account.find({})) {
-            println "admin ${admin}"
             def account = new Account(  username: params.username,
                                         password: params.password,
                                         role: admin == null ? 'Admin' : 'User',

@@ -39,6 +39,16 @@ class PostController {
         render([success:false] as JSON)
     }
 
+    def getPostByLink() {
+        def requiredParams = ["link"]
+        ParamsChecker paramsChecker = new ParamsChecker(requiredParams)
+
+        if(paramsChecker.areRequirementsPresent()) {
+            return render(view:"postByLink", model: [post:Post.findByLink(params?.link)])
+        }
+        redirect action:"/"
+    }
+
     def getposts() {
         def posts = Post.findAll()
         if(posts) {

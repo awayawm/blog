@@ -25,6 +25,8 @@ class UrlMappings {
             "/getposts"(controller: "post", action: "getposts")
             "/deletepost"(controller: "post", action: "deletepost")
             "/getpost/$id"(controller: "post", action: "getpost")
+            "/$link"(controller: 'post', action: 'getPostByLink')
+
         }
 
         group "/admin/config", {
@@ -40,6 +42,6 @@ class UrlMappings {
         "/"(controller: 'index')
         "/login"(controller: 'account', action: 'login')
         "/logout"(controller: 'account', action: 'logout')
-        "/$link"(controller: 'index', action: 'getPostByLink')
+
     }
 }
