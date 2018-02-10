@@ -5,15 +5,19 @@ class ConfigService {
     public def config
 
     Config getConfig(){
-        config != null ?: Config.findById(1)
+        config == null ? Config.findById(1) : config
     }
 
-    String getShortTokenTimer(){
+    Integer getShortTokenTimer(){
         getConfig().shortTokenTimer
     }
 
-    String getLongTokenTimer(){
+    Integer getLongTokenTimer(){
         getConfig().longTokenTimer
+    }
+
+    String getRecaptchaKey(){
+        getConfig().recaptchaKey
     }
 
     String getSecretKey(){

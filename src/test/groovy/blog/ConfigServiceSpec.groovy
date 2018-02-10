@@ -37,15 +37,26 @@ class ConfigServiceSpec extends Specification implements ServiceUnitTest<ConfigS
         createConfig()
 
         then:
-        service.getShortTokenTimer() as Integer == 20 * 60 * 1000
+        service.getShortTokenTimer() instanceof Integer
+        service.getShortTokenTimer() == 20 * 60 * 1000
     }
 
-    void "retreive long token timer"(){
+    void "retrieve long token timer"(){
         when:
         createConfig()
 
         then:
-        service.getLongTokenTimer() as Integer == 60 * 60 * 1000
+        service.getLongTokenTimer() instanceof Integer
+        service.getLongTokenTimer() == 60 * 60 * 1000
+    }
+
+    void "can get recaptcha code"(){
+        when:
+        createConfig()
+
+        then:
+        service.getRecaptchaKey() instanceof String
+        service.getRecaptchaKey() == "none"
     }
 
     void "does getSecretKey() return a string when null (not set on server)"(){

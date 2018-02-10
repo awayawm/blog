@@ -26,7 +26,7 @@ class Account {
 
     def create256ShaHash(String password) {
 
-        if(!System.getenv("SECRET_KEY")) {
+        if(!new ConfigService().getSecretKey()) {
             Logger.getLogger(this.getClass().name).info("Environmental variable SECRET_KEY is not set.")
         }
 
@@ -55,7 +55,7 @@ class Account {
 
     @Override
     String toString() {
-        return "id ${id}\nusername ${username}\nrole ${role}\nlastLoginTime: ${lastLoginTime}"
+        return "id ${id}\nusername ${username}\npassword ${password}\nrole ${role}\nlastLoginTime: ${lastLoginTime}"
     }
 
 }
