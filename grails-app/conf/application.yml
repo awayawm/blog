@@ -114,3 +114,5 @@ environments:
         properties:
            jmxEnabled: true
            initialSize: 5
+server:
+    port: 49003
