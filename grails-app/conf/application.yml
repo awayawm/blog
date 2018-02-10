@@ -1,4 +1,9 @@
 ---
+server:
+  port: 49010
+hibernate:
+  dialect: org.hibernate.dialect.H2Dialect
+
 grails:
     profile: web
     codegen:
@@ -110,7 +115,7 @@ environments:
     production:
         dataSource:
             dbCreate: "update"
-            url: "jdbc:h2:/data/blogdb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE"
+            url: "jdbc:h2:/var/h2/DB;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE"
         properties:
            jmxEnabled: true
            initialSize: 5
