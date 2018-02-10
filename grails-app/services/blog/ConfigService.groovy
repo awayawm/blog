@@ -16,4 +16,8 @@ class ConfigService {
         getConfig().longTokenTimer
     }
 
+    String getSecretKey(){
+        System.getenv("SECRET_KEY") ?: "blog"
+    }
+
 }

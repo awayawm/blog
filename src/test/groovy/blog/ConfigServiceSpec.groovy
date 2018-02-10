@@ -48,4 +48,12 @@ class ConfigServiceSpec extends Specification implements ServiceUnitTest<ConfigS
         service.getLongTokenTimer() as Integer == 60 * 60 * 1000
     }
 
+    void "does getSecretKey() return a string when null (not set on server)"(){
+        when:
+        System.metaClass.'static'.getenv = { String name -> name }
+
+        then:
+        service.getSecretKey() != null
+    }
+
 }

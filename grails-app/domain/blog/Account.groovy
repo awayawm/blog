@@ -1,5 +1,7 @@
 package blog
 
+import org.apache.log4j.Logger
+
 import javax.crypto.Mac
 import javax.crypto.spec.SecretKeySpec
 import java.security.InvalidKeyException
@@ -25,12 +27,12 @@ class Account {
     def create256ShaHash(String password) {
 
         if(!System.getenv("SECRET_KEY")) {
-            LogUtil.printLogMessage("Environmental variable SECRET_KEY is not set.")
+            Logger.getLogger(this.getClass().name).info("Environmental variable SECRET_KEY is not set.")
         }
 
 		try {
 			Mac mac = Mac.getInstance("HmacSHA256")
-			SecretKeySpec secretKeySpec = new SecretKeySpec(System.getenv("SECRET_KEY").getBytes(), "HmacSHA256")
+			SecretKeySpec secretKeySpec = new SecretKeySpec(new ConfigService().getSecretKey().getBytes(), "HmacSHA256")
 			mac.init(secretKeySpec)
 			byte[] digest = mac.doFinal(password.getBytes())
 			return digest.encodeBase64().toString()
