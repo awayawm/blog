@@ -20,7 +20,9 @@ class Account {
         fullName nullable: true
         resetToken nullable: true
         lastLoginTime nullable: true
-        dateCreated defaultValue: (new Date())
+        dateCreated nullable: true
+        emailAddress nullable: true
+//        dateCreated defaultValue: new Date()
     }
 
     def create256ShaHash(String password) {
