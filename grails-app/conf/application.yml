@@ -119,7 +119,7 @@ environments:
     production:
         dataSource:
             dbCreate: "create-drop"
-            jndiName: "java:comp/env/production-datasource"
+            jndiName: "java:comp/env/productionDatasource"
         properties:
            jmxEnabled: true
            initialSize: 5
