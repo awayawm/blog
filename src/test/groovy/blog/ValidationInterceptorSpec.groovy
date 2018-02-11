@@ -1,6 +1,5 @@
 package blog
 
-import blog.ValidationInterceptor
 import grails.testing.web.interceptor.InterceptorUnitTest
 import spock.lang.Specification
 

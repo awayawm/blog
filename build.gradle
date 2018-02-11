@@ -61,6 +61,7 @@ dependencies {
     compile group: 'org.codehaus.groovy', name: 'groovy-all', version: '2.4.13'
     // https://mvnrepository.com/artifact/com.h2database/h2
     runtime group: 'com.h2database', name: 'h2', version: '1.4.196'
+//    runtime "mysql:mysql-connector-java"
 
     compile "org.hibernate:hibernate-ehcache"
     compile "org.grails.plugins:hibernate5:6.0.13"
