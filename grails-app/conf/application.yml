@@ -117,7 +117,6 @@ environments:
             pooled: false
     production:
         dataSource:
-            dbCreate: create-drop
-            jndiName: java:comp/env/productionDatasource
-            driverClassName: org.h2.Driver
+            dbCreate: update
             pooled: false
+            jndiName: java:comp/env/productionDatasource

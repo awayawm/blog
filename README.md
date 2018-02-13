@@ -4,16 +4,17 @@ The internet needs more ranting people!
 
 ![alt text](https://s3-us-west-2.amazonaws.com/atronandbeyond/im-doing-my-part.png)
 
-It's configured for h2 but you can change this to your favorite dbms with some tweaking.
+run ./gradlew bootRun from the source directory to launch the application.  Go to /admin/account/create to create an admin account.  Once the first admin account is created, /admin/account/create will only be accessible by users with the Admin role
 
-Once you've sorted out your DB, clone the project and run gradle to bring in the dependencies. 
+in application.yml the production data source probably needs to be changed
 
-Now you're ready to run grails run-app to launch the blog.  Go to /admin/account/create to create an admin account.  Once the first admin account is created, /admin/account/create will only be accessible by users with the Admin role
+the line<br>
+_jndiName: java:comp/env/productionDatasource_<br>
+could be replaced with<br>
+_jdbc:h2:mem:prodDB;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE_<br>
+if don't have a need to mess with JNDI settings
 
-You'll also need to set some environmental variables
+You also can set some environmental variables, but if you don't set a SECRET_KEY the code will choose a horrible one for you so the can application boot.
 
 ANALYTICS_SECRET_KEY: Google analytics server key  
-SECRET_KEY: Used by password hashing function  
-
-http://atronandbeyond.com
-
+SECRET_KEY: Used by password hashing function
