@@ -6,12 +6,11 @@ class Comment {
     String author
     Boolean approved
     Date dateCreated
-
-    static belongsTo = Post
+    Date lastUpdated
 
     static constraints = {
-        author()
-        comment()
-        approved()
+        author blank:false
+        comment blank:false
+        approved blank:false
     }
 }

@@ -7,10 +7,3 @@
 //
 //= require_tree .
 //= require_self
-//= require account.create.js
-//= require account.index.js
-//= require account.indexForUser.js
-//= require account.login.js
-//= require account.tag.js
-//= require post.index.js
-//= require config.index.js

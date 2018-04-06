@@ -1,7 +1,4 @@
 ---
-server:
-  port: 49010
-
 grails:
     profile: web
     codegen:
@@ -89,29 +86,41 @@ endpoints:
         unique-names: true
 
 hibernate:
-  dialect: org.hibernate.dialect.H2Dialect
   cache:
       queries: false
       use_second_level_cache: false
       use_query_cache: false
-
-dataSource:
-  pooled: true
-  jmxExport: true
-  driverClassName: org.h2.Driver
-  username: sa
-  password:
+      region.factory_class: org.hibernate.cache.ehcache.EhCacheRegionFactory
 
 environments:
-    development:
-        dataSource:
-            dbCreate: create-drop
-            url: jdbc:h2:mem:blogDevelopment
-    test:
-        dataSource:
-            dbCreate: create-drop
-            url: jdbc:h2:mem:blogTest
-    production:
-        dataSource:
-            dbCreate: update
-            jndiName: java:comp/env/productionDatasource
+  development:
+      dataSource:
+          dbCreate: create-drop
+          url: jdbc:h2:mem:dev
+          pooled: true
+          driverClassName: org.h2.Driver
+          username: sa
+          password:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+  test:
+      dataSource:
+          dbCreate: create-drop
+          url: jdbc:h2:mem:test
+          pooled: true
+          driverClassName: org.h2.Driver
+          username: sa
+          password:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+  production:
+      dataSource:
+          dbCreate: update
+          driverClassName: com.mysql.jdbc.Driver
+          url:   jdbc:mysql://127.0.0.1:3306/gorm
+          username: root
+          password: ""
+      hibernate:
+          hbm2ddl:
+              auto: update
+          dialect: org.hibernate.dialect.MySQL5InnoDBDialect

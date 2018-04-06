@@ -2,6 +2,8 @@
 
 The internet needs more ranting people!
 
+# Warning! Broken in a spectacular fashion, for now ...
+
 ![alt text](https://s3-us-west-2.amazonaws.com/atronandbeyond/im-doing-my-part.png)
 
 run ./gradlew bootRun from the source directory to launch the application.  Go to /admin/account/create to create an admin account.  Once the first admin account is created, /admin/account/create will only be accessible by users with the Admin role

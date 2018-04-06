@@ -1,45 +1,60 @@
 <html>
     <head>
         <meta name="layout" content="layout"/>
-		<asset:javascript src="account.tag.js"/>
     </head>
     <body>
 
-        <g:applyLayout name="navbar-admin">
-        </g:applyLayout>
-        <p>
-        <h2>Tags</h2>
-        </p>
-        <table class="table table-dark">
+<div class="container-fluid">
+<div class="row">
+<div class="col">
+
+        <g:render template="/shared/adminnav"/>
+
+        <h1 class="display-4 my-3">Tags</h1>
+
+        <table class="table my-3">
             <thead>
             <tr>
             <th>id</th>
             <th>name</th>
             <th>description</th>
+            <th>image</th>
+            <th>assoc. posts</th>
             <th>actions</th>
             </tr>
             </thead>
-            <tbody id="tagTable">
+            <tbody>
+
+
+
             </tbody>
         </table>
 
-        <form name="tagForm" id="tagForm">
+        <form name="tag" method="post" action="/admin/tag" class="border p-4" enctype="multipart/form-data">
 
         <input type="hidden" id="id">
 
         <div class="form-group">
-        <label for="name">Name</label>
-        <input type="text" class="form-control" id="name" required placeholder="Tag name">
+            <label for="name"><h5>Name</h5></label>
+            <input type="text" class="form-control form-control-lg" id="name" required placeholder="Tag name">
         </div>
 
         <div class="form-group">
-        <label for="name">Description</label>
-        <input type="text" class="form-control" id="description" required placeholder="Tag description">
+            <label for="name"><h5>Description</h5></label>
+            <textarea rows="4" class="form-control form-control-lg" id="description" required placeholder="Tag description"></textarea>
         </div>
 
-        <input id="submit" type="button" class="btn btn-primary btn-block" value="Submit">
+  <div class="form-group">
+    <label for="tagImage">Tag Image</label>
+    <input type="file" class="form-control-file" id="tagImage" required>
+  </div>
 
+            <div class="text-center my-4">
+                <input type="submit" class="btn btn-primary btn-lg" value="Submit"/>
+            </div>
         </form>
-
+</div>
+</div>
+</div>
     </body>
 </html>

@@ -1,22 +1,22 @@
 package blog
 
 class Post {
-    String id
+
     String title
     String content
     String summary
-    String link
+    String shortUrl
     Boolean enabled
-    Date datecreated
-    Date datemodified
-    Account author
-    Account lastmodifiedby
+    Date dateCreated
+    Date lastUpdated
 
     static hasMany = [tags:Tag]
 
-    @Override
-    String toString() {
-        "id ${id}\nenabled ${enabled}\ntitle ${title}\ndatemodified ${datemodified}\ntags ${tags}\n" +
-        "lastmodifiedby ${lastmodifiedby}\ndatemodified ${datemodified} datecreated ${datecreated}\nauthor ${author}"
+    static constaints = {
+        title blank:false
+        content blank:false
+        summary blank:false
+        shortUrl blank:false
+        enabled blank:false
     }
 }

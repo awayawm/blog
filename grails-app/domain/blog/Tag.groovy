@@ -1,12 +1,18 @@
 package blog
 
 class Tag {
-    String id
+
     String name
     String description
+    Date dateCreated
+    Date lastUpdated
+    byte[] imageBytes
+    String imageName
+    String imageFiletype
 
-    @Override
-    String toString() {
-        "id ${id}\nname ${name}\ndescription ${description}"
+    static constraints = {
+        name blank:false
+        description blank:false
+        image blank:false
     }
 }
