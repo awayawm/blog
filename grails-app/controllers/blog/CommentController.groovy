@@ -1,0 +1,4 @@
+package blog
+
+class CommentController {
+}

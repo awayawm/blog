@@ -11,11 +11,10 @@
         <g:render template="/shared/adminnav"/>
 
         <h1 class="display-4 my-3">Tags</h1>
-
+${tags}
         <table class="table my-3">
             <thead>
             <tr>
-            <th>id</th>
             <th>name</th>
             <th>description</th>
             <th>image</th>
@@ -24,13 +23,17 @@
             </tr>
             </thead>
             <tbody>
-
-
-
+             <tr>
+             <td></td>
+             <td></td>
+             <td></td>
+             <td></td>
+             <td><span><i class="fas fa-trash"></i></span></td>
+             </tr>
             </tbody>
         </table>
 
-        <form name="tag" method="post" action="/admin/tags" class="border p-4" enctype="multipart/form-data">
+        <form name="tag" method="post" action="/admin/tags/addEdit" class="border p-4" enctype="multipart/form-data">
 
         <input type="hidden" id="id">
 
@@ -45,8 +48,8 @@
         </div>
 
           <div class="form-group">
-            <label for="tagImage">Tag Image</label>
-            <input type="file" class="form-control-file" id="tagImage" name="image" required>
+            <label for="image">Tag Image</label>
+            <input type="file" class="form-control-file" id="image" name="image" required>
           </div>
 
             <div class="text-center my-4">

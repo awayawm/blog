@@ -4,6 +4,7 @@ package blog
 class IndexController {
 
     def index() {
+
     }
 
 }
