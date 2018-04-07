@@ -5,6 +5,8 @@ class UrlMappings {
     static mappings = {
 
         group "/admin/tags", {
+            "/addEdit"(controller:'tag', action: 'addEdit')
+            "/deleteTag"(controller:'tag', action: 'deleteTag')
             "/"(controller: 'tag', action: 'index')
         }
 

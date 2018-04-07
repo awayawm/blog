@@ -14,7 +14,7 @@ class Tag {
     static constraints = {
         name blank:false
         description blank:false
-        imageBytes blank:false
+        imageBytes blank:false, sqlType:'longblob'
         imageName blank:false
         imageContentType blank:false
     }

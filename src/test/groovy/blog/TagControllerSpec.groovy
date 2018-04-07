@@ -71,7 +71,7 @@ class TagControllerSpec extends Specification implements ControllerUnitTest<TagC
             tag1.id = 1
             tag1.save()
             params.id = tag1.id
-            controller.delete()
+            controller.deleteTag()
         then:
             !Tag.list().size()
     }
@@ -87,6 +87,19 @@ class TagControllerSpec extends Specification implements ControllerUnitTest<TagC
         def result = controller.index()
 
         then:
-        result.tags.size() == 3
+        model.tags.size() == 3
+    }
+
+    void "does controller return single tag when passed id"(){
+        when:
+            tag1.id = 1
+            tag2.id = 2
+            tag1.save()
+            tag2.save()
+            params.id = 2
+            controller.index()
+        then:
+            model.name == "chess programming"
+            model.description == "chess programming is interesting"
     }
 }

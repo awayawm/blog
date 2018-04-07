@@ -5,11 +5,25 @@ class TagController {
     TagService tagService = new TagService()
 
     def index(){
-        [tags:Tag.list()]
+        Tag foundTag
+        def model = [:]
+        model.put('tags', Tag.list())
+        if(params.id){
+            foundTag = Tag.findById(params.id)
+            model.put('name', foundTag.name)
+            model.put('id', foundTag.id)
+            model.put('description', foundTag.description)
+            model.put('imageBytes', foundTag.imageBytes)
+            model.put('imageName', foundTag.imageName)
+            model.put('imageContentType', foundTag.imageContentType)
+        }
+
+        return render(view: 'index', model: model)
     }
 
     def addEdit(){
-        Tag tag = tagService.editTag(params.name, params.description, params.image, params.id != null ? params.id : null)
+        println params
+        Tag tag = tagService.editTag(params.name, params.description, params.image, params.id != null ? Long.valueOf(params.id) : null)
         if(tag != null) {
             flash.title = "Good news :)"
             flash.message = "Added new tag successfully."
@@ -22,8 +36,8 @@ class TagController {
         redirect url: '/admin/tags'
     }
 
-    def delete(){
-        Tag tag = tagService.deleteTag(params.id)
+    def deleteTag(){
+        Tag tag = tagService.deleteTag(params.id instanceof String ? Long.valueOf(params.id) : params.id)
         if(tag){
             flash.title = "Oh no :("
             flash.message = "Unable to delete the tag for some reason."

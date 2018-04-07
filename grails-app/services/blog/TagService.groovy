@@ -21,11 +21,12 @@ class TagService {
                 tag.name = name
                 tag.description = description
                 if (multipartFile){
+                    log.info("new image included, overwriting old image")
                     tag.imageName = multipartFile.name
                     tag.imageBytes = multipartFile.bytes
                     tag.imageContentType = multipartFile.contentType
                 }
-                tag.save(failOnError: true)
+                tag.save(failOnError: true, flush:true)
             }
         }
         tag
@@ -34,7 +35,11 @@ class TagService {
     Tag deleteTag(Long id){
         Tag tag = Tag.findById(id)
         if(tag) {
-            tag = tag.delete()
+            log.info("Deleting ${tag}")
+            tag = tag.delete(flush:true)
+
+        } else {
+            log.error("Could not find a tag with id ${params.id}")
         }
         return tag
     }
