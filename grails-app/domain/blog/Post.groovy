@@ -9,7 +9,9 @@ class Post {
     Boolean enabled
     Date dateCreated
     Date lastUpdated
-
+    byte[] imageBytes
+    String imageName
+    String imageContentType
     static hasMany = [tags:Tag]
 
     static constaints = {

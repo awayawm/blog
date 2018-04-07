@@ -8,10 +8,12 @@ The internet needs more ranting people!
 
 ### Sprint
 
-* Tags admin view
+* ~~Tags admin view~~
 * Post tests
 * Post admin view
+* Post controller
 * Index view all
 * Tag view all
 * Index view by shortUrl
 * add sample data
+* date/time on post, tag admin display

@@ -1,59 +1,65 @@
 <html>
     <head>
         <meta name="layout" content="layout"/>
-		<asset:javascript src="post.index.js"/>
     </head>
     <body>
 
-        <g:applyLayout name="navbar-admin"></g:applyLayout>
-        <p>
-        <h2>Posts</h2>
-        </p>
-        <div id="postTable">
+<div class="container-fluid">
+<div class="row">
+<div class="col">
+
+        <g:render template="/shared/adminnav"/>
+
+        <h1 class="display-4 my-3">Posts</h1>
+
+        <g:if test="my-3 w-50 ${flash.title}">
+            <div class="${flash.class}">
+                <h4>${flash.title}</h4>
+                <p>${flash.message}</p>
+            </div>
+        </g:if>
+
+
+        <form name="postForm" id="postForm" method="post" action="/admin/post/addEdit" class="border border-rounded p-4" enctype="multipart/form-data">
+
+        <input type="hidden" name="id" value=${id}>
+
+        <div class="form-group my-4">
+            <input type="button" onclick="" value="Reset form" id="resetForm" class="btn btn-lg btn-primary"/>
         </div>
 
-        <form id="postForm">
-
-        <input type="hidden" id="id">
-
-        <div class="form-group">
-        <input type="button" value="Reset form" id="resetForm" class="btn btn-lg btn-primary"/>
+        <div class="form-group my-4">
+            <label for="title"><h5>Title</h5></label>
+            <input type="text" class="form-control form-control-lg" name="title" value="${title}" required placeholder="Post Title" required>
         </div>
 
-        <div class="form-group">
-        <label for="title">Title</label>
-        <input type="text" class="form-control" id="title" required placeholder="Post Title" required>
+        <div class="form-group my-4">
+            <label for="link"><h5>shortUrl</h5></label>
+            <input type="text" class="form-control form-control-lg" name="shortUrl" value="${shortUrl}" required placeholder="shortcut-to-the-webpage" required>
         </div>
 
-        <div class="form-group">
-        <label for="link">Link</label>
-        <input type="text" class="form-control" id="link" required placeholder="shortcut-to-the-webpage" required>
+        <div class="form-group  my-4">
+            <label for="summary"><h5>Summary</h5></label>
+            <textarea class="form-control form-control-lg" id="summary" rows="3" placeholder="Post summary" required>${summary}</textarea>
         </div>
 
-        <div class="form-group">
-        <label for="summary">Summary</label>
-        <textarea class="form-control" id="summary" rows="3" placeholder="Post summary" required></textarea>
+        <div class="form-group  my-4">
+            <label for="content"><h5>Content</h5></label>
+            <textarea class="form-control form-control-lg" id="content" rows="8" placeholder="Content of the post" required>${content}</textarea>
         </div>
 
-        <div class="form-group">
-        <label for="content">Content</label>
-        <textarea class="form-control" id="content" rows="12" placeholder="Never be game over!" required></textarea>
+        <div class="form-check my-4">
+            <input name="enabled" id="enabled" class="form-check-input" type="checkbox">
+            <label for="enabled" class="form-check-label"><h5>Enabled</h5></label>
         </div>
 
-        <div class="form-group">
-        <label class="form-check-label">
-            <input id="enabled" class="form-check-input" type="checkbox">
-            Enabled
-        </label>
+        <div class="form-group my-4">
+            <label for="tags"><h5>Tags</h5></label>
+            <select multiple required class="form-control" id="tags">
+            </select>
         </div>
 
-        <div class="form-group">
-        <label for="tags">Tags</label>
-        <select multiple required class="form-control" id="tags">
-        </select>
-        </div>
-
-        <input id="submit" type="button" class="btn btn-primary btn-block" value="Submit">
+        <input id="submit" type="button" class="my-4 btn btn-primary btn-lg" value="Submit">
 
         </form>
 
@@ -75,6 +81,10 @@
             </div>
           </div>
         </div>
+
+</div>
+</div>
+</div>
 
     </body>
 </html>

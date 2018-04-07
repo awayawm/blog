@@ -10,6 +10,12 @@ class UrlMappings {
             "/"(controller: 'tag', action: 'index')
         }
 
+        group "/admin/posts", {
+            "/addEdit"(controller:'post', action: 'addEdit')
+            "/deleteTag"(controller:'post', action: 'deletePost')
+            "/"(controller: 'post', action: 'index')
+        }
+
         "500"(view:'/error')
         "404"(view:'/notFound')
 
