@@ -5,12 +5,14 @@ import spock.lang.Specification
 
 class TagSpec extends Specification implements DomainUnitTest<Tag> {
 
-    File image1
-    File image2
+    File image1 = new File(this.class.classLoader.getResource("../../resources/test/images/Music-Note.jpg").toURI())
+    File image2 = new File(this.class.classLoader.getResource("../../resources/test/images/staunton-chess-set-1.jpg").toURI())
+
+    void setupSpec(){
+    }
 
     void setup(){
-        image1 = new File(this.class.classLoader.getResource("../../resources/test/images/Music-Note.jpg").toURI())
-        image2 = new File(this.class.classLoader.getResource("../../resources/test/images/staunton-chess-set-1.jpg").toURI())
+        Tag.findAll().each { it -> it.delete() }
     }
 
     def "can tags be saved"(){
@@ -20,6 +22,15 @@ class TagSpec extends Specification implements DomainUnitTest<Tag> {
 
         then:
             Tag.list().size() == 2
+    }
+
+    def "can tag be removed"(){
+        when:
+        Tag tag = new Tag(name: "music", description: "music is the best outlit", imageBytes: image1.bytes, imageName: image1.name, imageContentType: "image/jpg").save(failOnError:true)
+        Tag.findById(tag.id).delete(flush:true,failOnError: true)
+
+        then:
+        Tag.list().size() == 0
     }
 
 }

@@ -33,7 +33,7 @@ class TagControllerSpec extends Specification implements ControllerUnitTest<TagC
             controller.addEdit()
         then:
             Tag.list().size() == 1
-            controller.flash.message == "Added new tag successfully :)"
+            controller.flash.message == "Added new tag successfully."
             controller.flash.class == "alert alert-success"
             response.redirectUrl == "/admin/tags"
     }
@@ -41,6 +41,15 @@ class TagControllerSpec extends Specification implements ControllerUnitTest<TagC
 
     void "if image not include with update, dont overwrite image"(){
         // if not resubmitting image, don't update
+        when:
+            tag1.save()
+            params.name = "fuku fuku"
+            params.description = "kitten tales 2"
+            params.id = tag1.id
+            controller.addEdit()
+        then:
+            Tag.findById(tag1.id).imageBytes == image1.bytes
+
     }
 
     void "can tag be edited?"(){
@@ -58,7 +67,13 @@ class TagControllerSpec extends Specification implements ControllerUnitTest<TagC
     }
 
     void "can tag be deleted"(){
-
+        when:
+            tag1.id = 1
+            tag1.save()
+            params.id = tag1.id
+            controller.delete()
+        then:
+            !Tag.list().size()
     }
 
     void "can all tags be retrieved"(){

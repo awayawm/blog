@@ -11,7 +11,14 @@
         <g:render template="/shared/adminnav"/>
 
         <h1 class="display-4 my-3">Tags</h1>
-${tags}
+
+        <g:if test="${flash.title}">
+            <div class="${flash.class}">
+                <h4>${flash.title}</h4>
+                <p>${flash.message]</p>
+            </div>
+        </g:if>
+
         <table class="table my-3">
             <thead>
             <tr>
@@ -28,7 +35,10 @@ ${tags}
              <td></td>
              <td></td>
              <td></td>
-             <td><span><i class="fas fa-trash"></i></span></td>
+             <td>
+             <span class="mr-4"><i class="fas fa-edit"></i></span>
+             <span class="mr-4"><i class="fas fa-trash"></i></span>
+             </td>
              </tr>
             </tbody>
         </table>

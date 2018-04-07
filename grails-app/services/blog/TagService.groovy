@@ -20,20 +20,23 @@ class TagService {
                 log.info("save edit to tag ${tag.id}")
                 tag.name = name
                 tag.description = description
-                tag.imageName = multipartFile.name
-                tag.imageBytes = multipartFile.bytes
-                tag.imageContentType = multipartFile.contentType
+                if (multipartFile){
+                    tag.imageName = multipartFile.name
+                    tag.imageBytes = multipartFile.bytes
+                    tag.imageContentType = multipartFile.contentType
+                }
                 tag.save(failOnError: true)
             }
         }
         tag
     }
 
-    def deleteTag(Long id){
+    Tag deleteTag(Long id){
         Tag tag = Tag.findById(id)
         if(tag) {
-            tag.delete()
+            tag = tag.delete()
         }
+        return tag
     }
 
 }
