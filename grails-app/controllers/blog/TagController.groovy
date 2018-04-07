@@ -1,5 +1,11 @@
 package blog
 
 class TagController {
-    def index(){}
+    def index(){
+        println params
+    }
+
+    def edit(){
+        println params
+    }
 }

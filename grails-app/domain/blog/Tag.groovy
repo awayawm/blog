@@ -8,11 +8,14 @@ class Tag {
     Date lastUpdated
     byte[] imageBytes
     String imageName
-    String imageFiletype
+    String imageContentType
+
 
     static constraints = {
         name blank:false
         description blank:false
-        image blank:false
+        imageBytes blank:false
+        imageName blank:false
+        imageContentType blank:false
     }
 }
