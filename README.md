@@ -2,11 +2,12 @@
 
 The internet needs more ranting people!
 
-![alt text](https://s3-us-west-2.amazonaws.com/atronandbeyond.com/cMfkFGP.mp4)
+![alt text](https://s3-us-west-2.amazonaws.com/atronandbeyond.com/Animated+GIF-downsized.gif)
 
 ##### Warning! Broken in a spectacular fashion, for now ...
 
-###Sprint
+### Sprint
+
 * Tags admin view
 * Post tests
 * Post admin view
