@@ -51,10 +51,6 @@
             </tbody>
         </table>
 
-        ${imageName}
-        ${imageBytes}
-        ${imageContentType}
-
         <form name="tag" method="post" action="/admin/tags/addEdit" class="border border-rounded p-4" enctype="multipart/form-data">
 
         <input type="hidden" name="id" value="${id}"/>

@@ -20,6 +20,52 @@
         </g:if>
 
 
+        <table class="table my-3">
+            <thead>
+            <tr>
+            <th>title</th>
+            <th>content</th>
+            <th>summary</th>
+            <th>shortUrl</th>
+            <th>enabled</th>
+            <th>assoc. tags</th>
+            <th>image</th>
+            <th>actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <g:each in="${posts}" var="post">
+                 <tr>
+                 <td>
+                 ${post?.title}
+                 </td>
+                 <td>
+                 ${post?.content}
+                 </td>
+                  <td>
+                  ${post?.summary}
+                  </td>
+                  <td>
+                  ${post?.shortUrl}
+                  </td>
+                <td>
+                ${post?.enabled}
+                </td>
+                    <td>
+                    ${post?.tags}
+                    </td>
+                 <td>
+                 <img style="max-width: 200px;" src="data:${imageContentType};base64,${imageBytes?.encodeBase64()}"/>
+                 </td>
+                     <td>
+                         <span onclick="window.location.href='/admin/posts?id=${tag.id}'" class="mr-4"><i class="fas fa-edit"></i></span>
+                         <span onclick="window.location.href='/admin/posts/deleteTag?id=${tag.id}'" class="mr-4"><i class="fas fa-trash"></i></span>
+                     </td>
+                 </tr>
+             </g:each>
+            </tbody>
+        </table>
+
         <form name="postForm" id="postForm" method="post" action="/admin/post/addEdit" class="border border-rounded p-4" enctype="multipart/form-data">
 
         <input type="hidden" name="id" value=${id}>
@@ -55,7 +101,11 @@
 
         <div class="form-group my-4">
             <label for="tags"><h5>Tags</h5></label>
-            <select multiple required class="form-control" id="tags">
+
+            <select multiple class="form-control" required>
+                <g:each in="${tags}" var="tag">
+                    <option>${tag.name}</option>
+                </g:each>
             </select>
         </div>
 
