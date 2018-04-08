@@ -77,7 +77,13 @@ class PostServiceSpec extends Specification implements ServiceUnitTest<PostServi
     }
 
     void "can post be deleted"(){
-
+        when:
+            GrailsMockMultipartFile mockMultipartFile = new GrailsMockMultipartFile(post1.imageName, post1.imageName, post1.imageContentType, post1.imageBytes)
+            def post = service.addPost(post1.title, post1.content, post1.summary, post1.shortUrl, true, mockMultipartFile, [tag1.save(flush:true).id, tag3.save(flush:true).id])
+            def postResult = service.deletePost(post.id)
+        then:
+            Post.list().size() == 0
+            postResult == null
     }
 
 }

@@ -39,4 +39,12 @@ class PostService {
         }
         post
     }
+
+    def deletePost(Long id){
+        Post post = Post.findById(id)
+        if(post){
+            post = post.delete(flush:true)
+        }
+        post
+    }
 }

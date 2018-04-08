@@ -20,5 +20,12 @@ class Post {
         summary blank:false
         shortUrl blank:false
         enabled blank:false
+        imageBytes blank:false
+        imageName blank:false
+        imageContentType blank:false
+    }
+
+    static mapping = {
+        imageBytes sqlType:'longblob'
     }
 }

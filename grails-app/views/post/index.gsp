@@ -58,8 +58,8 @@
                  <img style="max-width: 200px;" src="data:${imageContentType};base64,${imageBytes?.encodeBase64()}"/>
                  </td>
                      <td>
-                         <span onclick="window.location.href='/admin/posts?id=${tag.id}'" class="mr-4"><i class="fas fa-edit"></i></span>
-                         <span onclick="window.location.href='/admin/posts/deleteTag?id=${tag.id}'" class="mr-4"><i class="fas fa-trash"></i></span>
+                         <span onclick="window.location.href='/admin/posts?id=${post.id}'" class="mr-4"><i class="fas fa-edit"></i></span>
+                         <span onclick="window.location.href='/admin/posts/deleteTag?id=${post.id}'" class="mr-4"><i class="fas fa-trash"></i></span>
                      </td>
                  </tr>
              </g:each>
