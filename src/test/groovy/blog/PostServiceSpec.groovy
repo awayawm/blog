@@ -1,10 +1,11 @@
 package blog
 
 import grails.testing.gorm.DataTest
+import grails.testing.services.ServiceUnitTest
+import org.grails.plugins.testing.GrailsMockMultipartFile
 import spock.lang.Specification
 
-class PostSpec extends Specification implements DataTest{
-
+class PostServiceSpec extends Specification implements ServiceUnitTest<PostService>, DataTest{
     File image1
     File image2
     File image3
@@ -52,21 +53,31 @@ class PostSpec extends Specification implements DataTest{
 
     }
 
-    void "can post be created"(){
+
+    void "can post be added"(){
         when:
-        post1.save(flush:true, failOnError:true)
-        post2.save(flush:true, failOnError:true)
+        GrailsMockMultipartFile mockMultipartFile = new GrailsMockMultipartFile(post1.imageName, post1.imageName, post1.imageContentType, post1.imageBytes)
+        def post = service.addPost(post1.title, post1.content, post1.summary, post1.shortUrl, true, mockMultipartFile, [tag1.save(flush:true).id, tag3.save(flush:true).id])
+        then:
+        Post.list().size() == 1
+        Post.findById(post.id).tags.size() == 2
+    }
+
+    void "can post be edited, new photo"(){
+        when:
+            GrailsMockMultipartFile mockMultipartFile = new GrailsMockMultipartFile(post1.imageName, post1.imageName, post1.imageContentType, post1.imageBytes)
+            GrailsMockMultipartFile mockMultipartFile2 = new GrailsMockMultipartFile(post2.imageName, post2.imageName, post2.imageContentType, post2.imageBytes)
+            def post = service.addPost(post1.title, post1.content, post1.summary, post1.shortUrl, true, mockMultipartFile, [tag1.save(flush:true).id, tag3.save(flush:true).id])
+            post = service.editPost(post.id, post2.title, post2.content, post2.summary, post2.shortUrl, true, mockMultipartFile2, [tag2.save(flush:true).id])
 
         then:
-        Post.list().size() == 2
+            Post.findById(post.id).imageName == "d_SC_DETAIL_MODULE1_720x690_2.2_LowerBackPain.jpg"
+            Post.findById(post.id).title == "Chairs.  Which ones are best for your back?"
+            Post.findById(post.id).tags.size() == 1
     }
 
     void "can post be deleted"(){
-        when:
-        post1.save(flush:true, failOnError:true)
-        then:
-        Post.findById(post1.id).delete()
-        Post.list().size() == 0
+
     }
 
 }
