@@ -37,8 +37,22 @@ class IndexController {
             flash.title = "Opps!"
             flash.class = "alert alert-warning"
         } else {
-            println "cool!"
             render(view:"byTag", model:model)
+        }
+    }
+
+    def byPostShortUrl(){
+        Post post = Post.findByShortUrl(params.shortUrl)
+        def model = [:]
+        model.put("title", configService.getConfig().title)
+        model.put("tagline", configService.getConfig().tagline)
+        model.put("post", post)
+        if(!post) {
+            flash.message = "Post not found :("
+            flash.title = "Opps!"
+            flash.class = "alert alert-warning"
+        } else {
+            render(view:"byPostShortUrl", model:model)
         }
     }
 

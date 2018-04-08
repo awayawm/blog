@@ -5,6 +5,7 @@ class UrlMappings {
     static mappings = {
 
         "/tags/$shortUrl?"(controller:'index', action:'byTag')
+        "/posts/$shortUrl?"(controller:'index', action:'byPostShortUrl')
 
         group "/admin/tags", {
             "/addEdit"(controller:'tag', action: 'addEdit')

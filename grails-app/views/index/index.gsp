@@ -30,7 +30,7 @@
   <div class="card">
     <img class="card-img-top img-fluid" src="data:${post.imageContentType};base64,${post.imageBytes.encodeBase64()}" alt="Card image cap">
     <div class="card-body">
-      <h5 class="card-title">${post.title}</h5>
+      <h5 class="card-title"><a href="/posts/${post.shortUrl}">${post.title}</a></h5>
       <p class="card-text">${post.summary}</p>
       <p class="card-text"><small class="text-muted">${post.lastUpdated}o</small></p>
     </div>

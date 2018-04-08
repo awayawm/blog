@@ -6,7 +6,7 @@ The internet needs more ranting people!
 
 ##### Warning! Broken in a spectacular fashion, for now ...
 
-uses a system property called *blog-config* that points to a configuration file on the filesystem
+uses a system property called *blog-config* that points to a configuration file on the filesystem.  an example of the config can be found in src/main/webapp/blog.config and if one can't be found from the system property then it will be loaded.
 
 ### Sprint
 
@@ -16,7 +16,7 @@ uses a system property called *blog-config* that points to a configuration file 
 * ~~Post controller~~
 * ~~Index view all~~
 * ~~Tag view all~~
-* Index view by shortUrl, view post
+* ~~Index view by shortUrl, view post~~
 * ~~add sample data~~
 * date/time on post, tag admin display
 * confirmation on tag/post deletion
@@ -24,3 +24,4 @@ uses a system property called *blog-config* that points to a configuration file 
 * drop in login
 * google analytics
 * elastic beanstalk
+* test that nothing breaks when 0 posts, 0 tags

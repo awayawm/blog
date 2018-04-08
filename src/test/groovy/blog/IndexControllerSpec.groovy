@@ -102,4 +102,15 @@ class IndexControllerSpec extends Specification implements ControllerUnitTest<In
         model.tagline == "Life's a Journey!"
     }
 
+    void "does byPostShortUrl return post associated with ShortUrl"(){
+        when:
+        savePostsAndTags()
+        params.shortUrl = "programming-languages-business-needs"
+        controller.byPostShortUrl()
+        then:
+        model.title == "My blog"
+        model.tagline == "Life's a Journey!"
+        model.post.title == "Programming Languages and Business Needs"
+    }
+
 }
