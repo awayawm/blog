@@ -21,19 +21,20 @@ class TagServiceSpec extends Specification implements ServiceUnitTest<TagService
 
     void "can a tag be added"(){
         when:
-            service.editTag("music", "music education is important", multipartFile1)
-            service.editTag("chess programming", "chess programming is interesting", multipartFile2)
+            service.editTag("music","music", "music education is important", multipartFile1)
+            service.editTag("chess-programming","chess programming", "chess programming is interesting", multipartFile2)
         then:
             Tag.list().size() == 2
     }
 
     void "can a tag be edited"(){
         when:
-            Tag tag1 = service.editTag("music", "music education is important", multipartFile1)
-            Tag updatedTag = service.editTag("oranges", "oranges have a great aroma and taste great too", multipartFile2, tag1.id)
+            Tag tag1 = service.editTag("cool-music","music", "music education is important", multipartFile1)
+            Tag updatedTag = service.editTag("free oranges","oranges", "oranges have a great aroma and taste great too", multipartFile2, tag1.id)
         then:
             def result = Tag.findById(tag1.id)
             result.name == "oranges"
+            result.shortUrl == "free oranges"
             result.description == "oranges have a great aroma and taste great too"
             result.imageName == multipartFile2.name
             result.imageContentType == multipartFile2.contentType
@@ -44,7 +45,7 @@ class TagServiceSpec extends Specification implements ServiceUnitTest<TagService
 
     void "can a tag be deleted"(){
         when:
-        Tag tag1 = service.editTag("music", "music education is important", multipartFile1)
+        Tag tag1 = service.editTag("nice","music", "music education is important", multipartFile1)
         service.deleteTag(tag1.id)
 
         then:

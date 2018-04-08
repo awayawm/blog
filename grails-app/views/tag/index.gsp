@@ -23,6 +23,7 @@
             <thead>
             <tr>
             <th>name</th>
+            <th>shortUrl</th>
             <th>description</th>
             <th>image</th>
             <th>assoc. posts</th>
@@ -35,6 +36,9 @@
                  <td>
                  ${tag.name}
                  </td>
+              <td>
+              ${tag.shortUrl}
+              </td>
                  <td>
                  ${tag.description}
                  </td>
@@ -66,6 +70,11 @@
             <textarea rows="4" class="form-control form-control-lg" id="description" name="description" required placeholder="Tag description">${description}</textarea>
         </div>
 
+        <div class="form-group">
+            <label for="shortUrl"><h5>Short Url</h5></label>
+            <input type="text" class="form-control form-control-lg" id="shortUrl" name="shortUrl" value="${shortUrl}" required placeholder="shortcut-link-for-seo"/>
+        </div>
+
         <g:if test="${imageName}">
             <div class"my-4">
             <h5>Current Image</h5>
@@ -76,7 +85,7 @@
 
           <div class="form-group">
             <label for="image"><h5>Tag Image</h5></label>
-            <input type="file" class="form-control-file" id="image" name="image" required>
+            <input type="file" class="form-control-file" id="image" name="image" ${id == null ? "required" : ""}>
           </div>
 
             <div class="text-center my-4">

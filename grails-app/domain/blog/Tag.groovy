@@ -4,6 +4,7 @@ class Tag {
 
     String name
     String description
+    String shortUrl
     Date dateCreated
     Date lastUpdated
     byte[] imageBytes
@@ -15,6 +16,7 @@ class Tag {
         name blank:false
         description blank:false
         imageBytes blank:false
+        shortUrl blank:false
         imageName blank:false
         imageContentType blank:false
     }

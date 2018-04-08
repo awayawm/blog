@@ -21,14 +21,15 @@ class TagControllerSpec extends Specification implements ControllerUnitTest<TagC
     GrailsMockMultipartFile multipartFile2 = new GrailsMockMultipartFile("multipartFile2", "multipartFile2", "image/jpeg", image2.bytes)
     GrailsMockMultipartFile multipartFile3 = new GrailsMockMultipartFile("multipartFile3", "multipartFile3", "image/jpeg", image3.bytes)
 
-    Tag tag1 = tagService.editTag("music", "music education is important", multipartFile1)
-    Tag tag3 = tagService.editTag("oranges", "oranges have a great aroma and taste great too", multipartFile3)
-    Tag tag2 = tagService.editTag("chess programming", "chess programming is interesting", multipartFile2)
+    Tag tag1 = tagService.editTag("music","music", "music education is important", multipartFile1)
+    Tag tag3 = tagService.editTag("florida-oranges","oranges", "oranges have a great aroma and taste great too", multipartFile3)
+    Tag tag2 = tagService.editTag("chess-programming","chess programming", "chess programming is interesting", multipartFile2)
 
     void "can tag be added submission"(){
         when:
             params.name = "music"
             params.description = "music education is important"
+            params.shortUrl = "music"
             params.image = multipartFile1
             controller.addEdit()
         then:
@@ -45,6 +46,7 @@ class TagControllerSpec extends Specification implements ControllerUnitTest<TagC
             tag1.save()
             params.name = "fuku fuku"
             params.description = "kitten tales 2"
+            params.shortUrl = "fuku-fuku"
             params.id = tag1.id
             controller.addEdit()
         then:
@@ -56,6 +58,7 @@ class TagControllerSpec extends Specification implements ControllerUnitTest<TagC
         when:
             tag1.save()
             params.name = "anime"
+            params.shortUrl = "have fun"
             params.description = "they're all good"
             params.image = multipartFile3
             params.id = tag1.id

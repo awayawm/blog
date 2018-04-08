@@ -13,6 +13,7 @@ class TagController {
             model.put('name', foundTag.name)
             model.put('id', foundTag.id)
             model.put('description', foundTag.description)
+            model.put('shortUrl', foundTag.shortUrl)
             model.put('imageBytes', foundTag.imageBytes)
             model.put('imageName', foundTag.imageName)
             model.put('imageContentType', foundTag.imageContentType)
@@ -23,7 +24,7 @@ class TagController {
 
     def addEdit(){
         println params
-        Tag tag = tagService.editTag(params.name, params.description, params.image, params.id != null ? Long.valueOf(params.id) : null)
+        Tag tag = tagService.editTag(params.shortUrl, params.name, params.description, params.image, params.id != null ? Long.valueOf(params.id) : null)
         if(tag != null) {
             flash.title = "Good news :)"
             flash.message = "Added new tag successfully."

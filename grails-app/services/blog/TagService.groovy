@@ -5,10 +5,11 @@ import org.springframework.web.multipart.MultipartFile
 class TagService {
     Tag tag = null
 
-    Tag editTag(String name, String description, MultipartFile multipartFile, Long id = null){
+    Tag editTag(String shortUrl, String name, String description, MultipartFile multipartFile, Long id = null){
         if(id == null) {
             // add tag
             tag = new Tag(name: name,
+                    shortUrl: shortUrl,
                     description: description,
                     imageBytes: multipartFile.bytes,
                     imageName: multipartFile.name,
@@ -20,7 +21,8 @@ class TagService {
                 log.info("save edit to tag ${tag.id}")
                 tag.name = name
                 tag.description = description
-                if (multipartFile){
+                tag.shortUrl = shortUrl
+                if (!multipartFile.isEmpty()){
                     log.info("new image included, overwriting old image")
                     tag.imageName = multipartFile.name
                     tag.imageBytes = multipartFile.bytes

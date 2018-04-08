@@ -19,9 +19,9 @@ class BootStrap {
         File image6 = new File(servletContext.getResource("/images/hooked-on-code_icon_logo_RGB.png").toURI())
         File image7 = new File(servletContext.getResource("/images/images.png").toURI())
 
-        Tag tag1 = new Tag(name: "music", description: "music is the best outlit", imageBytes: image1.bytes, imageName: image1.name, imageContentType: "image/jpg").save(failOnError:true, flush:true)
-        Tag tag2 = new Tag(name: "chess programming", description: "chess programming is interesting", imageBytes: image2.bytes, imageName: image2.name, imageContentType: "image/jpg").save(failOnError:true, flush:true)
-        Tag tag3 = new Tag(name: "oranges", description: "oranges have a great aroma and taste great too", imageBytes: image3.bytes, imageName: image3.name, imageContentType: "image/jpg").save(failOnError:true, flush:true)
+        Tag tag1 = new Tag(shortUrl: "learn-music", name: "music", description: "music is the best outlit", imageBytes: image1.bytes, imageName: image1.name, imageContentType: "image/jpg").save(failOnError:true, flush:true)
+        Tag tag2 = new Tag(shortUrl: "chess-programming", name: "chess programming", description: "chess programming is interesting", imageBytes: image2.bytes, imageName: image2.name, imageContentType: "image/jpg").save(failOnError:true, flush:true)
+        Tag tag3 = new Tag(shortUrl: "oranges", name: "oranges", description: "oranges have a great aroma and taste great too", imageBytes: image3.bytes, imageName: image3.name, imageContentType: "image/jpg").save(failOnError:true, flush:true)
 
 
         Post post1 = new Post(title: "Fallout VR 4 On Occulus Rift", content: "Fallout 4 on PC with occulus rift is a fun experience.  Remember how freaked out you were when those radioactive zombies came running right at you?  It's even more fun in VR!",

@@ -18,4 +18,8 @@ class IndexController {
         render(view:"index", model: model)
     }
 
+    def byTag(){
+
+    }
+
 }
