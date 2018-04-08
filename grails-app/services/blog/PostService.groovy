@@ -24,7 +24,7 @@ class PostService {
             post.shortUrl = shortUrl
             post.enabled = enabled
 
-            if(!multipartFile.isEmpty()){
+            if(multipartFile != null && !multipartFile.isEmpty()){
                 post.imageName = multipartFile.getName()
                 post.imageContentType = multipartFile.getContentType()
                 post.imageBytes = multipartFile.getBytes()

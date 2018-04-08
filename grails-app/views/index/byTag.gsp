@@ -15,11 +15,16 @@
 <h1 class="display-4">${title}</h1>
 <h1><small class="text-muted">${tagline}</small></h1>
 
-<nav class="nav my-4">
-    <g:each in="${tags}" var="tag">
-<a class="nav-link" href="#">${tag.name}</a>
-    </g:each>
-</nav>
+<input type="button" class="btn btn-lg my-4" onclick="window.location.href='/'" value="back"/>
+
+<div class="card mb-3">
+  <img class="card-img-top img-fluid" src="data:${tag.imageContentType};base64,${tag.imageBytes.encodeBase64()}" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">${tag.name}</h5>
+    <p class="card-text">${tag.description}</p>
+  </div>
+</div>
+
 
 <g:each status="counter" in="${posts}"  var="post">
 

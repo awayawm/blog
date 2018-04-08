@@ -90,5 +90,16 @@ class IndexControllerSpec extends Specification implements ControllerUnitTest<In
         model.tagline == "Life's a Journey!"
     }
 
+    void "does byTag return tag by shortUrl?"(){
+        when:
+        savePostsAndTags()
+        params.shortUrl = "music-times"
+        controller.byTag()
+        then:
+        model.tag.name == "music"
+        model.posts.size() == 2
+        model.title == "My blog"
+        model.tagline == "Life's a Journey!"
+    }
 
 }

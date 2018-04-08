@@ -22,7 +22,7 @@ class TagService {
                 tag.name = name
                 tag.description = description
                 tag.shortUrl = shortUrl
-                if (!multipartFile.isEmpty()){
+                if (multipartFile != null && !multipartFile.isEmpty()){
                     log.info("new image included, overwriting old image")
                     tag.imageName = multipartFile.name
                     tag.imageBytes = multipartFile.bytes

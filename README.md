@@ -15,8 +15,8 @@ uses a system property called *blog-config* that points to a configuration file 
 * ~~Post admin view~~
 * ~~Post controller~~
 * ~~Index view all~~
-* Tag view all
-* Index view by shortUrl
+* ~~Tag view all~~
+* Index view by shortUrl, view post
 * ~~add sample data~~
 * date/time on post, tag admin display
 * confirmation on tag/post deletion

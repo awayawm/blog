@@ -19,7 +19,27 @@ class IndexController {
     }
 
     def byTag(){
+        Tag tag = Tag.findByShortUrl(params.shortUrl)
+        def model = [:]
+        def posts = []
 
+        Post.list().each{
+            if(tag in it.tags) { posts << it }
+        }
+
+        model.put("tag", tag)
+        model.put("posts", posts)
+        model.put("title", configService.getConfig().title)
+        model.put("tagline", configService.getConfig().tagline)
+
+        if(!tag) {
+            flash.message = "Tag not found :("
+            flash.title = "Opps!"
+            flash.class = "alert alert-warning"
+        } else {
+            println "cool!"
+            render(view:"byTag", model:model)
+        }
     }
 
 }
