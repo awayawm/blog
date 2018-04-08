@@ -70,9 +70,11 @@
             </tbody>
         </table>
 
-        <form name="postForm" id="postForm" method="post" action="/admin/post/addEdit" class="border border-rounded p-4" enctype="multipart/form-data">
+        <form name="postForm" id="postForm" method="post" action="/admin/posts/addEdit" class="border border-rounded p-4" enctype="multipart/form-data">
 
         <input type="hidden" name="id" value=${postId?.id}>
+
+        <input type="reset" class="btn btn-lg btn-primary my-4" />
 
         <div class="form-group my-4">
             <label for="title"><h5>Title</h5></label>
@@ -86,12 +88,12 @@
 
         <div class="form-group  my-4">
             <label for="summary"><h5>Summary</h5></label>
-            <textarea class="form-control form-control-lg" id="summary" rows="3" placeholder="Post summary" required>${postId?.summary}</textarea>
+            <textarea class="form-control form-control-lg" name="summary" id="summary" rows="3" placeholder="Post summary" required>${postId?.summary}</textarea>
         </div>
 
         <div class="form-group  my-4">
             <label for="content"><h5>Content</h5></label>
-            <textarea class="form-control form-control-lg" id="content" rows="8" placeholder="Content of the post" required>${postId?.content}</textarea>
+            <textarea class="form-control form-control-lg" name="content" id="content" rows="8" placeholder="Content of the post" required>${postId?.content}</textarea>
         </div>
 
         <div class="form-check my-4">
@@ -103,14 +105,27 @@
         <div class="form-group my-4">
             <label for="tags"><h5>Tags</h5></label>
 
-            <select multiple class="form-control" required>
+            <select multiple class="form-control" name="tags" required>
                 <g:each in="${tags}" var="tag">
                     <option ${tag in postId?.tags ? "selected" : ""}>${tag.name}</option>
                 </g:each>
             </select>
         </div>
 
-        <input id="submit" type="button" class="my-4 btn btn-primary btn-lg" value="Submit">
+        <g:if test="${postId?.imageName}">
+            <div class"my-4">
+            <h5>Current Image</h5>
+            <p class="lead">Loading a new image will overwrite this existing image, otherwise it will remain the image associated with this post.</p>
+            <img class="img-rounded img-fluid" style="max-width: 600px;" src="data:${postId?.imageContentType};base64,${postId?.imageBytes.encodeBase64()}"/>
+            </div>
+        </g:if>
+
+          <div class="form-group">
+            <label for="image"><h5>Post Image</h5></label>
+            <input type="file" class="form-control-file" id="image" name="image" ${postId?.id == null ? "required" : "" }>
+          </div>
+
+        <input id="submit" type="submit" class="my-4 btn btn-primary btn-lg" />
 
         </form>
 

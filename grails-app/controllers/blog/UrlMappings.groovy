@@ -12,7 +12,7 @@ class UrlMappings {
 
         group "/admin/posts", {
             "/addEdit"(controller:'post', action: 'addEdit')
-            "/deleteTag"(controller:'post', action: 'deletePost')
+            "/deletePost"(controller:'post', action: 'deletePost')
             "/"(controller: 'post', action: 'index')
         }
 
