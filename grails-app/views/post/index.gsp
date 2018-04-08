@@ -37,13 +37,13 @@
             <g:each in="${posts}" var="post">
                  <tr>
                  <td>
-                 ${post?.title}
+                 ${post?.title.take(100)}
                  </td>
                  <td>
-                 ${post?.content}
+                 ${post?.content.take(100)}
                  </td>
                   <td>
-                  ${post?.summary}
+                  ${post?.summary.take(100)}
                   </td>
                   <td>
                   ${post?.shortUrl}
@@ -63,7 +63,7 @@
                  </td>
                      <td>
                          <span onclick="window.location.href='/admin/posts?id=${post.id}'" class="mr-4"><i class="fas fa-edit"></i></span>
-                         <span onclick="window.location.href='/admin/posts/deleteTag?id=${post.id}'" class="mr-4"><i class="fas fa-trash"></i></span>
+                         <span onclick="window.location.href='/admin/posts/deletePost?id=${post.id}'" class="mr-4"><i class="fas fa-trash"></i></span>
                      </td>
                  </tr>
              </g:each>
@@ -72,43 +72,40 @@
 
         <form name="postForm" id="postForm" method="post" action="/admin/post/addEdit" class="border border-rounded p-4" enctype="multipart/form-data">
 
-        <input type="hidden" name="id" value=${id}>
-
-        <div class="form-group my-4">
-            <input type="button" onclick="" value="Reset form" id="resetForm" class="btn btn-lg btn-primary"/>
-        </div>
+        <input type="hidden" name="id" value=${postId?.id}>
 
         <div class="form-group my-4">
             <label for="title"><h5>Title</h5></label>
-            <input type="text" class="form-control form-control-lg" name="title" value="${title}" required placeholder="Post Title" required>
+            <input type="text" class="form-control form-control-lg" name="title" value="${postId?.title}" required placeholder="Post Title" required>
         </div>
 
         <div class="form-group my-4">
             <label for="link"><h5>shortUrl</h5></label>
-            <input type="text" class="form-control form-control-lg" name="shortUrl" value="${shortUrl}" required placeholder="shortcut-to-the-webpage" required>
+            <input type="text" class="form-control form-control-lg" name="shortUrl" value="${postId?.shortUrl}" required placeholder="shortcut-to-the-webpage" required>
         </div>
 
         <div class="form-group  my-4">
             <label for="summary"><h5>Summary</h5></label>
-            <textarea class="form-control form-control-lg" id="summary" rows="3" placeholder="Post summary" required>${summary}</textarea>
+            <textarea class="form-control form-control-lg" id="summary" rows="3" placeholder="Post summary" required>${postId?.summary}</textarea>
         </div>
 
         <div class="form-group  my-4">
             <label for="content"><h5>Content</h5></label>
-            <textarea class="form-control form-control-lg" id="content" rows="8" placeholder="Content of the post" required>${content}</textarea>
+            <textarea class="form-control form-control-lg" id="content" rows="8" placeholder="Content of the post" required>${postId?.content}</textarea>
         </div>
 
         <div class="form-check my-4">
-            <input name="enabled" id="enabled" class="form-check-input" type="checkbox">
+            <input name="enabled" id="enabled" class="form-check-input" type="checkbox" ${postId?.enabled == true ? "checked=checked" : ""}>
             <label for="enabled" class="form-check-label"><h5>Enabled</h5></label>
         </div>
+
 
         <div class="form-group my-4">
             <label for="tags"><h5>Tags</h5></label>
 
             <select multiple class="form-control" required>
                 <g:each in="${tags}" var="tag">
-                    <option>${tag.name}</option>
+                    <option ${tag in postId?.tags ? "selected" : ""}>${tag.name}</option>
                 </g:each>
             </select>
         </div>

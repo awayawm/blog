@@ -2,8 +2,22 @@ package blog
 
 class PostController {
     def index() {
-        render(view: "index", model:[posts: Post.list(), tags:Tag.list()])
+        def model = [:]
+        Post post
+        model.put("posts", Post.list())
+        model.put("tags", Tag.list())
+        if(params.id) {
+            post = Post.findById(params.id)
+            model.put("postId", post)
+        }
+        render(view: "index", model:model)
     }
-    def addEdit() {}
-    def deletePost() {}
+
+    def addEdit() {
+
+    }
+
+    def deletePost() {
+
+    }
 }
