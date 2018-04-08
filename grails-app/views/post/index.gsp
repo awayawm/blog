@@ -52,10 +52,14 @@
                 ${post?.enabled}
                 </td>
                     <td>
-                    ${post?.tags}
+                    <ul>
+                    <g:each in="${post.tags}" var="tag">
+                    <li>${tag.name}</li>
+                    </g:each>
+                    </ul>
                     </td>
                  <td>
-                 <img style="max-width: 200px;" src="data:${imageContentType};base64,${imageBytes?.encodeBase64()}"/>
+                 <img style="max-width: 200px;" src="data:${post.imageContentType};base64,${post.imageBytes.encodeBase64()}"/>
                  </td>
                      <td>
                          <span onclick="window.location.href='/admin/posts?id=${post.id}'" class="mr-4"><i class="fas fa-edit"></i></span>

@@ -41,7 +41,8 @@
                  <td>
                  <img style="max-width: 200px;" src="data:${tag.imageContentType};base64,${tag.imageBytes.encodeBase64()}"/>
                  </td>
-                 <td></td>
+                 <td>
+                 </td>
                      <td>
                          <span onclick="window.location.href='/admin/tags?id=${tag.id}'" class="mr-4"><i class="fas fa-edit"></i></span>
                          <span onclick="window.location.href='/admin/tags/deleteTag?id=${tag.id}'" class="mr-4"><i class="fas fa-trash"></i></span>
