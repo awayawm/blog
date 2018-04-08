@@ -6,13 +6,15 @@ The internet needs more ranting people!
 
 ##### Warning! Broken in a spectacular fashion, for now ...
 
+uses a system property called *blog-config* that points to a configuration file on the filesystem
+
 ### Sprint
 
 * ~~Tags admin view~~
 * ~~Post tests~~
 * ~~Post admin view~~
 * ~~Post controller~~
-* Index view all
+* ~~Index view all~~
 * Tag view all
 * Index view by shortUrl
 * ~~add sample data~~
@@ -20,3 +22,5 @@ The internet needs more ranting people!
 * confirmation on tag/post deletion
 * active css link on admin navbar
 * drop in login
+* google analytics
+* elastic beanstalk

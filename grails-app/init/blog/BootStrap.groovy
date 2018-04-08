@@ -6,6 +6,10 @@ class BootStrap {
 
     def init = { ServletContext servletContext ->
 
+        if(System.getProperty("blog-config") == null){
+            System.setProperty("blog-config", servletContext.getResource("/blog.config").file)
+        }
+
         File image1 = new File(servletContext.getResource("/images/Music-Note.jpg").toURI())
         File image2 = new File(servletContext.getResource("/images/staunton-chess-set-1.jpg").toURI())
         File image3 = new File(servletContext.getResource("/images/ThinkstockPhotos-494037394.jpg").toURI())
