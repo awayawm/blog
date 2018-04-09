@@ -1,9 +1,12 @@
 package blog
 
+import grails.plugin.springsecurity.annotation.Secured
+
 class PostController {
 
     PostService postService = new PostService()
 
+    @Secured(value=["hasRole('ROLE_ADMIN')"])
     def index() {
         def model = [:]
         Post post
@@ -16,6 +19,7 @@ class PostController {
         render(view: "index", model:model)
     }
 
+    @Secured(value=["hasRole('ROLE_ADMIN')"])
     def addEdit() {
         println params
 
@@ -63,6 +67,7 @@ class PostController {
         redirect url:'/admin/posts'
     }
 
+    @Secured(value=["hasRole('ROLE_ADMIN')"])
     def deletePost() {
         Post post = Post.findById(params.id)
         if(post){

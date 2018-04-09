@@ -1,10 +1,14 @@
 package blog
+
+import org.springframework.security.access.annotation.Secured
+
 //TODO add back google analytics <g:insertGoogleAnalytics></g:insertGoogleAnalytics>
 
 class IndexController {
 
     ConfigService configService = new ConfigService()
 
+    @Secured('permitAll')
     def index() {
         def model = [:]
         if(Post.list().size() > 0){
@@ -18,6 +22,7 @@ class IndexController {
         render(view:"index", model: model)
     }
 
+    @Secured('permitAll')
     def byTag(){
         Tag tag = Tag.findByShortUrl(params.shortUrl)
         def model = [:]
@@ -41,6 +46,7 @@ class IndexController {
         }
     }
 
+    @Secured('permitAll')
     def byPostShortUrl(){
         Post post = Post.findByShortUrl(params.shortUrl)
         def model = [:]

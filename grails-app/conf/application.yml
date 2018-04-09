@@ -104,8 +104,10 @@ environments:
           driverClassName: org.h2.Driver
           username: sa
           password:
-      hibernate:
-        dialect: org.hibernate.dialect.H2Dialect
+          hibernate:
+              hbm2ddl:
+                  auto: update
+              dialect: org.hibernate.dialect.H2Dialect
   test:
       dataSource:
           dbCreate: create-drop
@@ -114,8 +116,10 @@ environments:
           driverClassName: org.h2.Driver
           username: sa
           password:
-      hibernate:
-        dialect: org.hibernate.dialect.H2Dialect
+          hibernate:
+              hbm2ddl:
+                  auto: update
+              dialect: org.hibernate.dialect.H2Dialect
   production:
       dataSource:
           dbCreate: update
@@ -123,7 +127,7 @@ environments:
           url:   jdbc:mysql://127.0.0.1:3306/gorm
           username: root
           password: ""
-      hibernate:
-          hbm2ddl:
-              auto: update
-          dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+          hibernate:
+              hbm2ddl:
+                  auto: update
+              dialect: org.hibernate.dialect.MySQL5InnoDBDialect

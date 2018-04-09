@@ -6,8 +6,18 @@ class BootStrap {
 
     def init = { ServletContext servletContext ->
 
+        ConfigService configService = new ConfigService()
+
         if(System.getProperty("blog-config") == null){
+            log.info "Loading config from blog-config system property from ${servletContext.getResource("/blog.config").file}"
             System.setProperty("blog-config", servletContext.getResource("/blog.config").file)
+        }
+
+        if(User.list().size() == 0 && Role.list().size() == 0){
+            log.info "Creating admin user with credentials from config file.  Username: ${configService.getConfig().username}, Password: ${configService.getConfig().password}"
+            User user = new User(username:configService.getConfig().username, password:configService.getConfig().password).save(flush:true)
+            Role role = new Role(authority: "ROLE_ADMIN").save(flush:true)
+            UserRole.create user, role
         }
 
         File image1 = new File(servletContext.getResource("/images/Music-Note.jpg").toURI())

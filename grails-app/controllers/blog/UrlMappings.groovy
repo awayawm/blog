@@ -4,6 +4,11 @@ class UrlMappings {
 
     static mappings = {
 
+        "/login/auth"(controller:'login', action:'auth')
+        "/login/authfail"(controller:'login', action:'authfail')
+        "/login/denied"(controller:'login', action:'authfail')
+        "/logout"(controller:'Logout', action:'index')
+
         "/tags/$shortUrl?"(controller:'index', action:'byTag')
         "/posts/$shortUrl?"(controller:'index', action:'byPostShortUrl')
 

@@ -1,9 +1,12 @@
 package blog
 
+import grails.plugin.springsecurity.annotation.Secured
+
 class TagController {
 
     TagService tagService = new TagService()
 
+    @Secured(value=["hasRole('ROLE_ADMIN')"])
     def index(){
         Tag foundTag
         def model = [:]
@@ -22,6 +25,7 @@ class TagController {
         return render(view: 'index', model: model)
     }
 
+    @Secured(value=["hasRole('ROLE_ADMIN')"])
     def addEdit(){
         println params
         Tag tag = tagService.editTag(params.shortUrl, params.name, params.description, params.image, params.id != null ? Long.valueOf(params.id) : null)
@@ -37,6 +41,7 @@ class TagController {
         redirect url: '/admin/tags'
     }
 
+    @Secured(value=["hasRole('ROLE_ADMIN')"])
     def deleteTag(){
         Tag tag = tagService.deleteTag(params.id instanceof String ? Long.valueOf(params.id) : params.id)
         if(tag){
