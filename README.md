@@ -25,3 +25,4 @@ uses a system property called *blog-config* that points to a configuration file 
 * google analytics
 * elastic beanstalk
 * test that nothing breaks when 0 posts, 0 tags
+* social media icons in footer

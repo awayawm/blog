@@ -20,7 +20,8 @@
   <div class="card-body">
     <h2 class="card-title">${post.title}</h2>
     <p class="card-text">${post.content}</p>
-    <input type="button" class="btn btn-lg my-4" onclick="window.location.href='/'" value="back"/>
+    <p class="card-text text-muted"><g:formatDate date="${post.lastUpdated}" type="datetime" style="MEDIUM"/></p>
+    <input type="button" class="btn btn-lg my-4" onclick="window.history.back()" value="back"/>
   </div>
 </div>
 

@@ -15,7 +15,7 @@
 <h1 class="display-4">${title}</h1>
 <h1><small class="text-muted">${tagline}</small></h1>
 
-<input type="button" class="btn btn-lg my-4" onclick="window.location.href='/'" value="back"/>
+<input type="button" class="btn btn-lg my-4" onclick="window.history.back()" value="back"/>
 
 <div class="card mb-3">
   <img class="card-img-top img-fluid" src="data:${tag.imageContentType};base64,${tag.imageBytes.encodeBase64()}" alt="Card image cap">
@@ -35,9 +35,9 @@
   <div class="card">
     <img class="card-img-top img-fluid" src="data:${post.imageContentType};base64,${post.imageBytes.encodeBase64()}" alt="Card image cap">
     <div class="card-body">
-      <h5 class="card-title">${post.title}</h5>
+      <h5 class="card-title"><a href="/posts/${post.shortUrl}">${post.title}</a></h5>
       <p class="card-text">${post.summary}</p>
-      <p class="card-text"><small class="text-muted">${post.lastUpdated}o</small></p>
+      <p class="card-text"><small class="text-muted"><g:formatDate date="${post.lastUpdated}" type="datetime" style="MEDIUM"/></small></p>
     </div>
   </div>
 

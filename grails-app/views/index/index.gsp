@@ -32,7 +32,7 @@
     <div class="card-body">
       <h5 class="card-title"><a href="/posts/${post.shortUrl}">${post.title}</a></h5>
       <p class="card-text">${post.summary}</p>
-      <p class="card-text"><small class="text-muted">${post.lastUpdated}o</small></p>
+      <p class="card-text"><small class="text-muted"><g:formatDate date="${post.lastUpdated}" type="datetime" style="MEDIUM"/></small></p>
     </div>
   </div>
 
