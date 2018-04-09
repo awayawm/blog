@@ -93,7 +93,7 @@ beanstalk {
         alpha {
             file = tasks.war
             application = 'blog'
-            environment = 'blog-atron-dev'
+            environment = 'blog-dev-env'
         }
     }
 }
