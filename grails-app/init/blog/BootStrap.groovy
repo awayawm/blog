@@ -8,9 +8,9 @@ class BootStrap {
 
         ConfigService configService = new ConfigService()
 
-        if(System.getProperty("blog-config") == null){
+        if(System.getProperty("BLOG_CONFIG") == null){
             log.info "Loading config from blog-config system property from ${servletContext.getResource("/blog.config").file}"
-            System.setProperty("blog-config", servletContext.getResource("/blog.config").file)
+            System.setProperty("BLOG_CONFIG", servletContext.getResource("/blog.config").file)
         }
 
         if(User.list().size() == 0 && Role.list().size() == 0){

@@ -16,13 +16,13 @@ class ConfigServiceSpec extends Specification implements ServiceUnitTest<ConfigS
 
     void setup(){
         System.metaClass.static.getProperty = { String key ->
-            System.setProperty("blog-config", ServletContext.getResource("/blog.config").file)
+            System.setProperty("BLOG_CONFIG", ServletContext.getResource("/blog.config").file)
         }
     }
     def "can config be read from properties"(){
         when:
             println ServletContext.getResource("/blog.config").file
-            println System.getProperty("blog-config")
+            println System.getProperty("BLOG_CONFIG")
             ConfigObject config
             config = service.getConfig()
         then:

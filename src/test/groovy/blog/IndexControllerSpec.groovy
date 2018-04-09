@@ -33,7 +33,7 @@ class IndexControllerSpec extends Specification implements ControllerUnitTest<In
     void setup(){
 
         System.metaClass.static.getProperty = { String key ->
-            System.setProperty("blog-config", ServletContext.getResource("/blog.config").file)
+            System.setProperty("BLOG_CONFIG", ServletContext.getResource("/blog.config").file)
         }
 
         image1 = new File(servletContext.getResource("/images/Music-Note.jpg").toURI())
