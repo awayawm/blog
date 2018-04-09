@@ -122,11 +122,11 @@ environments:
               dialect: org.hibernate.dialect.H2Dialect
   production:
       dataSource:
-          dbCreate: update
+          dbCreate: create-drop
           driverClassName: com.mysql.jdbc.Driver
-          url:   jdbc:mysql://127.0.0.1:3306/gorm
-          username: root
-          password: ""
+          url:   ${JDBC_CONNECTION_STRING}
+          username: ${USERNAME}
+          password: ${PASSWORD}
           hibernate:
               hbm2ddl:
                   auto: update
