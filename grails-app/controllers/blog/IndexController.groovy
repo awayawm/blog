@@ -62,4 +62,20 @@ class IndexController {
         }
     }
 
+    @Secured(value=["hasRole('ROLE_ADMIN')"])
+    def byPostShortUrlAdmin(){
+        Post post = Post.findByShortUrl(params.shortUrl)
+        def model = [:]
+        model.put("title", configService.getConfig().title)
+        model.put("tagline", configService.getConfig().tagline)
+        model.put("post", post)
+        if(!post) {
+            flash.message = "Post not found :("
+            flash.title = "Opps!"
+            flash.class = "alert alert-warning"
+        } else {
+            render(view:"byPostShortUrl", model:model)
+        }
+    }
+
 }

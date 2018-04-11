@@ -22,6 +22,7 @@ class UrlMappings {
             "/addEdit"(controller:'post', action: 'addEdit')
             "/deletePost"(controller:'post', action: 'deletePost')
             "/"(controller: 'post', action: 'index')
+            "/view/$shortUrl?"(controller: 'index', action:  'byPostShortUrlAdmin')
         }
 
         "500"(view:'/error')

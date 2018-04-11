@@ -19,11 +19,9 @@ If you're feeling fancy, adjust the deploy gradle task to your project and deplo
 
 * date/time on post, tag admin display
 * confirmation on tag/post deletion
-* active css link on admin navbar
-* drop in login
+* ~~active css link on admin navbar~~
 * google analytics
-* elastic beanstalk
 * test that nothing breaks when 0 posts, 0 tags
 * social media icons in footer
 * footer on card dates
-* admin view post even when not enabled
+* ~~admin view post even when not enabled~~

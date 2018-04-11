@@ -6,11 +6,11 @@
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav">
 
-      <li class="nav-item active">
+      <li class="nav-item ${params.controller == 'post' ? "active" : ""}">
         <a class="nav-link" href="/admin/posts">Posts</a>
       </li>
 
-        <li class="nav-item">
+        <li class="nav-item ${params.controller == 'tag' ? "active" : ""}">
           <a class="nav-link" href="/admin/tags">Tags</a>
         </li>
 

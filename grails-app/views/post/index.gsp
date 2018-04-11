@@ -37,7 +37,7 @@
             <g:each in="${posts}" var="post">
                  <tr>
                  <td>
-                 ${post?.title.take(100)}
+                 <a href="/admin/posts/view/${post?.shortUrl}">${post?.title}</a>
                  </td>
                  <td>
                  ${post?.content.take(100)}
