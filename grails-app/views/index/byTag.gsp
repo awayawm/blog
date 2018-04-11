@@ -20,8 +20,8 @@
 <div class="card mb-3">
   <img class="card-img-top img-fluid" src="data:${tag.imageContentType};base64,${tag.imageBytes.encodeBase64()}" alt="Card image cap">
   <div class="card-body">
-    <h5 class="card-title">${tag.name}</h5>
-    <p class="card-text">${tag.description}</p>
+    <h1 class="display-4 card-title">${tag.name}</h1>
+    <p class="card-text lead">${tag.description}</p>
   </div>
 </div>
 
@@ -37,7 +37,9 @@
     <div class="card-body">
       <h5 class="card-title"><a href="/posts/${post.shortUrl}">${post.title}</a></h5>
       <p class="card-text">${post.summary}</p>
-      <p class="card-text"><small class="text-muted"><g:formatDate date="${post.lastUpdated}" type="datetime" style="MEDIUM"/></small></p>
+      </div>
+    <div class="card-footer">
+    <small class="text-muted"><g:formatDate date="${post.lastUpdated}" type="datetime" style="MEDIUM"/></small>
     </div>
   </div>
 

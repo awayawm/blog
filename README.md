@@ -10,7 +10,7 @@ uses a system property called *blog-config* that points to a configuration file 
 
 1. git clone project somewhere
 2. open build.gradle inside project directory in intellij
-3. assemble project war
+3. run assemble gradle task to create a war file i.e. ./gradlew assemble
 4. get war from build/lib and upload it to an elastic beanstalk environment
 
 If you're feeling fancy, adjust the deploy gradle task to your project and deploy from the command line.
@@ -19,9 +19,9 @@ If you're feeling fancy, adjust the deploy gradle task to your project and deplo
 
 * date/time on post, tag admin display
 * confirmation on tag/post deletion
-* ~~active css link on admin navbar~~
 * google analytics
 * test that nothing breaks when 0 posts, 0 tags
 * social media icons in footer
-* footer on card dates
-* ~~admin view post even when not enabled~~
+* don't show post when disabled and don't allow access
+* get dynamic titles working
+* get favicon working
