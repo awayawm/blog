@@ -28,7 +28,7 @@ class ConfigServiceSpec extends Specification implements ServiceUnitTest<ConfigS
         then:
             config.title == "My blog"
             config.tagline == "Life's a Journey!"
-            config.author.size() == 2
+            config.author.size() == 3
     }
 
 }

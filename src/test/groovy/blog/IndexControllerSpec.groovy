@@ -79,7 +79,7 @@ class IndexControllerSpec extends Specification implements ControllerUnitTest<In
         post3.save(flush:true, failOnError: true)
     }
 
-    void "does index return title, tagline, tags and posts"(){
+    void "does index return title, tagline, tags and posts, author stuff"(){
         when:
         savePostsAndTags()
         controller.index()
@@ -88,6 +88,9 @@ class IndexControllerSpec extends Specification implements ControllerUnitTest<In
         model.tags.size() == 3
         model.title == "My blog"
         model.tagline == "Life's a Journey!"
+        model.github == "http://github.com/me"
+        model.twitter == "http://twitter.com/me"
+        model.linkedin == "http://linkdin.com/me"
     }
 
     void "does byTag return tag by shortUrl?"(){

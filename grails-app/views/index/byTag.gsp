@@ -53,7 +53,7 @@
 
 </g:each>
 
-
+<g:render template="/shared/footer"/>
 
 </div>
 </div>

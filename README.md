@@ -9,9 +9,10 @@ uses a system property called *blog-config* that points to a configuration file 
 ### Installation instructions
 
 1. git clone project somewhere
-2. open build.gradle inside project directory in intellij
-3. run assemble gradle task to create a war file i.e. ./gradlew assemble
-4. get war from build/lib and upload it to an elastic beanstalk environment
+2. change directories to the project directory.
+3. Using intellij, open build.gradle located at the root of the project directory
+4. run assemble gradle task to create a war file i.e. ./gradlew assemble
+5. get war from build/libs and upload it to an elastic beanstalk environment
 
 If you're feeling fancy, adjust the deploy gradle task to your project and deploy from the command line.
 
@@ -21,7 +22,7 @@ If you're feeling fancy, adjust the deploy gradle task to your project and deplo
 * confirmation on tag/post deletion
 * google analytics
 * test that nothing breaks when 0 posts, 0 tags
-* social media icons in footer
+* ~~social media icons in footer~~
 * don't show post when disabled and don't allow access
 * get dynamic titles working
 * get favicon working

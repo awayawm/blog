@@ -29,7 +29,7 @@
 
 </div>
 
-
+<g:render template="/shared/footer"/>
 
 </div>
 </div>

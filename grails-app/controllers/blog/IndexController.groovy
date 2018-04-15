@@ -19,6 +19,9 @@ class IndexController {
         }
         model.put("title", configService.getConfig().title)
         model.put("tagline", configService.getConfig().tagline)
+        model.put("twitter", configService.getConfig().author.twitter)
+        model.put("linkedin", configService.getConfig().author.linkedin)
+        model.put("github", configService.getConfig().author.github)
         render(view:"index", model: model)
     }
 
