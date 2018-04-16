@@ -49,8 +49,7 @@ class IndexController {
             if(tag in it.tags) { posts << it }
         }
 
-        println "posts: ${posts}"
-
+        model.put("tags", Tag.list())
         model.put("tag", tag)
         model.put("posts", posts)
         model = makeModel(model)
@@ -71,6 +70,7 @@ class IndexController {
         }
         def model = [:]
         model = makeModel(model)
+        model.put("tags", Tag.list())
         model.put("post", post)
         if(!post) {
             flash.message = "Post not found :("
@@ -86,6 +86,7 @@ class IndexController {
         def model = [:]
         model = makeModel(model)
         model.put("post", post)
+        model.put("tags", Tag.list())
         if(!post) {
             flash.message = "Post not found :("
             flash.title = "Opps!"

@@ -18,16 +18,14 @@
 
 <g:render template="/shared/indexalert"/>
 
-<input type="button" class="btn btn-lg my-4" onclick="window.history.back()" value="back"/>
-
 <div class="card mb-3">
   <img class="card-img-top img-fluid" src="data:${tag.imageContentType};base64,${tag.imageBytes.encodeBase64()}" alt="Card image cap">
   <div class="card-body">
     <h1 class="display-4 card-title">${tag.name}</h1>
     <p class="card-text lead">${tag.description}</p>
+    <input type="button" class="btn btn-lg my-4" onclick="window.history.back()" value="back"/>
   </div>
 </div>
-
 
 <g:each status="counter" in="${posts}"  var="post">
 

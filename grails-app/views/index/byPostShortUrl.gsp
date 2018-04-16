@@ -16,6 +16,8 @@
 <h1 class="mb-5"><small class="text-muted">${tagline}</small></h1>
 </div>
 
+<g:render template="/shared/tagnav"/>
+
 <g:render template="/shared/indexalert"/>
 
 <div class="card mb-3">

@@ -21,13 +21,9 @@ class PostController {
 
     @Secured(value=["hasRole('ROLE_ADMIN')"])
     def addEdit() {
-        println params
-
         Tag tag
         def tagIds = []
         Post post
-
-        println params.tags.class
 
         log.info "params.tags.class.isArray() is ${params.tags.class.isArray()}"
 

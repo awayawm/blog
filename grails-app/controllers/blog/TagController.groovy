@@ -27,7 +27,6 @@ class TagController {
 
     @Secured(value=["hasRole('ROLE_ADMIN')"])
     def addEdit(){
-        println params
         Tag tag = tagService.editTag(params.shortUrl, params.name, params.description, params.image, params.id != null ? Long.valueOf(params.id) : null)
         if(tag != null) {
             flash.title = "Good news :)"
