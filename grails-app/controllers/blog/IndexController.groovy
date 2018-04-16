@@ -4,9 +4,23 @@ import org.springframework.security.access.annotation.Secured
 
 //TODO add back google analytics <g:insertGoogleAnalytics></g:insertGoogleAnalytics>
 
+
+
 class IndexController {
 
     ConfigService configService = new ConfigService()
+
+
+    def makeModel(def model){
+        model.put("title", configService.getConfig().title)
+        model.put("tagline", configService.getConfig().tagline)
+        model.put("twitter", configService.getConfig().author.twitter)
+        model.put("linkedin", configService.getConfig().author.linkedin)
+        model.put("github", configService.getConfig().author.github)
+        model.put("htmlTitle", configService.getConfig().htmlTitle)
+        model.put("favicon", configService.getConfig().favicon)
+        model
+    }
 
     @Secured('permitAll')
     def index() {
@@ -17,11 +31,7 @@ class IndexController {
         if(Tag.list().size() > 0){
             model.put("tags", Tag.list())
         }
-        model.put("title", configService.getConfig().title)
-        model.put("tagline", configService.getConfig().tagline)
-        model.put("twitter", configService.getConfig().author.twitter)
-        model.put("linkedin", configService.getConfig().author.linkedin)
-        model.put("github", configService.getConfig().author.github)
+        model = makeModel(model)
         render(view:"index", model: model)
     }
 
@@ -37,8 +47,7 @@ class IndexController {
 
         model.put("tag", tag)
         model.put("posts", posts)
-        model.put("title", configService.getConfig().title)
-        model.put("tagline", configService.getConfig().tagline)
+        model = makeModel(model)
 
         if(!tag) {
             flash.message = "Tag not found :("
@@ -53,8 +62,7 @@ class IndexController {
     def byPostShortUrl(){
         Post post = Post.findByShortUrl(params.shortUrl)
         def model = [:]
-        model.put("title", configService.getConfig().title)
-        model.put("tagline", configService.getConfig().tagline)
+        model = makeModel(model)
         model.put("post", post)
         if(!post) {
             flash.message = "Post not found :("
@@ -69,8 +77,7 @@ class IndexController {
     def byPostShortUrlAdmin(){
         Post post = Post.findByShortUrl(params.shortUrl)
         def model = [:]
-        model.put("title", configService.getConfig().title)
-        model.put("tagline", configService.getConfig().tagline)
+        model = makeModel(model)
         model.put("post", post)
         if(!post) {
             flash.message = "Post not found :("

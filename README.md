@@ -24,5 +24,5 @@ If you're feeling fancy, adjust the deploy gradle task to your project and deplo
 * test that nothing breaks when 0 posts, 0 tags
 * ~~social media icons in footer~~
 * don't show post when disabled and don't allow access
-* get dynamic titles working
-* get favicon working
+* ~~get dynamic titles working~~
+* ~~get favicon working~~

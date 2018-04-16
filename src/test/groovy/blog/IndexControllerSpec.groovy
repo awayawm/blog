@@ -91,6 +91,7 @@ class IndexControllerSpec extends Specification implements ControllerUnitTest<In
         model.github == "http://github.com/me"
         model.twitter == "http://twitter.com/me"
         model.linkedin == "http://linkdin.com/me"
+        model.htmlTitle == "cool blog"
     }
 
     void "does byTag return tag by shortUrl?"(){
@@ -103,6 +104,10 @@ class IndexControllerSpec extends Specification implements ControllerUnitTest<In
         model.posts.size() == 2
         model.title == "My blog"
         model.tagline == "Life's a Journey!"
+        model.github == "http://github.com/me"
+        model.twitter == "http://twitter.com/me"
+        model.linkedin == "http://linkdin.com/me"
+        model.htmlTitle == "cool blog"
     }
 
     void "does byPostShortUrl return post associated with ShortUrl"(){
@@ -114,6 +119,10 @@ class IndexControllerSpec extends Specification implements ControllerUnitTest<In
         model.title == "My blog"
         model.tagline == "Life's a Journey!"
         model.post.title == "Programming Languages and Business Needs"
+        model.github == "http://github.com/me"
+        model.twitter == "http://twitter.com/me"
+        model.linkedin == "http://linkdin.com/me"
+        model.htmlTitle == "cool blog"
     }
 
 }

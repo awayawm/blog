@@ -1,7 +1,6 @@
 <!doctype html>
 <html>
-<title>
-</title>
+<title></title>
 <head>
   <meta name="layout" content="layout"/>
 </head>
