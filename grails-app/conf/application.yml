@@ -98,7 +98,7 @@ hibernate:
 environments:
   development:
       dataSource:
-          dbCreate: create-drop
+          dbCreate: create
           url: jdbc:h2:mem:dev
           pooled: true
           driverClassName: org.h2.Driver
@@ -110,7 +110,7 @@ environments:
               dialect: org.hibernate.dialect.H2Dialect
   test:
       dataSource:
-          dbCreate: create-drop
+          dbCreate: create
           url: jdbc:h2:mem:test
           pooled: true
           driverClassName: org.h2.Driver
@@ -122,7 +122,7 @@ environments:
               dialect: org.hibernate.dialect.H2Dialect
   production:
       dataSource:
-          dbCreate: update
+          dbCreate: create
           driverClassName: com.mysql.jdbc.Driver
           url:   ${JDBC_CONNECTION_STRING}
           username: ${USERNAME}
