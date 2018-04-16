@@ -25,13 +25,17 @@ class IndexController {
     @Secured('permitAll')
     def index() {
         def model = [:]
-        if(Post.list().size() > 0){
-            model.put("posts", Post.list())
-        }
-        if(Tag.list().size() > 0){
-            model.put("tags", Tag.list())
-        }
+        model.put("posts", Post.findAll { enabled == true })
+        model.put("tags", Tag.list())
         model = makeModel(model)
+
+
+        if (model.posts.size() == 0){
+            flash.message = "No posts enabled, come back later :("
+            flash.title = "Opps!"
+            flash.class = "alert alert-warning"
+        }
+
         render(view:"index", model: model)
     }
 
@@ -41,26 +45,30 @@ class IndexController {
         def model = [:]
         def posts = []
 
-        Post.list().each{
+        Post.findAll { enabled == true }.each{
             if(tag in it.tags) { posts << it }
         }
+
+        println "posts: ${posts}"
 
         model.put("tag", tag)
         model.put("posts", posts)
         model = makeModel(model)
 
-        if(!tag) {
-            flash.message = "Tag not found :("
+        if(model.posts.size() == 0) {
+            flash.message = "No posts enabled with this tag :("
             flash.title = "Opps!"
             flash.class = "alert alert-warning"
-        } else {
-            render(view:"byTag", model:model)
         }
+        render(view:"byTag", model:model)
     }
 
     @Secured('permitAll')
     def byPostShortUrl(){
         Post post = Post.findByShortUrl(params.shortUrl)
+        if (!post.enabled){
+            post = null
+        }
         def model = [:]
         model = makeModel(model)
         model.put("post", post)
@@ -68,9 +76,8 @@ class IndexController {
             flash.message = "Post not found :("
             flash.title = "Opps!"
             flash.class = "alert alert-warning"
-        } else {
-            render(view:"byPostShortUrl", model:model)
         }
+        render(view:"byPostShortUrl", model:model)
     }
 
     @Secured(value=["hasRole('ROLE_ADMIN')"])
@@ -83,9 +90,8 @@ class IndexController {
             flash.message = "Post not found :("
             flash.title = "Opps!"
             flash.class = "alert alert-warning"
-        } else {
-            render(view:"byPostShortUrl", model:model)
         }
+        render(view:"byPostShortUrl", model:model)
     }
 
 }

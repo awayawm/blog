@@ -21,8 +21,10 @@ If you're feeling fancy, adjust the deploy gradle task to your project and deplo
 * date/time on post, tag admin display
 * confirmation on tag/post deletion
 * google analytics
-* test that nothing breaks when 0 posts, 0 tags
-* ~~social media icons in footer~~
-* don't show post when disabled and don't allow access
-* ~~get dynamic titles working~~
-* ~~get favicon working~~
+* animation on index view
+* fix timezone
+* sort index by most recently modified
+* new column on tag, enabled, that shows tag in nav bar or not
+* compile bootstrap for drop shadows and gradients
+* tags on bottom of post
+* randomly show's X tags (from config).  this will cause articles on main page to be randomized

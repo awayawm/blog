@@ -16,6 +16,8 @@
 <h1><small class="text-muted">${tagline}</small></h1>
 </div>
 
+<g:render template="/shared/indexalert"/>
+
 <input type="button" class="btn btn-lg my-4" onclick="window.history.back()" value="back"/>
 
 <div class="card mb-3">

@@ -22,6 +22,7 @@
     </g:each>
 </nav>
 
+<g:render template="/shared/indexalert"/>
 
 <g:each status="counter" in="${posts}"  var="post">
 

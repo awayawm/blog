@@ -125,4 +125,45 @@ class IndexControllerSpec extends Specification implements ControllerUnitTest<In
         model.htmlTitle == "cool blog"
     }
 
+    void "are posts that are not enabled not returned?"(){
+        when:
+        post1.enabled = false
+        post2.enabled = false
+        post3.enabled = false
+        savePostsAndTags()
+        controller.index()
+        then:
+        model.posts.size() == 0
+        flash.message == "No posts enabled, come back later :("
+        flash.title == "Opps!"
+        flash.class == "alert alert-warning"
+    }
+
+    void "if post is not enabled, is it not displayed on byTag"(){
+        when:
+        post1.enabled = false
+        post3.enabled = false
+        savePostsAndTags()
+        params.shortUrl = "music-times"
+        controller.byTag()
+        then:
+        model.posts.size() == 0
+        flash.message == "No posts enabled with this tag :("
+        flash.title == "Opps!"
+        flash.class == "alert alert-warning"
+    }
+
+    void "does byPostShortUrl not show post when post is not enabled "(){
+        when:
+        post3.enabled = false
+        savePostsAndTags()
+        params.shortUrl = "programming-languages-business-needs"
+        controller.byPostShortUrl()
+        then:
+        model.post == null
+        flash.message == "Post not found :("
+        flash.title == "Opps!"
+        flash.class == "alert alert-warning"
+    }
+
 }
