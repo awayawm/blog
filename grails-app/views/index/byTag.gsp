@@ -11,8 +11,10 @@
 <div class="row">
 <div class="col">
 
+<div class="text-center my-3">
 <h1 class="display-4">${title}</h1>
 <h1><small class="text-muted">${tagline}</small></h1>
+</div>
 
 <input type="button" class="btn btn-lg my-4" onclick="window.history.back()" value="back"/>
 

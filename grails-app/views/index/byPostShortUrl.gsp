@@ -11,8 +11,10 @@
 <div class="row">
 <div class="col">
 
+<div class="text-center my-3">
 <h1 class="display-4">${title}</h1>
 <h1 class="mb-5"><small class="text-muted">${tagline}</small></h1>
+</div>
 
 <div class="card mb-3">
   <img class="card-img-top img-fluid" src="data:${post.imageContentType};base64,${post.imageBytes.encodeBase64()}" alt="Card image cap">

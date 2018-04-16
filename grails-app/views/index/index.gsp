@@ -11,14 +11,17 @@
 <div class="row">
 <div class="col">
 
-<h1 class="display-4">${title}</h1>
+<div class="text-center my-3">
+<h1 class="display-3">${title}</h1>
 <h1><small class="text-muted">${tagline}</small></h1>
+</div>
 
-<nav class="nav my-4">
+<nav class="nav justify-content-center my-4">
     <g:each in="${tags}" var="tag">
-<a class="nav-link" href="/tags/${tag.shortUrl}">${tag.name}</a>
+<a class="nav-link" href="/tags/${tag.shortUrl}"><h3>${tag.name}</h3></a>
     </g:each>
 </nav>
+
 
 <g:each status="counter" in="${posts}"  var="post">
 
