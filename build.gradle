@@ -9,7 +9,7 @@ buildscript {
         classpath "gradle.plugin.fi.evident.gradle.beanstalk:gradle-beanstalk-plugin:0.1.3"
     }
 }
-version "0.0.8"
+version "0.0.9"
 group "blog"
 
 apply plugin:"idea"

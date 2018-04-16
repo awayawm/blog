@@ -122,7 +122,7 @@ environments:
               dialect: org.hibernate.dialect.H2Dialect
   production:
       dataSource:
-          dbCreate: create
+          dbCreate: update
           driverClassName: com.mysql.jdbc.Driver
           url:   ${JDBC_CONNECTION_STRING}
           username: ${USERNAME}
