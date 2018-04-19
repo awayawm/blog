@@ -19,6 +19,7 @@ class IndexController {
         model.put("github", configService.getConfig().author.github)
         model.put("htmlTitle", configService.getConfig().htmlTitle)
         model.put("favicon", configService.getConfig().favicon)
+        model.put("trackingId", configService.getConfig().trackingId)
         model.put("tags", Tag.list())
         model
     }

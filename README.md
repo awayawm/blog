@@ -20,7 +20,7 @@ If you're feeling fancy, adjust the deploy gradle task to your project and deplo
 
 * ~~date/time on post, tag admin display~~
 * confirmation on tag/post deletion
-* google analytics
+* ~~google analytics~~
 * animation on index view
 * ~~fix timezone~~
 * sort index by most recently modified

@@ -15,7 +15,7 @@
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="/admin/analytics">Analytics</a>
+          <a class="nav-link" href="https://analytics.google.com/analytics">Analytics</a>
         </li>
 
         <li class="nav-item">
