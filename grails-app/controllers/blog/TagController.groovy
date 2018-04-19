@@ -17,6 +17,8 @@ class TagController {
             model.put('id', foundTag.id)
             model.put('description', foundTag.description)
             model.put('shortUrl', foundTag.shortUrl)
+            model.put('dateCreated', foundTag.dateCreated)
+            model.put('lastUpdated', foundTag.lastUpdated)
             model.put('imageBytes', foundTag.imageBytes)
             model.put('imageName', foundTag.imageName)
             model.put('imageContentType', foundTag.imageContentType)

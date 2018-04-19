@@ -85,6 +85,13 @@
             <input type="file" class="form-control-file" id="image" name="image" ${id == null ? "required" : ""}>
           </div>
 
+    <g:if test="${lastUpdated}">
+        <div class="m-3 p-3">
+          <h3>Last Updated: <span class="text-muted"><g:formatDate date="${lastUpdated}" type="datetime" style="MEDIUM"/></h3></span>
+          <h3>Date Created: <span class="text-muted"><g:formatDate date="${dateCreated}" type="datetime" style="MEDIUM"/></h3></span>
+        </div>
+        </g:if>
+
             <div class="text-center my-4">
                 <input type="submit" class="btn btn-primary btn-lg" value="Submit"/>
             </div>

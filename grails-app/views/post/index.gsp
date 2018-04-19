@@ -125,8 +125,14 @@
             <input type="file" class="form-control-file" id="image" name="image" ${postId?.id == null ? "required" : "" }>
           </div>
 
-        <input id="submit" type="submit" class="my-4 btn btn-primary btn-lg" />
+        <g:if test="${postId}">
+        <div class="m-3 p-3">
+          <h3>Last Updated: <span class="text-muted"><g:formatDate date="${postId?.lastUpdated}" type="datetime" style="MEDIUM"/></h3></span>
+          <h3>Date Created: <span class="text-muted"><g:formatDate date="${postId?.dateCreated}" type="datetime" style="MEDIUM"/></h3></span>
+        </div>
+        </g:if>
 
+        <input id="submit" type="submit" class="my-4 btn btn-primary btn-lg" />
         </form>
 
         <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
