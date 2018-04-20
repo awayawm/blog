@@ -18,13 +18,11 @@ If you're feeling fancy, adjust the deploy gradle task to your project and deplo
 
 ### Sprint
 
-* ~~date/time on post, tag admin display~~
 * confirmation on tag/post deletion
-* ~~google analytics~~
 * animation on index view
-* ~~fix timezone~~
 * sort index by most recently modified
 * new column on tag, enabled, that shows tag in nav bar or not
-* compile bootstrap for drop shadows and gradients
+* ~~compile bootstrap for drop shadows and gradients~~
 * tags on bottom of post
 * randomly show's X tags (from config).  this will cause articles on main page to be randomized
+* read css from path specified by system property, like config

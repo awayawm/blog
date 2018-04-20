@@ -22,6 +22,7 @@ class Tag {
     }
     static mapping = {
         imageBytes sqlType: "longblob"
+        description sqlType: "varchar(10000)"
     }
 
 }

@@ -23,7 +23,7 @@
         <div class="card-group">
     </g:if>
 
-  <div class="card">
+  <div class="card shadow-lg">
     <img class="card-img-top img-fluid" src="data:${post.imageContentType};base64,${post.imageBytes.encodeBase64()}" alt="Card image cap">
     <div class="card-body">
       <h5 class="card-title"><a href="/posts/${post.shortUrl}">${post.title}</a></h5>

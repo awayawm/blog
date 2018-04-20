@@ -17,13 +17,13 @@
 
 <g:render template="/shared/indexalert"/>
 
-<div class="card mb-3">
+<div class="card mb-3 shadow-lg">
   <img class="card-img-top img-fluid" src="data:${post.imageContentType};base64,${post.imageBytes.encodeBase64()}" alt="Card image cap">
   <div class="card-body">
     <h2 class="card-title">${post.title}</h2>
     <p class="card-text">${post.content}</p>
 
-    <input type="button" class="btn btn-lg my-4" onclick="window.history.back()" value="back"/>
+    <input type="button" class="btn btn-lg my-4 bg-gradient-secondary text-white" onclick="window.history.back()" value="back"/>
     </div>
   <div class="card-footer text-right">
   <span class="text-muted"><g:formatDate date="${post.lastUpdated}" type="datetime" style="MEDIUM"/></span>

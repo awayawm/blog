@@ -15,12 +15,12 @@
 
 <g:render template="/shared/indexalert"/>
 
-<div class="card mb-3">
+<div class="card mb-3 shadow-lg">
   <img class="card-img-top img-fluid" src="data:${tag.imageContentType};base64,${tag.imageBytes.encodeBase64()}" alt="Card image cap">
   <div class="card-body">
     <h1 class="display-4 card-title">${tag.name}</h1>
     <p class="card-text lead">${tag.description}</p>
-    <input type="button" class="btn btn-lg my-4" onclick="window.history.back()" value="back"/>
+    <input type="button" class="btn btn-lg my-4 bg-gradient-secondary text-white" onclick="window.history.back()" value="back"/>
   </div>
 </div>
 
@@ -30,7 +30,7 @@
         <div class="card-group">
     </g:if>
 
-  <div class="card">
+  <div class="card shadow-lg">
     <img class="card-img-top img-fluid" src="data:${post.imageContentType};base64,${post.imageBytes.encodeBase64()}" alt="Card image cap">
     <div class="card-body">
       <h5 class="card-title"><a href="/posts/${post.shortUrl}">${post.title}</a></h5>

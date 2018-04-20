@@ -22,7 +22,7 @@
 
 
   </head>
-  <body>
+  <body class="bg-gradient-light">
 
     <g:layoutBody/>
 
