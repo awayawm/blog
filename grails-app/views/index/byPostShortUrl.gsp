@@ -23,9 +23,16 @@
     <h2 class="card-title">${post.title}</h2>
     <p class="card-text">${post.content}</p>
 
+<div>
+<g:each in="${post.tags}" var="tag">
+<a href="/tags/${tag.shortUrl}" class="badge badge-secondary">${tag.name}</a>
+</g:each>
+</div>
+
     <input type="button" class="btn btn-lg my-4 bg-gradient-secondary text-white" onclick="window.history.back()" value="back"/>
     </div>
-  <div class="card-footer text-right">
+
+  <div class="card-footer">
   <span class="text-muted"><g:formatDate date="${post.lastUpdated}" type="datetime" style="MEDIUM"/></span>
   </div>
 
