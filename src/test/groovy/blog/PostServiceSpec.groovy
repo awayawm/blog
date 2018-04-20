@@ -35,9 +35,9 @@ class PostServiceSpec extends Specification implements ServiceUnitTest<PostServi
         image6 = new File(this.class.classLoader.getResource("../../resources/test/images/hooked-on-code_icon_logo_RGB.png").toURI())
         image7 = new File(this.class.classLoader.getResource("../../resources/test/images/images.png").toURI())
 
-        tag1 = new Tag(shortUrl: "music", name: "music", description: "music is the best outlit", imageBytes: image1.bytes, imageName: image1.name, imageContentType: "image/jpg")
-        tag2 = new Tag(shortUrl: "chess-programming", name: "chess programming", description: "chess programming is interesting", imageBytes: image2.bytes, imageName: image2.name, imageContentType: "image/jpg")
-        tag3 = new Tag(shortUrl: "georgia-oranges", name: "oranges", description: "oranges have a great aroma and taste great too", imageBytes: image3.bytes, imageName: image3.name, imageContentType: "image/jpg")
+        tag1 = new Tag(enabled: true, shortUrl: "music", name: "music", description: "music is the best outlit", imageBytes: image1.bytes, imageName: image1.name, imageContentType: "image/jpg")
+        tag2 = new Tag(enabled: false, shortUrl: "chess-programming", name: "chess programming", description: "chess programming is interesting", imageBytes: image2.bytes, imageName: image2.name, imageContentType: "image/jpg")
+        tag3 = new Tag(enabled: false, shortUrl: "georgia-oranges", name: "oranges", description: "oranges have a great aroma and taste great too", imageBytes: image3.bytes, imageName: image3.name, imageContentType: "image/jpg")
 
         post1 = new Post(title: "Fallout VR 4 On Occulus Rift", content: "Fallout 4 on PC with occulus rift is a fun experience.  Remember how freaked out you were when those radioactive zombies came running right at you?  It's even more fun in VR!",
                 summary: "A summary of my experiences with running Fallout 4 VR on occulus rift.  The unofficially unsupported experience!", shortUrl: "occulus-fallout-4-vr", enabled: true,

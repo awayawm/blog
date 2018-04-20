@@ -25,6 +25,7 @@
             <th>name</th>
             <th>shortUrl</th>
             <th>description</th>
+            <th>enabled</th>
             <th>image</th>
             <th>actions</th>
             </tr>
@@ -41,6 +42,9 @@
                  <td>
                  ${tag.description}
                  </td>
+              <td>
+              ${tag.enabled}
+              </td>
                  <td>
                  <img style="max-width: 200px;" src="data:${tag.imageContentType};base64,${tag.imageBytes.encodeBase64()}"/>
                  </td>
@@ -67,10 +71,16 @@
             <textarea rows="4" class="form-control form-control-lg" id="description" name="description" required placeholder="Tag description">${description}</textarea>
         </div>
 
+          <div class="form-check my-3">
+            <input type="checkbox" class="form-check-input" id="enabled" name="enabled" ${enabled == true ? "checked" : ""}>
+            <label class="form-check-label" for="enabled">Enabled</label>
+          </div>
+
         <div class="form-group">
             <label for="shortUrl"><h5>Short Url</h5></label>
             <input type="text" class="form-control form-control-lg" id="shortUrl" name="shortUrl" value="${shortUrl}" required placeholder="shortcut-link-for-seo"/>
         </div>
+
 
         <g:if test="${imageName}">
             <div class"my-4">

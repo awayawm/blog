@@ -18,8 +18,8 @@
 <div class="card mb-3 shadow-lg">
   <img class="card-img-top img-fluid" src="data:${tag.imageContentType};base64,${tag.imageBytes.encodeBase64()}" alt="Card image cap">
   <div class="card-body">
-    <h1 class="display-4 card-title">${tag.name}</h1>
-    <p class="card-text lead">${tag.description}</p>
+    <h1 class="display-4 card-title">${raw(tag.name)}</h1>
+    <p class="card-text lead">${raw(tag.description)}</p>
     <input type="button" class="btn btn-lg my-4 bg-gradient-secondary text-white" onclick="window.history.back()" value="back"/>
   </div>
 </div>

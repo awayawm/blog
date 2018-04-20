@@ -18,6 +18,7 @@ class TagController {
             model.put('description', foundTag.description)
             model.put('shortUrl', foundTag.shortUrl)
             model.put('dateCreated', foundTag.dateCreated)
+            model.put('enabled', foundTag.enabled)
             model.put('lastUpdated', foundTag.lastUpdated)
             model.put('imageBytes', foundTag.imageBytes)
             model.put('imageName', foundTag.imageName)
@@ -29,7 +30,7 @@ class TagController {
 
     @Secured(value=["hasRole('ROLE_ADMIN')"])
     def addEdit(){
-        Tag tag = tagService.editTag(params.shortUrl, params.name, params.description, params.image, params.id != null ? Long.valueOf(params.id) : null)
+        Tag tag = tagService.editTag(params.enabled, params.shortUrl, params.name, params.description, params.image, params.id != null ? Long.valueOf(params.id) : null)
         if(tag != null) {
             flash.title = "Good news :)"
             flash.message = "Added new tag successfully."

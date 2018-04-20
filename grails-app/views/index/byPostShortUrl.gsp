@@ -20,8 +20,8 @@
 <div class="card mb-3 shadow-lg">
   <img class="card-img-top img-fluid" src="data:${post.imageContentType};base64,${post.imageBytes.encodeBase64()}" alt="Card image cap">
   <div class="card-body">
-    <h2 class="card-title">${post.title}</h2>
-    <p class="card-text">${post.content}</p>
+    <h2 class="card-title">${raw(post.title)}</h2>
+    <p class="card-text">${raw(post.content)}</p>
 
 <div>
 <g:each in="${post.tags}" var="tag">

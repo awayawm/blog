@@ -20,7 +20,6 @@ If you're feeling fancy, adjust the deploy gradle task to your project and deplo
 
 * confirmation on tag/post deletion
 * sort index by most recently modified
-* new column on tag, enabled, that shows tag in nav bar or not
-* ~~compile bootstrap for drop shadows and gradients~~
-* ~~tags on bottom of post~~
 * randomly show's X tags (from config).  this will cause articles on main page to be randomized
+* don't show post when associated tag disabled, don't tag in navbar
+* don't show disabled post in tag
