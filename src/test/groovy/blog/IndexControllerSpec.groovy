@@ -24,6 +24,9 @@ class IndexControllerSpec extends Specification implements ControllerUnitTest<In
     void setupSpec(){
         mockDomain Tag
         mockDomain Post
+        System.metaClass.static.getProperty = { String key ->
+            System.setProperty("BLOG_CONFIG", ServletContext.getResource("/blog.config").file)
+        }
     }
 
     void cleanupSpec(){
@@ -31,10 +34,6 @@ class IndexControllerSpec extends Specification implements ControllerUnitTest<In
     }
 
     void setup(){
-
-        System.metaClass.static.getProperty = { String key ->
-            System.setProperty("BLOG_CONFIG", ServletContext.getResource("/blog.config").file)
-        }
 
         image1 = new File(servletContext.getResource("/images/Music-Note.jpg").toURI())
         image2 = new File(servletContext.getResource("/images/staunton-chess-set-1.jpg").toURI())
@@ -46,7 +45,7 @@ class IndexControllerSpec extends Specification implements ControllerUnitTest<In
 
 
         tag1 = new Tag(enabled: true, shortUrl: "music-times", name: "music", description: "music is the best outlit", imageBytes: image1.bytes, imageName: image1.name, imageContentType: "image/jpg").save(failOnError:true)
-        tag2 = new Tag(enabled: false, shortUrl: "chess-programming", name: "chess programming", description: "chess programming is interesting", imageBytes: image2.bytes, imageName: image2.name, imageContentType: "image/jpg").save(failOnError:true)
+        tag2 = new Tag(enabled: true, shortUrl: "chess-programming", name: "chess programming", description: "chess programming is interesting", imageBytes: image2.bytes, imageName: image2.name, imageContentType: "image/jpg").save(failOnError:true)
         tag3 = new Tag(enabled: true, shortUrl:"oranges", name: "oranges", description: "oranges have a great aroma and taste great too", imageBytes: image3.bytes, imageName: image3.name, imageContentType: "image/jpg").save(failOnError:true)
 
         post1 = new Post(title: "Fallout VR 4 On Occulus Rift", content: "Fallout 4 on PC with occulus rift is a fun experience.  Remember how freaked out you were when those radioactive zombies came running right at you?  It's even more fun in VR!",
@@ -164,6 +163,15 @@ class IndexControllerSpec extends Specification implements ControllerUnitTest<In
         flash.message == "Post not found :("
         flash.title == "Opps!"
         flash.class == "alert alert-warning"
+    }
+
+    void "does index not show disabled tags"(){
+        when:
+        tag2.enabled = false
+        savePostsAndTags()
+        controller.index()
+        then:
+        model.posts.size() == 2
     }
 
 }

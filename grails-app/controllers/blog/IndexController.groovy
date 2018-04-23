@@ -24,10 +24,26 @@ class IndexController {
         model
     }
 
+    def processTags(def posts){
+        def postsWithEnabledTags = []
+        posts.each { post ->
+            def tags = []
+            post.tags.each { tag ->
+                if(tag.enabled) tags << tag
+            }
+            post.tags = []
+            post.tags = tags
+            if (post.tags.size() != 0) postsWithEnabledTags << post
+        }
+        postsWithEnabledTags
+    }
+
     @Secured('permitAll')
     def index() {
         def model = [:]
-        model.put("posts", Post.findAll { enabled == true })
+        def enablePosts = Post.findAll { enabled == true }
+
+        model.put("posts", processTags(enablePosts))
         model = makeModel(model)
 
         if (model.posts.size() == 0){
@@ -50,7 +66,7 @@ class IndexController {
         }
 
         model.put("tag", tag)
-        model.put("posts", posts)
+        model.put("posts", processTags(posts))
         model = makeModel(model)
 
         if(model.posts.size() == 0) {
@@ -69,7 +85,7 @@ class IndexController {
         }
         def model = [:]
         model = makeModel(model)
-        model.put("post", post)
+        model.put("post", processTags(post)[0])
 
         if(!post) {
             flash.message = "Post not found :("
