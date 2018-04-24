@@ -174,4 +174,23 @@ class IndexControllerSpec extends Specification implements ControllerUnitTest<In
         model.posts.size() == 2
     }
 
+    void "are posts sorted by last modified date?"(){
+        when:
+        post3.enabled = false
+        savePostsAndTags()
+
+        sleep(1000)
+        post2.save(flush: true)
+
+        println(post1.lastUpdated)
+        println(post2.lastUpdated)
+
+
+        controller.index()
+        then:
+        model.posts.size() == 2
+        model.posts[1].title == "Fallout VR 4 On Occulus Rift"
+        model.posts[0].title == "Chairs.  Which ones are best for your back?"
+    }
+
 }

@@ -1,5 +1,6 @@
 package blog
 
+import org.grails.datastore.mapping.document.config.Collection
 import org.springframework.security.access.annotation.Secured
 
 //TODO add back google analytics <g:insertGoogleAnalytics></g:insertGoogleAnalytics>
@@ -20,7 +21,7 @@ class IndexController {
         model.put("htmlTitle", configService.getConfig().htmlTitle)
         model.put("favicon", configService.getConfig().favicon)
         model.put("trackingId", configService.getConfig().trackingId)
-        model.put("tags", Tag.list())
+        model.put("tags", Tag.list().take(configService.getConfig().number_of_tags_in_navbar).sort { Math.random() })
         model
     }
 
@@ -43,7 +44,7 @@ class IndexController {
         def model = [:]
         def enablePosts = Post.findAll { enabled == true }
 
-        model.put("posts", processTags(enablePosts))
+        model.put("posts", processTags(enablePosts).sort{a,b-> b.lastUpdated<=>a.lastUpdated})
         model = makeModel(model)
 
         if (model.posts.size() == 0){
@@ -66,7 +67,7 @@ class IndexController {
         }
 
         model.put("tag", tag)
-        model.put("posts", processTags(posts))
+        model.put("posts", processTags(posts).sort{a,b-> b.lastUpdated<=>a.lastUpdated})
         model = makeModel(model)
 
         if(model.posts.size() == 0) {

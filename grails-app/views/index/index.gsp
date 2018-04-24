@@ -29,12 +29,6 @@
       <h5 class="card-title"><a href="/posts/${post.shortUrl}">${raw(post.title)}</a></h5>
       <p class="card-text">${raw(post.summary)}</p>
 
-      <div>
-      <g:each in="${post.tags}" var="tag">
-      <a href="/tags/${tag.shortUrl}" class="badge badge-secondary">${tag.name}</a>
-      </g:each>
-      </div>
-
     </div>
     <div class="m-3">
     <g:each in="${post.tags}" var="tag">

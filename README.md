@@ -16,10 +16,8 @@ uses a system property called *blog-config* that points to a configuration file 
 
 If you're feeling fancy, adjust the deploy gradle task to your project and deploy from the command line.
 
-### Sprint
+### Todo
 
 * confirmation on tag/post deletion
-* sort index by most recently modified
-* randomly show's X tags (from config).  this will cause articles on main page to be randomized
-* don't show post when associated tag disabled, don't tag in navbar
-* don't show disabled post in tag
+* ~~sort posts by most recently modified~~
+* ~~randomly show's X tags (from config)~~
