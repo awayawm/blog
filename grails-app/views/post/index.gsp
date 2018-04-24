@@ -40,10 +40,10 @@
                  <a href="/admin/posts/view/${post?.shortUrl}">${post?.title}</a>
                  </td>
                  <td>
-                 ${post?.content.take(100)}
+                 ${raw(post?.content.take(100))}
                  </td>
                   <td>
-                  ${post?.summary.take(100)}
+                  ${raw(post?.summary.take(100))}
                   </td>
                   <td>
                   ${post?.shortUrl}
@@ -63,7 +63,7 @@
                  </td>
                      <td>
                          <span onclick="window.location.href='/admin/posts?id=${post.id}'" class="mr-4"><i class="fas fa-edit"></i></span>
-                         <span onclick="window.location.href='/admin/posts/deletePost?id=${post.id}'" class="mr-4"><i class="fas fa-trash"></i></span>
+                         <span onclick="confirmDeletion(${post.id})" class="mr-4"><i class="fas fa-trash"></i></span>
                      </td>
                  </tr>
              </g:each>
@@ -132,31 +132,39 @@
         </div>
         </g:if>
 
-        <input id="submit" type="submit" class="my-4 btn btn-primary btn-lg" />
+        <input id="submit" type="submit" class="my-4 btn btn-primary btn-lg"/>
         </form>
 
-        <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Delete Post?</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-               Do you want to delete <span id="postName"></span>?
-              </div>
-              <div class="modal-footer">
-                <button id="confirmDeleteButton" type="button" class="btn btn-primary" data-dismiss="modal">Delete</button>
-              </div>
-            </div>
-          </div>
-        </div>
+</div>
+</div>
+</div>
 
+<script>
+var confirmDeletion = function(id) {
+    $('#postId').html(id)
+    $('#deleteConfirmationModal').modal('toggle')
+}
+</script>
+
+<!-- Modal -->
+<div class="modal fade" id="deleteConfirmationModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Confirm Post Deletion.</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">Delete your post id #<span id="postId"></span>?</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Nope.</button>
+        <button type="button" class="btn btn-primary" onclick="window.location.href='/admin/posts/deletePost?id='+$('#postId').text()">Yup!</button>
+      </div>
+    </div>
+  </div>
 </div>
-</div>
-</div>
+
 
     </body>
 </html>

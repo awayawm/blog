@@ -30,7 +30,8 @@ class TagController {
 
     @Secured(value=["hasRole('ROLE_ADMIN')"])
     def addEdit(){
-        Tag tag = tagService.editTag(params.enabled, params.shortUrl, params.name, params.description, params.image, params.id != null ? Long.valueOf(params.id) : null)
+        println "params is ${params.id}"
+        Tag tag = tagService.editTag(params.enabled, params.shortUrl, params.name, params.description, params.image, params.id != "" && params.id != null ? Long.valueOf(params.id) : null)
         if(tag != null) {
             flash.title = "Good news :)"
             flash.message = "Added new tag successfully."
@@ -46,6 +47,7 @@ class TagController {
     @Secured(value=["hasRole('ROLE_ADMIN')"])
     def deleteTag(){
         Tag tag = tagService.deleteTag(params.id instanceof String ? Long.valueOf(params.id) : params.id)
+        println "deleting"
         if(tag){
             flash.title = "Oh no :("
             flash.message = "Unable to delete the tag for some reason."

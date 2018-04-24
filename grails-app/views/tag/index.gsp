@@ -50,7 +50,7 @@
                  </td>
                      <td>
                          <span onclick="window.location.href='/admin/tags?id=${tag.id}'" class="mr-4"><i class="fas fa-edit"></i></span>
-                         <span onclick="window.location.href='/admin/tags/deleteTag?id=${tag.id}'" class="mr-4"><i class="fas fa-trash"></i></span>
+                         <span onclick="confirmDeletion(${tag.id})" class="mr-4"><i class="fas fa-trash"></i></span>
                      </td>
                  </tr>
              </g:each>
@@ -110,6 +110,33 @@
 </div>
 </div>
 </div>
+
+<script>
+var confirmDeletion = function(id) {
+    $('#tagId').html(id)
+    $('#deleteConfirmationModal').modal('toggle')
+}
+</script>
+
+<!-- Modal -->
+<div class="modal fade" id="deleteConfirmationModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Confirm Tag Deletion.</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">Delete your tag id #<span id="tagId"></span>?</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Nope.</button>
+        <button type="button" class="btn btn-primary" onclick="window.location.href='/admin/tags/deleteTag?id='+$('#tagId').text()">Yup!</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
     </body>
 </html>

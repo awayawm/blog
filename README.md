@@ -1,6 +1,6 @@
 ## A Blog in Grails
 
-The internet needs more ranting people!
+The internet needs more blogs!
 
 ![alt text](https://s3-us-west-2.amazonaws.com/atronandbeyond.com/Animated+GIF-downsized.gif)
 
@@ -18,6 +18,7 @@ If you're feeling fancy, adjust the deploy gradle task to your project and deplo
 
 ### Todo
 
-* confirmation on tag/post deletion
+* ~~confirmation on tag/post deletion~~
 * ~~sort posts by most recently modified~~
 * ~~randomly show's X tags (from config)~~
+* nice message on foreign key constraint error (attempting to delete tag that has a post associated with it)
