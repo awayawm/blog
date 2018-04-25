@@ -24,10 +24,3 @@ now you're set!
 5. get war from build/libs and upload it to an elastic beanstalk environment
 
 If you're feeling fancy, adjust the *deploy* gradle task to your project and deploy from the command line.  If might need to put your aws creds into ~/.aws/credentials inside a *blog* profile
-
-### Todo
-
-* ~~confirmation on tag/post deletion~~
-* ~~sort posts by most recently modified~~
-* ~~randomly show's X tags (from config)~~
-* nice message on foreign key constraint error (attempting to delete tag that has a post associated with it)
