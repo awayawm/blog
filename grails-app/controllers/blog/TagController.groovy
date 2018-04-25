@@ -46,9 +46,8 @@ class TagController {
 
     @Secured(value=["hasRole('ROLE_ADMIN')"])
     def deleteTag(){
-        Tag tag = tagService.deleteTag(params.id instanceof String ? Long.valueOf(params.id) : params.id)
-        println "deleting"
-        if(tag){
+        def tag = tagService.deleteTag(params.id instanceof String ? Long.valueOf(params.id) : params.id)
+        if(tag instanceof Tag){
             flash.title = "Oh no :("
             flash.message = "Unable to delete the tag for some reason."
             flash.class = "alert alert-warning"

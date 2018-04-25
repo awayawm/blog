@@ -61,8 +61,7 @@ class TagServiceSpec extends Specification implements ServiceUnitTest<TagService
 
     void "when tag is deleted that has an associated post, does it display a nice error"(){
         when:
-        Tag.metaClass.delete = {
-            println "metaclass invoked"
+        Tag.metaClass.static.delete = { ->
             throw new Exception()
         }
         Post post = new Post(title: "Fallout VR 4 On Occulus Rift", content: "Fallout 4 on PC with occulus rift is a fun experience.  Remember how freaked out you were when those radioactive zombies came running right at you?  It's even more fun in VR!",
@@ -75,6 +74,7 @@ class TagServiceSpec extends Specification implements ServiceUnitTest<TagService
 
         then:
         result == null
+        !(result instanceof Tag)
     }
 
 }

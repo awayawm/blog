@@ -37,13 +37,11 @@ class TagService {
     }
 
     Tag deleteTag(Long id){
-        Tag tag = Tag.findById(id)
-        if(tag) {
-            try {
-                tag = tag.delete()
-            } catch(Exception ex){
-                return new Tag()
-            }
+        Tag tag = null
+        try {
+            tag = Tag.findById(id).delete(flush:true)
+        } catch(Exception ex){
+            return new Tag()
         }
         return tag
     }

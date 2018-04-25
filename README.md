@@ -24,3 +24,6 @@ now you're set!
 5. get war from build/libs and upload it to an elastic beanstalk environment
 
 If you're feeling fancy, adjust the *deploy* gradle task to your project and deploy from the command line.  If might need to put your aws creds into ~/.aws/credentials inside a *blog* profile
+
+#### TODO
+1. reset password
