@@ -40,8 +40,11 @@ class TagService {
         Tag tag = Tag.findById(id)
         if(tag) {
             log.info("Deleting ${tag}")
-            tag = tag.delete(flush:true)
-
+            try {
+                tag = tag.delete()
+            } catch(Exception ex){
+                return true
+            }
         } else {
             log.error("Could not find a tag with id ${params.id}")
         }

@@ -3,12 +3,18 @@ package blog
 import grails.testing.gorm.DataTest
 import grails.testing.services.ServiceUnitTest
 import org.grails.plugins.testing.GrailsMockMultipartFile
+import org.h2.jdbc.JdbcSQLException
 import spock.lang.Specification
 
 class TagServiceSpec extends Specification implements ServiceUnitTest<TagService>, DataTest {
 
-    void setup(){
+    void setupSpec(){
         mockDomain Tag
+        mockDomain Post
+    }
+
+    void cleanup(){
+        Tag.metaClass = null
     }
 
     File image1 = new File(this.class.classLoader.getResource("../../resources/test/images/Music-Note.jpg").toURI())
@@ -51,6 +57,24 @@ class TagServiceSpec extends Specification implements ServiceUnitTest<TagService
 
         then:
         Tag.list().size() == 0
+    }
+
+    void "when tag is deleted that has an associated post, does it display a nice error"(){
+        when:
+        Tag.metaClass.delete = {
+            println "metaclass invoked"
+            throw new Exception()
+        }
+        Post post = new Post(title: "Fallout VR 4 On Occulus Rift", content: "Fallout 4 on PC with occulus rift is a fun experience.  Remember how freaked out you were when those radioactive zombies came running right at you?  It's even more fun in VR!",
+                summary: "A summary of my experiences with running Fallout 4 VR on occulus rift.  The unofficially unsupported experience!", shortUrl: "occulus-fallout-4-vr", enabled: true,
+                imageBytes: image1.bytes, imageContentType: "image/jpg", imageName: "800px_COLOURBOX10725277.jpg")
+        Tag tag = new Tag(enabled: true, shortUrl: "music-times", name: "music", description: "music is the best outlit", imageBytes: image1.bytes, imageName: image1.name, imageContentType: "image/jpg").save(failOnError:true, flush:true)
+        post.addToTags(tag)
+        post.save(failOnError:true, flush:true)
+        def result = service.deleteTag(tag.id)
+
+        then:
+        result == null
     }
 
 }

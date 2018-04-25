@@ -1,11 +1,6 @@
 package blog
 
-import org.grails.datastore.mapping.document.config.Collection
 import org.springframework.security.access.annotation.Secured
-
-//TODO add back google analytics <g:insertGoogleAnalytics></g:insertGoogleAnalytics>
-
-
 
 class IndexController {
 

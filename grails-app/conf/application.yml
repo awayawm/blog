@@ -132,7 +132,7 @@ environments:
                   auto: update
               dialect: org.hibernate.dialect.MySQL5InnoDBDialect
           properties:
-            validationQuery: "SELECT 1"
+            validationQuery: "SELECT 1 FROM USER"
             testOnBorrow: true
             testOnReturn: true
             testWhileIdle: true
