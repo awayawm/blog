@@ -39,14 +39,11 @@ class TagService {
     Tag deleteTag(Long id){
         Tag tag = Tag.findById(id)
         if(tag) {
-            log.info("Deleting ${tag}")
             try {
                 tag = tag.delete()
             } catch(Exception ex){
-                return true
+                return new Tag()
             }
-        } else {
-            log.error("Could not find a tag with id ${params.id}")
         }
         return tag
     }
