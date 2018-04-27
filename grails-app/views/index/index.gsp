@@ -26,8 +26,9 @@
   <div class="card shadow-lg">
     <img class="card-img-top img-fluid" src="data:${post.imageContentType};base64,${post.imageBytes.encodeBase64()}" alt="Card image cap">
     <div class="card-body">
-      <h5 class="card-title"><a href="/posts/${post.shortUrl}">${raw(post.title)}</a></h5>
-      <p class="card-text">${raw(post.summary)}</p>
+      <h4 class="card-title my-3"><a href="/posts/${post.shortUrl}">${raw(post.title)}</a></h4>
+      <hr>
+      <p class="card-text my-4">${raw(post.summary)}</p>
 
     </div>
     <div class="m-3">

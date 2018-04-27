@@ -13,6 +13,8 @@
 
 <g:render template="/shared/header"/>
 
+<g:render template="/shared/tagnav"/>
+
 <g:render template="/shared/indexalert"/>
 
 <div class="card mb-3 shadow-lg">
@@ -33,8 +35,8 @@
   <div class="card shadow-lg">
     <img class="card-img-top img-fluid" src="data:${post.imageContentType};base64,${post.imageBytes.encodeBase64()}" alt="Card image cap">
     <div class="card-body">
-      <h5 class="card-title"><a href="/posts/${post.shortUrl}">${post.title}</a></h5>
-      <p class="card-text">${post.summary}</p>
+      <h4 class="card-title my-3"><a href="/posts/${post.shortUrl}">${post.title}</a></h4>
+      <p class="card-text my-4">${post.summary}</p>
       </div>
           <div class="m-3">
           <g:each in="${post.tags}" var="tag">
