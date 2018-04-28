@@ -40,10 +40,10 @@
                  <a href="/admin/posts/view/${post?.shortUrl}">${post?.title}</a>
                  </td>
                  <td>
-                 ${raw(post?.content.take(100))}
+                 ${post?.content.take(admin_take_size)}
                  </td>
                   <td>
-                  ${raw(post?.summary.take(100))}
+                  ${post?.summary.take(admin_take_size)}
                   </td>
                   <td>
                   ${post?.shortUrl}

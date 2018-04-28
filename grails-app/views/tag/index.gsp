@@ -4,9 +4,9 @@
     </head>
     <body>
 
-<div class="container-fluid">
-<div class="row">
-<div class="col">
+        <div class="container-fluid">
+        <div class="row">
+        <div class="col">
 
         <g:render template="/shared/adminnav"/>
 
@@ -37,10 +37,10 @@
                  ${tag.name}
                  </td>
               <td>
-              ${tag.shortUrl}
+              <a href="/tags/${tag.shortUrl}">${tag.shortUrl}</a>
               </td>
                  <td>
-                 ${tag.description}
+                 ${tag.description.take(admin_take_size)}
                  </td>
               <td>
               ${tag.enabled}

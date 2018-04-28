@@ -5,10 +5,22 @@ import grails.testing.web.controllers.ControllerUnitTest
 import org.grails.plugins.testing.GrailsMockMultipartFile
 import spock.lang.Specification
 
+import javax.servlet.ServletContext
+
 class TagControllerSpec extends Specification implements ControllerUnitTest<TagController>, DataTest{
 
     void setupSpec(){
         mockDomain Tag
+    }
+
+    void setup(){
+        System.metaClass.static.getProperty = { String key ->
+            ServletContext.getResource("/blog.config").file
+        }
+    }
+
+    void cleanup(){
+        System.metaClass = null
     }
 
     TagService tagService = new TagService()

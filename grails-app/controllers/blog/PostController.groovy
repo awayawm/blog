@@ -5,6 +5,7 @@ import grails.plugin.springsecurity.annotation.Secured
 class PostController {
 
     PostService postService = new PostService()
+    ConfigService configService = new ConfigService()
 
     @Secured(value=["hasRole('ROLE_ADMIN')"])
     def index() {
@@ -12,6 +13,7 @@ class PostController {
         Post post
         model.put("posts", Post.list())
         model.put("tags", Tag.list())
+        model.put("admin_take_size", configService.getConfig().admin_take_size)
         if(params.id) {
             post = Post.findById(params.id)
             model.put("postId", post)

@@ -20,8 +20,8 @@
 <div class="card mb-3 shadow-lg">
   <img class="card-img-top img-fluid" src="data:${tag.imageContentType};base64,${tag.imageBytes.encodeBase64()}" alt="Card image cap">
   <div class="card-body">
-    <h1 class="display-4 card-title">${raw(tag.name)}</h1>
-    <p class="card-text lead">${raw(tag.description)}</p>
+    <h1 class="display-4 card-title">${tag.name.encodeAsRaw()}</h1>
+    <p class="card-text lead">${tag.description.encodeAsRaw()}</p>
     <input type="button" class="btn btn-lg my-4 bg-gradient-secondary text-white" onclick="window.history.back()" value="back"/>
   </div>
 </div>
@@ -36,7 +36,7 @@
     <img class="card-img-top img-fluid" src="data:${post.imageContentType};base64,${post.imageBytes.encodeBase64()}" alt="Card image cap">
     <div class="card-body">
       <h4 class="card-title my-3"><a href="/posts/${post.shortUrl}">${post.title}</a></h4>
-      <p class="card-text my-4">${post.summary}</p>
+      <p class="card-text my-4">${post.summary.encodeAsRaw()}</p>
       </div>
           <div class="m-3">
           <g:each in="${post.tags}" var="tag">

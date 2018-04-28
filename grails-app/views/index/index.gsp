@@ -28,7 +28,7 @@
     <div class="card-body">
       <h4 class="card-title my-3"><a href="/posts/${post.shortUrl}">${raw(post.title)}</a></h4>
       <hr>
-      <p class="card-text my-4">${raw(post.summary)}</p>
+      <p class="card-text my-4">${post.summary.encodeAsRaw()}</p>
 
     </div>
     <div class="m-3">

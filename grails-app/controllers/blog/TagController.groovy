@@ -5,12 +5,14 @@ import grails.plugin.springsecurity.annotation.Secured
 class TagController {
 
     TagService tagService = new TagService()
+    ConfigService configService = new ConfigService()
 
     @Secured(value=["hasRole('ROLE_ADMIN')"])
     def index(){
         Tag foundTag
         def model = [:]
         model.put('tags', Tag.list())
+        model.put("admin_take_size", configService.getConfig().admin_take_size)
         if(params.id){
             foundTag = Tag.findById(params.id)
             model.put('name', foundTag.name)
