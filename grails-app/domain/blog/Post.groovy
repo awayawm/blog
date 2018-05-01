@@ -28,6 +28,6 @@ class Post {
     static mapping = {
         imageBytes sqlType:'longblob'
         summary sqlType: 'varchar(10000)'
-        content sqlType: 'varchar(20000)'
+        content sqlType: 'varchar(50000)'
     }
 }
