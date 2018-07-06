@@ -62,10 +62,8 @@ dependencies {
     compile group: 'org.codehaus.groovy', name: 'groovy-all', version: '2.4.13'
     // https://mvnrepository.com/artifact/com.h2database/h2
     compile group: 'com.h2database', name: 'h2', version: '1.4.196'
-    // https://mvnrepository.com/artifact/org.apache.commons/commons-dbcp2
-    compile group: 'org.apache.commons', name: 'commons-dbcp2', version: '2.2.0'
-// https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-jdbc
-    compile group: 'org.apache.tomcat', name: 'tomcat-jdbc', version: '7.0.28'
+// https://mvnrepository.com/artifact/commons-dbcp/commons-dbcp
+    compile group: 'commons-dbcp', name: 'commons-dbcp', version: '1.4'
 
     runtime 'mysql:mysql-connector-java:5.1.36'
     compile "org.grails.plugins:hibernate5:6.1.9"
