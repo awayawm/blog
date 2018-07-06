@@ -62,9 +62,6 @@ dependencies {
     compile group: 'org.codehaus.groovy', name: 'groovy-all', version: '2.4.13'
     // https://mvnrepository.com/artifact/com.h2database/h2
     compile group: 'com.h2database', name: 'h2', version: '1.4.196'
-
-// https://mvnrepository.com/artifact/commons-dbcp/commons-dbcp
-    compile group: 'commons-dbcp', name: 'commons-dbcp', version: '1.4'
 // https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-jdbc
     compile group: 'org.apache.tomcat', name: 'tomcat-jdbc', version: '7.0.19'
 
