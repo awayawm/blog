@@ -84,16 +84,16 @@ assets {
     minifyCss = true
 }
 
-beanstalk {
-    profile = 'blog'
-    s3Endpoint = "s3-us-west-2.amazonaws.com"
-    beanstalkEndpoint = "elasticbeanstalk.us-west-2.amazonaws.com"
-
-    deployments {
-        alpha {
-            file = tasks.war
-            application = 'blog'
-            environment = 'blog-dev-env'
-        }
-    }
-}
+//beanstalk {
+//    profile = 'blog'
+//    s3Endpoint = "s3-us-west-2.amazonaws.com"
+//    beanstalkEndpoint = "elasticbeanstalk.us-west-2.amazonaws.com"
+//
+//    deployments {
+//        alpha {
+//            file = tasks.war
+//            application = 'blog'
+//            environment = 'blog-dev-env'
+//        }
+//    }
+//}
