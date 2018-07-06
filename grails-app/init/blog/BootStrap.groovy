@@ -8,11 +8,12 @@ class BootStrap {
 
         ConfigService configService = new ConfigService()
 
-        log.info "servletContent resource folders - ${servletContext.getResourcePaths('/')}"
+        log.info "servletContent resource folders - ${servletContext.getResourcePaths("/")}"
+        println "servletContent resource folders - ${servletContext.getResourcePaths("/")}"
 
         if(System.getProperty("BLOG_CONFIG") == null){
-            log.info "Loading config from blog-config system property from ${servletContext.getResource("blog.config").file}"
-            System.setProperty("BLOG_CONFIG", servletContext.getResource("blog.config").file)
+            log.info "Loading config from blog-config system property from ${servletContext.getResource("/blog.config").file}"
+            System.setProperty("BLOG_CONFIG", servletContext.getResource("/blog.config").file)
         }
 
         if(User.list().size() == 0 && Role.list().size() == 0){
@@ -24,14 +25,14 @@ class BootStrap {
 
         if(Post.list().size() == 0) {
 
-            File image1 = new File(servletContext.getResource("images/Music-Note.jpg").toURI())
-            File image2 = new File(servletContext.getResource("images/staunton-chess-set-1.jpg").toURI())
-            File image3 = new File(servletContext.getResource("images/ThinkstockPhotos-494037394.jpg").toURI())
+            File image1 = new File(servletContext.getResource("/images/Music-Note.jpg").toURI())
+            File image2 = new File(servletContext.getResource("/images/staunton-chess-set-1.jpg").toURI())
+            File image3 = new File(servletContext.getResource("/images/ThinkstockPhotos-494037394.jpg").toURI())
 
-            File image4 = new File(servletContext.getResource("images/800px_COLOURBOX10725277.jpg").toURI())
-            File image5 = new File(servletContext.getResource("images/d_SC_DETAIL_MODULE1_720x690_2.2_LowerBackPain.jpg").toURI())
-            File image6 = new File(servletContext.getResource("images/hooked-on-code_icon_logo_RGB.png").toURI())
-            File image7 = new File(servletContext.getResource("images/images.png").toURI())
+            File image4 = new File(servletContext.getResource("/images/800px_COLOURBOX10725277.jpg").toURI())
+            File image5 = new File(servletContext.getResource("/images/d_SC_DETAIL_MODULE1_720x690_2.2_LowerBackPain.jpg").toURI())
+            File image6 = new File(servletContext.getResource("/images/hooked-on-code_icon_logo_RGB.png").toURI())
+            File image7 = new File(servletContext.getResource("/images/images.png").toURI())
 
             Tag tag1 = new Tag(enabled: true, shortUrl: "learn-music", name: "music", description: "music is the best outlit", imageBytes: image1.bytes, imageName: image1.name, imageContentType: "image/jpg").save(failOnError: true, flush: true)
             Tag tag2 = new Tag(enabled: false, shortUrl: "chess-programming", name: "chess programming", description: "chess programming is interesting", imageBytes: image2.bytes, imageName: image2.name, imageContentType: "image/jpg").save(failOnError: true, flush: true)
