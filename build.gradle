@@ -63,7 +63,7 @@ dependencies {
     // https://mvnrepository.com/artifact/com.h2database/h2
     compile group: 'com.h2database', name: 'h2', version: '1.4.196'
     // https://mvnrepository.com/artifact/org.apache.commons/commons-dbcp2
-    compile group: 'org.apache.commons', name: 'commons-dbcp2', version: '2.2.0'
+//    compile group: 'org.apache.commons', name: 'commons-dbcp2', version: '2.2.0'
 
     runtime 'mysql:mysql-connector-java:5.1.36'
     compile "org.grails.plugins:hibernate5:6.1.9"
