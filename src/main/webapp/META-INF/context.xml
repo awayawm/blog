@@ -36,5 +36,4 @@
               username="root" password="Twice2018$$" driverClassName="com.mysql.jdbc.Driver"
               url="jdbc:mysql://localhost:3306/blog" />
 
-
 </Context>

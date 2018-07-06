@@ -3,6 +3,7 @@ buildscript {
         mavenLocal()
         maven { url "https://repo.grails.org/grails/core" }
     }
+
     dependencies {
         classpath "org.grails:grails-gradle-plugin:$grailsVersion"
         classpath "com.bertramlabs.plugins:asset-pipeline-gradle:2.14.2"
@@ -24,12 +25,14 @@ repositories {
     maven { url "https://repo.grails.org/grails/core" }
 }
 
+ext['tomcat.version'] = '7.0.59'
+
 dependencies {
     compile "org.springframework.boot:spring-boot-starter-logging"
     compile "org.springframework.boot:spring-boot-autoconfigure"
     compile "org.grails:grails-core"
     compile "org.springframework.boot:spring-boot-starter-actuator"
-    provided "org.springframework.boot:spring-boot-starter-tomcat"
+    compile "org.springframework.boot:spring-boot-starter-tomcat"
     compile "org.grails:grails-web-boot"
     compile "org.grails:grails-logging"
     compile "org.grails:grails-plugin-rest"
@@ -48,7 +51,7 @@ dependencies {
     compile "com.auth0:java-jwt:3.2.0"
     profile "org.grails.profiles:web"
     runtime "org.glassfish.web:el-impl:2.1.2-b03"
-//    runtime "org.apache.tomcat:tomcat-jdbc"
+    runtime "org.apache.tomcat:tomcat-jdbc"
     runtime "com.bertramlabs.plugins:asset-pipeline-grails:2.14.2"
     testCompile "org.grails:grails-gorm-testing-support"
     testCompile "org.grails.plugins:geb"
@@ -63,7 +66,7 @@ dependencies {
     // https://mvnrepository.com/artifact/com.h2database/h2
     compile group: 'com.h2database', name: 'h2', version: '1.4.196'
 // https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-jdbc
-    compile group: 'org.apache.tomcat', name: 'tomcat-jdbc', version: '7.0.19'
+//    compile group: 'org.apache.tomcat', name: 'tomcat-jdbc', version: '7.0.19'
 
     runtime 'mysql:mysql-connector-java:5.1.36'
     compile "org.grails.plugins:hibernate5:6.1.9"
@@ -76,7 +79,7 @@ dependencies {
 bootRun {
     jvmArgs('-Dspring.output.ansi.enabled=always')
     addResources = true
-    systemProperties = System.properties
+//    systemProperties = System.properties
 }
 
 assets {
