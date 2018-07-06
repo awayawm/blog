@@ -17,7 +17,7 @@ apply plugin:"war"
 apply plugin:"org.grails.grails-web"
 apply plugin:"asset-pipeline"
 apply plugin:"org.grails.grails-gsp"
-apply plugin: "fi.evident.beanstalk"
+//apply plugin: "fi.evident.beanstalk"
 
 repositories {
     mavenLocal()
