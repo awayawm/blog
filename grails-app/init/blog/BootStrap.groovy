@@ -6,10 +6,10 @@ class BootStrap {
 
     def init = { ServletContext servletContext ->
 
-        ConfigService configService = new ConfigService()
-
         log.info "servletContent resource folders - ${servletContext.getResourcePaths("/")}"
         println "servletContent resource folders - ${servletContext.getResourcePaths("/")}"
+
+        ConfigService configService = new ConfigService()
 
         if(System.getProperty("BLOG_CONFIG") == null){
             log.info "Loading config from blog-config system property from ${servletContext.getResource("/blog.config").file}"
