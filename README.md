@@ -6,7 +6,7 @@ The internet needs more blogs!
 
 This application uses a system property called *BLOG_CONFIG* which is an absolute path to the config file on the file system.  An example of the config can be found in src/main/webapp/blog.config and if one can't be found from the system property then the one from the project will be loaded.
 
-I recommend deploying this app on elastic beanstalk.  you'll need to set a few environmental properties
+you'll need to set a few environmental properties
 
 * blog_config - absolute path to config
 * jdbc_connection_string - proper jdbc connection string or location of database

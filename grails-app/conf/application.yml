@@ -122,12 +122,13 @@ environments:
               dialect: org.hibernate.dialect.H2Dialect
   production:
       dataSource:
-          dbCreate: create
-
-#          url:   ${JDBC_CONNECTION_STRING}
-#          username: ${USERNAME}
-#          password: ${PASSWORD}
-          jndiName: "java:comp/env/jdbc/blog"
+          dbCreate: update
+          pooled: true
+          url:   ${JDBC_CONNECTION_STRING}
+          username: ${USERNAME}
+          password: ${PASSWORD}
+          driverClassName: "com.mysql.jdbc.Driver"
+#          jndiName: "java:comp/env/jdbc/blog"
 
           hibernate:
               hbm2ddl:
