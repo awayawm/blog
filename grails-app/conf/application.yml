@@ -124,22 +124,27 @@ environments:
       dataSource:
           pooled: true
           dbCreate: update
-          driverClassName: "com.mysql.jdbc.Driver"
           url:   ${JDBC_CONNECTION_STRING}
+          driverClassName: "com.mysql.jdbc.Driver"
+          dialect: org.hibernate.dialect.MySQL5InnoDBDialect
           username: ${USERNAME}
           password: ${PASSWORD}
-
 #          jndiName: "java:comp/env/jdbc/blog"
-
-          hibernate:
-              hbm2ddl:
-                  auto: update
-              dialect: org.hibernate.dialect.MySQL5InnoDBDialect
-          properties:
-            validationQuery: "SELECT 1"
-            testOnBorrow: true
-            testOnReturn: true
-            testWhileIdle: true
-            timeBetweenEvictionRunsMillis: 1000 * 60 * 30
-            numTestsPerEvictionRun: 3
-            minEvictableIdleTimeMillis: 1000 * 60 * 30
+            properties:
+               jmxEnabled: true
+               initialSize: 5
+               maxActive: 50
+               minIdle: 5
+               maxIdle: 25
+               maxWait: 10000
+               maxAge: 10 * 60000
+               timeBetweenEvictionRunsMillis: 5000
+               minEvictableIdleTimeMillis: 60000
+               validationQuery: "SELECT 1"
+               validationQueryTimeout: 3
+               validationInterval: 15000
+               testOnBorrow: true
+               testWhileIdle: true
+               testOnReturn: false
+               jdbcInterceptors: "ConnectionState;StatementCache(max=200)"
+               defaultTransactionIsolation: java.sql.Connection.TRANSACTION_READ_COMMITTED
