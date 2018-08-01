@@ -8,10 +8,10 @@ This application uses a system property called *BLOG_CONFIG* which is an absolut
 
 you'll need to set a few environmental properties
 
-* blog_config - absolute path to config
-* jdbc_connection_string - proper jdbc connection string or location of database
-* password - username of database
-* username - password of database
+* BLOG_CONFIG - absolute path to config
+* JDBC_CONNECTION_STRING - proper jdbc connection string or location of database
+* PASSWORD - username of database
+* USERNAME - password of database
 
 now you're set!
 
@@ -21,9 +21,7 @@ now you're set!
 2. change directories to the project directory.
 3. Using intellij, open build.gradle located at the root of the project directory
 4. run assemble gradle task to create a war file i.e. ./gradlew assemble
-5. get war from build/libs and upload it to an elastic beanstalk environment
-
-If you're feeling fancy, adjust the *deploy* gradle task to your project and deploy from the command line.  If might need to put your aws creds into ~/.aws/credentials inside a *blog* profile
+5. set up your environmental variables and run grails run-app
 
 #### TODO
 1. reset password

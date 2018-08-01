@@ -124,11 +124,11 @@ environments:
       dataSource:
         pooled: true
         dbCreate: create
-        url:   ${JDBC_CONNECTION_STRING}
+        url:   ${BLOG_JDBC_CONNECTION_STRING}
         driverClassName: "com.mysql.jdbc.Driver"
         dialect: org.hibernate.dialect.MySQL5InnoDBDialect
-        username: ${USERNAME}
-        password: ${PASSWORD}
+        username: ${BLOG_USERNAME}
+        password: ${BLOG_PASSWORD}
 #          jndiName: "java:comp/env/jdbc/blog"
         properties:
           jmxEnabled: true
