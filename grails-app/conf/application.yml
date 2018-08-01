@@ -123,7 +123,7 @@ environments:
   production:
       dataSource:
         pooled: true
-        dbCreate: create
+        dbCreate: update
         url:   ${BLOG_JDBC_CONNECTION_STRING}
         driverClassName: "com.mysql.jdbc.Driver"
         dialect: org.hibernate.dialect.MySQL5InnoDBDialect
