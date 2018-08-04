@@ -25,6 +25,8 @@ class UrlMappings {
             "/view/$shortUrl?"(controller: 'index', action:  'byPostShortUrlAdmin')
         }
 
+        "/rss" (controller:'rss', action: 'index')
+
         "500"(view:'/error')
         "404"(view:'/notFound')
 

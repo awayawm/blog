@@ -22,7 +22,6 @@ class ConfigServiceSpec extends Specification implements ServiceUnitTest<ConfigS
     def "can config be read from properties"(){
         when:
             println ServletContext.getResource("/blog.config").file
-            println System.getProperty("BLOG_CONFIG")
             ConfigObject config
             config = service.getConfig()
         then:

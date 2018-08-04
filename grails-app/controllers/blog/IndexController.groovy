@@ -9,6 +9,7 @@ class IndexController {
 
     def makeModel(def model){
         model.put("title", configService.getConfig().title)
+        model.put("url", configService.getConfig().url)
         model.put("tagline", configService.getConfig().tagline)
         model.put("twitter", configService.getConfig().author.twitter)
         model.put("linkedin", configService.getConfig().author.linkedin)
