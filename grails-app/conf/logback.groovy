@@ -33,5 +33,22 @@ if (Environment.isDevelopmentMode() && targetDir != null) {
     }
     logger("StackTrace", ERROR, ['FULL_STACKTRACE'], false)
 }
+
+appender("WEBAPP", RollingFileAppender) {
+    file = "/var/log/tomcat/blog.log"
+    encoder(PatternLayoutEncoder) {
+        pattern = "%-50(%date{ISO8601} [%thread]) %-5level %logger{50} - %msg%n%rEx"
+    }
+    triggeringPolicy(SizeBasedTriggeringPolicy) {
+        maxFileSize = '10MB'
+    }
+    rollingPolicy(FixedWindowRollingPolicy) {
+        fileNamePattern = "/var/log/tomcat/blog-%d{yyyyMMdd_hhmmss}.%i.gz"
+        maxIndex = 10
+    }
+}
+
 root(ERROR, ['STDOUT'])
 root(INFO, ['STDOUT'])
+root(ERROR, ['WEBAPP'])
+root(INFO, ['WEBAPP'])
